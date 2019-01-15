@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthorizationComponent } from './authorization.component';
-import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angular5-social-login';
+import {AuthServiceConfig, SocialLoginModule} from 'angular5-social-login';
 import {GET_AUTHORIZATION_SERVICE_CONFIG} from './config';
 
 @NgModule({
