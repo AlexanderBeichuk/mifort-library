@@ -1,0 +1,21 @@
+.btn-googleplus {
+  width: 100px;
+  height: 40px;
+  background: #E93F2E;
+  color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #b72213;
+  cursor: pointer;
+
+  &:link, &:visited {
+    color: #fff;
+  }
+  &:active, &:hover {
+    background: #b72213;
+    color: #fff;
+  }
+  .icon-google {
+    font-size: 25px;
+  }
+}
