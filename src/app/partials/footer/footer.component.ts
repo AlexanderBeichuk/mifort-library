@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {BOOKS} from '../../models/mock';
 
 @Component({
   selector: 'app-footer',
@@ -7,8 +6,6 @@ import {BOOKS} from '../../models/mock';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  public previewBooks = BOOKS;
 
   constructor() { }
 

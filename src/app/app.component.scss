@@ -4,8 +4,13 @@
   height: 100%;
   .app-content {
     flex: 1 0 auto;
+    .router-content {
+    }
   }
   .app-footer {
     flex: 0 0 auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
 }
