@@ -1,12 +1,11 @@
-.component-login {
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  overflow-x: hidden;
-
-  .login-main {
-    min-height: calc(100vh - 208px);
-    position: relative;
-    text-align: center;
-    background-image: url(../assets/images/login_background.png);
-    background-size: cover;
+  .app-content {
+    flex: 1 0 auto;
+  }
+  .app-footer {
+    flex: 0 0 auto;
   }
 }

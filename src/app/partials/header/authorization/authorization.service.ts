@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AuthService, GoogleLoginProvider} from 'angular5-social-login';
 import {SocialUser} from 'angular5-social-login/entities/user';
-import {StorageService} from '../services/storage.service';
+import {StorageService} from '../../../services/storage.service';
 
 const BEARER_TOKEN = 'bearerToken';
 
