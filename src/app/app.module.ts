@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
