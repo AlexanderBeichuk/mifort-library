@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from './authorization.service';
 import {SocialUser} from 'angular5-social-login';
 import {User} from '../models/User';
-import {UserRole} from '../models/config';
+import {NotificationStatus, UserRole} from '../models/config';
+import {NotificationService} from '../services/notification.service';
+import {Notification} from '../models/Notification';
 
 @Component({
   selector: 'app-authorization',
@@ -11,7 +13,8 @@ import {UserRole} from '../models/config';
 })
 export class AuthorizationComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService) { }
+  constructor(private authorizationService: AuthorizationService,
+              private notificationService: NotificationService) { }
 
   ngOnInit() {
   }
@@ -22,6 +25,6 @@ export class AuthorizationComponent implements OnInit {
         const user = new User(socialUser.id, socialUser.email, socialUser.name, socialUser.image, UserRole.admin);
         console.log(user);
       })
-      .catch(error => console.error(error.message)); /*TODO snotify service*/
+      .catch(error => this.notificationService.show(new Notification(NotificationStatus.Error, error.message)));
   }
 }
