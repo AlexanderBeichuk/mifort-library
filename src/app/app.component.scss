@@ -1,0 +1,12 @@
+.component-login {
+  height: 100%;
+  overflow-x: hidden;
+
+  .login-main {
+    min-height: calc(100vh - 208px);
+    position: relative;
+    text-align: center;
+    background-image: url(../assets/images/login_background.png);
+    background-size: cover;
+  }
+}
