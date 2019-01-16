@@ -1,0 +1,43 @@
+.snotifyToast {
+  width: auto;
+  max-width: 30rem;
+  float: right;
+
+  .snotifyToast__inner {
+    min-height: 3rem;
+  }
+
+  .snotifyToast__title {
+    font-size: 1rem;
+  }
+
+  .snotifyToast__body {
+    font-size: .9rem;
+  }
+
+  .snotify-icon {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+}
+
+.animation {
+  animation-name: animation;
+}
+
+
+@keyframes animation {
+
+  0% {
+    opacity: 0;
+  }
+
+  20%, 80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
