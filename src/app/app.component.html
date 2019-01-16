@@ -1,12 +1,13 @@
 <div class="app-wrapper">
-  <div class="app-content">
+  <div class="app-content" [ngClass]="{'row': !isLoginPage}">
     <app-header></app-header>
-    <div class="router-content">
+    <div [ngClass]="{'col-10': !isLoginPage, 'router-content': !isLoginPage}">
       <router-outlet></router-outlet>
     </div>
-    <ng-snotify></ng-snotify>
   </div>
   <div class="app-footer">
     <app-footer></app-footer>
   </div>
 </div>
+
+<ng-snotify></ng-snotify>
