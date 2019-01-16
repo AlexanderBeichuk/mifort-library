@@ -3,9 +3,10 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 
 import { AppComponent } from './app.component';
+import {AuthorizationModule} from './authorization/authorization.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
-    SnotifyModule
+    SnotifyModule,
+    AuthorizationModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
