@@ -6,24 +6,36 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { AppRoutingModule } from './routing/app-routing.module';
 
 import { AppComponent } from './app.component';
-import {AuthorizationModule} from './authorization/authorization.module';
+import { HeaderComponent } from './partials/header/header.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import {AuthServiceConfig, SocialLoginModule} from 'angular5-social-login';
+import {CommonModule} from '@angular/common';
+import {AuthorizationComponent} from './partials/header/authorization/authorization.component';
+import {GET_AUTHORIZATION_SERVICE_CONFIG} from './partials/header/authorization/config';
+import { LoginComponent } from './login/login.component';
 import { BooksTableComponent } from './partials/books-table/books-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    AuthorizationComponent,
+    LoginComponent,
     BooksTableComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
     TableModule,
     SnotifyModule,
-    AuthorizationModule
+    SocialLoginModule,
   ],
   providers: [
+    { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService
   ],

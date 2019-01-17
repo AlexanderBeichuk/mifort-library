@@ -1,0 +1,17 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .app-content {
+    flex: 1 0 auto;
+    .router-content {
+      margin: 70px auto 0;
+    }
+  }
+  .app-footer {
+    flex: 0 0 auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
