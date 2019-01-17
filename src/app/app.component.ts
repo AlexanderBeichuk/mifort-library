@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 
-const LOGIN_PAGE_URL = '/';
+const LOGIN_PAGE_URL = '/login';
 
 @Component({
   selector: 'app-root',

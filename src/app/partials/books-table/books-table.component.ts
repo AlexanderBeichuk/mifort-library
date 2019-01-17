@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Book} from '../../models/Book';
+import {BOOKS} from '../../models/mock';
+
+const DEFAULT_BOOKS_HEADER: string[] = ['', 'Title', 'Author', 'Description', 'Count', 'Labels', ''];
 
 @Component({
   selector: 'app-books-table',
@@ -9,6 +13,9 @@ import { Component, OnInit } from '@angular/core';
 export class BooksTableComponent implements OnInit {
 
   constructor() { }
+
+  public previewBooks: Book[] = BOOKS;
+  public headElements: string[] = DEFAULT_BOOKS_HEADER;
 
   ngOnInit() {
   }

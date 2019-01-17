@@ -12,9 +12,11 @@ import {AuthServiceConfig, SocialLoginModule} from 'angular5-social-login';
 import {CommonModule} from '@angular/common';
 import {AuthorizationComponent} from './partials/header/authorization/authorization.component';
 import {GET_AUTHORIZATION_SERVICE_CONFIG} from './partials/header/authorization/config';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { BooksTableComponent } from './partials/books-table/books-table.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { EventBoardComponent } from './partials/event-board/event-board.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
     AuthorizationComponent,
     LoginComponent,
     BooksTableComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent,
+    EventBoardComponent
   ],
   imports: [
     CommonModule,
