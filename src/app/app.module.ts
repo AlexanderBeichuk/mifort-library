@@ -14,6 +14,7 @@ import {AuthorizationComponent} from './partials/header/authorization/authorizat
 import {GET_AUTHORIZATION_SERVICE_CONFIG} from './partials/header/authorization/config';
 import { LoginComponent } from './login/login.component';
 import { BooksTableComponent } from './partials/books-table/books-table.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BooksTableComponent } from './partials/books-table/books-table.componen
     FooterComponent,
     AuthorizationComponent,
     LoginComponent,
-    BooksTableComponent
+    BooksTableComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
