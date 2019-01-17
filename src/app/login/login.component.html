@@ -2,7 +2,17 @@
   <div class="slider col-9">
     <div class="slide-track">
       <div class="slide" *ngFor="let book of previewBooks">
-        <img [src]="book.image"/>
+        <div class="book-slide">
+          <img [src]="book.image"/>
+          <div class="content-book">
+            <h3>
+              {{book.author}}
+            </h3>
+            <p class="book-description">
+              {{book.description}}
+            </p>
+          </div>
+          </div>
       </div>
     </div>
   </div>
