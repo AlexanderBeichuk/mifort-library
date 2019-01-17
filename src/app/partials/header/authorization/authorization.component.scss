@@ -1,19 +1,21 @@
+@import "../../../../assets/scss/colors";
+
 .btn-googleplus {
   width: 100px;
   height: 40px;
-  background: #E93F2E;
-  color: #fff;
+  background: $light-red;
+  color: $white;
   border-width: 1px;
   border-style: solid;
-  border-color: #b72213;
+  border-color: $dark-red;
   cursor: pointer;
 
   &:link, &:visited {
-    color: #fff;
+    color: $white;
   }
   &:active, &:hover {
-    background: #b72213;
-    color: #fff;
+    background: $dark-red;
+    color: $white;
   }
   .icon-google {
     font-size: 25px;

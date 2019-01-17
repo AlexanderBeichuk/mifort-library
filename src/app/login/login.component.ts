@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Book} from '../models/Book';
 import {BOOKS} from '../models/mock';
 
-@Component({
+@Component ({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
