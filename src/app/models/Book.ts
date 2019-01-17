@@ -1,5 +1,3 @@
-import {Label} from './Item';
-
 const DEFAULT_COUNT = 1;
 
 export class Book {
@@ -11,6 +9,21 @@ export class Book {
     public description: string = null,
     public count: number = DEFAULT_COUNT,
     public availableCount: number = DEFAULT_COUNT,
-    public labels: Label[] = []
-  ) { }
+    public labelIds: string[] = [],
+    public commentIds: string[] = []
+  ) {
+    this.availableCount = this.availableCount > this.count ? this.count : this.availableCount;
+  }
+}
+
+export interface ResponseBook {
+  id: string;
+  title: string;
+  image: string;
+  author: string;
+  description: string;
+  count: number;
+  availableCount: number;
+  labelIds: string[];
+  commentIds: string[];
 }
