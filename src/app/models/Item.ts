@@ -10,3 +10,8 @@ export class Label extends Item {
     super();
   }
 }
+
+export interface ResponseItem {
+  id: string;
+  name: string;
+}
