@@ -5,7 +5,7 @@
   </tr>
   </thead>
   <tbody class="body">
-  <tr mdbTableCol *ngFor="let book of previewBooks">
+  <tr mdbTableCol *ngFor="let book of allBooks">
     <td class="td image">
       <img src="{{book.image}}" class="picture">
     </td>
@@ -13,6 +13,11 @@
     <td class="td">{{book.author}}</td>
     <td class="td description">{{book.description}}</td>
     <td class="td count">{{book.availableCount}}/{{book.count}}</td>
+    <td class="td labels">
+      <a href="" *ngFor="let label of getBookLabels(book)">
+        <mdb-badge primary="true">{{label.name}}</mdb-badge>
+      </a>
+    </td>
   </tr>
   </tbody>
 </table>
