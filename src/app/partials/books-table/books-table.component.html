@@ -1,4 +1,4 @@
-<table mdbTable class="table" hover="true">
+<table *ngIf="allBooks.length; else noneBooks" mdbTable class="table" hover="true">
   <thead class="white-text header">
   <tr>
     <th *ngFor="let head of headers; let i = index"
@@ -66,3 +66,6 @@
   </tfoot>
 </table>
 
+<ng-template #noneBooks>
+    <div class="no-books">Books not found!</div>
+</ng-template>
