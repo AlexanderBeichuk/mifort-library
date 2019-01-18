@@ -1,4 +1,5 @@
-const DEFAULT_COUNT = 1;
+const DEFAULT_BOOKS_COUNT = 1;
+const DEFAULT_COMMENTS_COUNT = 0;
 
 export class Book {
   constructor(
@@ -7,10 +8,10 @@ export class Book {
     public image: string = null,
     public author: string = null,
     public description: string = null,
-    public count: number = DEFAULT_COUNT,
-    public availableCount: number = DEFAULT_COUNT,
+    public count: number = DEFAULT_BOOKS_COUNT,
+    public availableCount: number = DEFAULT_BOOKS_COUNT,
     public labelIds: string[] = [],
-    public commentIds: string[] = []
+    public commentsCount: number = DEFAULT_COMMENTS_COUNT
   ) {
     this.availableCount = this.availableCount > this.count ? this.count : this.availableCount;
   }
@@ -25,5 +26,5 @@ export interface ResponseBook {
   count: number;
   availableCount: number;
   labelIds: string[];
-  commentIds: string[];
+  commentsCount: number;
 }
