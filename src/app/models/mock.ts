@@ -1,7 +1,7 @@
 import {Book} from './Book';
 import {Label} from './Item';
-import {User} from './User';
-import {UserRole} from './config';
+import {User, UserRole} from './User';
+import {Event} from './Event';
 
 export const AUTHORIZED_USER =
   new User(
@@ -47,5 +47,29 @@ export const LABELS: Label[] = [
   new Label('4', 'HR'),
   new Label('5', 'Development'),
   new Label('6', 'React'),
+];
+
+export const EVENTS: Event[] = [
+  new Event(
+    '1',
+    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+      'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
+      'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
+    AUTHORIZED_USER
+    ),
+  new Event(
+    '2',
+    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+      'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
+      'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
+    AUTHORIZED_USER
+  ),
+  new Event(
+    '3',
+    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+      'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
+      'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
+    AUTHORIZED_USER
+  )
 ];
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 import {AuthorizationService} from '../../partials/header/authorization/authorization.service';
 import {AUTHORIZED_USER} from '../../models/mock';
-import {UserRole} from '../../models/config';
+import {UserRole} from '../../models/User';
 
 @Injectable({
   providedIn: 'root'

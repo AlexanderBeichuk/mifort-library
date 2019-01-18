@@ -1,5 +1,4 @@
-import {NotificationStatus} from './config';
-import {NotificationConfig} from './NotificationConfig';
+import {NotificationConfig, NotificationStatus} from './NotificationConfig';
 
 export class Notification {
   constructor (
