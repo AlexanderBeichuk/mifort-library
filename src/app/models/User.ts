@@ -1,4 +1,8 @@
-import {UserRole} from './config';
+
+export enum UserRole {
+  admin = 'admin',
+  user = 'user'
+}
 
 export class User {
 
