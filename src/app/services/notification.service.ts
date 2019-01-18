@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Notification} from '../models/Notification';
+import {Notification, NotificationConfig} from '../models/Notification';
 import {SnotifyService, SnotifyToastConfig} from 'ng-snotify';
-import {NotificationConfig} from '../models/NotificationConfig';
 
 @Injectable({
   providedIn: 'root'

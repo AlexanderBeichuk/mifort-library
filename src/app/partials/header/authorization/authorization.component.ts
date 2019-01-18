@@ -3,8 +3,7 @@ import {AuthorizationService} from './authorization.service';
 import {SocialUser} from 'angular5-social-login';
 import {User, UserRole} from '../../../models/User';
 import {NotificationService} from '../../../services/notification.service';
-import {Notification} from '../../../models/Notification';
-import {NotificationStatus} from '../../../models/NotificationConfig';
+import {Notification, NotificationStatus} from '../../../models/Notification';
 
 @Component({
   selector: 'app-authorization',
