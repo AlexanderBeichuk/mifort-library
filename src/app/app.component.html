@@ -1,7 +1,7 @@
 <div class="app-wrapper">
-  <div class="app-content" [ngClass]="{'row': !isLoginPage}">
+  <div class="app-content">
     <app-header></app-header>
-    <div [ngClass]="{'container': !isLoginPage, 'router-content': !isLoginPage}">
+    <div [ngClass]="{'router-content': !isLoginPage}">
       <router-outlet></router-outlet>
     </div>
   </div>

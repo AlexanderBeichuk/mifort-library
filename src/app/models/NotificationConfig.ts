@@ -42,3 +42,11 @@ export class NotificationConfig {
     public animation: NotificationAnimation = new NotificationAnimation()
   ) { }
 }
+
+export enum NotificationStatus {
+  Success = 'success',
+  Warning = 'warning',
+  Error = 'error',
+  Info = 'info',
+  Simple = 'simple'
+}

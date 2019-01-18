@@ -6,8 +6,11 @@ export class Item {
 }
 
 export class Label extends Item {
-  constructor() {
-    super();
+  constructor(
+    public readonly id: string = null,
+    public name: string = null
+  ) {
+    super(id, name);
   }
 }
 

@@ -3,9 +3,10 @@
   flex-direction: column;
   height: 100%;
   .app-content {
+
     flex: 1 0 auto;
     .router-content {
-      margin: 70px auto 0;
+      margin: 60px auto;
     }
   }
   .app-footer {

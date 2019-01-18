@@ -1,8 +1,8 @@
-@import "../../assets/scss/colors";
+@import "../../../assets/scss/colors";
 
 .login-main {
   height: 100%;
-  background-image: url("../../assets/images/login_background.png");
+  background-image: url("../../../assets/images/login_background.png");
   min-height: calc(100vh - 10px);
   position: relative;
   text-align: center;

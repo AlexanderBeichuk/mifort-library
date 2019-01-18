@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Book} from '../models/Book';
-import {BOOKS} from '../models/mock';
+import {Book} from '../../models/Book';
+import {BOOKS} from '../../models/mock';
 
 @Component ({
   selector: 'app-login',

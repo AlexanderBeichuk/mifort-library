@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, TableModule } from 'angular-bootstrap-md';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { AppRoutingModule } from './routing/app-routing.module';
 
@@ -12,7 +12,13 @@ import {AuthServiceConfig, SocialLoginModule} from 'angular5-social-login';
 import {CommonModule} from '@angular/common';
 import {AuthorizationComponent} from './partials/header/authorization/authorization.component';
 import {GET_AUTHORIZATION_SERVICE_CONFIG} from './partials/header/authorization/config';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
+import { BooksTableComponent } from './partials/books-table/books-table.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminBooksComponent } from './pages/admin/admin.books/admin.books.component';
+import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     FooterComponent,
     AuthorizationComponent,
-    LoginComponent
+    LoginComponent,
+    BooksTableComponent,
+    HomeComponent,
+    NotFoundComponent,
+    AdminComponent,
+    AdminBooksComponent,
+    AdminUsersComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
+    TableModule,
     SnotifyModule,
     SocialLoginModule,
   ],

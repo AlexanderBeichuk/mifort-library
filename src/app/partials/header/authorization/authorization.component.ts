@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from './authorization.service';
 import {SocialUser} from 'angular5-social-login';
-import {User} from '../../../models/User';
-import {NotificationStatus, UserRole} from '../../../models/config';
+import {User, UserRole} from '../../../models/User';
 import {NotificationService} from '../../../services/notification.service';
 import {Notification} from '../../../models/Notification';
+import {NotificationStatus} from '../../../models/NotificationConfig';
 
 @Component({
   selector: 'app-authorization',
@@ -13,11 +13,12 @@ import {Notification} from '../../../models/Notification';
 })
 export class AuthorizationComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService,
-              private notificationService: NotificationService) { }
+  constructor(
+    private readonly authorizationService: AuthorizationService,
+    private readonly notificationService: NotificationService
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public googleSignIn(): void {
     this.authorizationService.googleSignIn()
