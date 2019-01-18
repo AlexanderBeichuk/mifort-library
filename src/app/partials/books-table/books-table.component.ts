@@ -1,9 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {Book} from '../../models/Book';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {TableHead, TablePagination} from '../../models/Table';
 import {BOOKS, LABELS} from '../../models/mock';
 import {Label} from '../../models/Item';
+import {MdbTablePaginationComponent, MdbTableService} from 'angular-bootstrap-md';
+import {Book} from '../../models/Book';
 
-const DEFAULT_BOOKS_HEADER: string[] = ['', 'Title', 'Author', 'Description', 'Count', 'Labels', ''];
+const DEFAULT_BOOKS_HEADER: TableHead[] = [
+  new TableHead(),
+  new TableHead('Title', true),
+  new TableHead('Author', true),
+  new TableHead('Description', true),
+  new TableHead('Count'),
+  new TableHead('Labels'),
+  new TableHead()
+];
 
 @Component({
   selector: 'app-books-table',
@@ -11,20 +21,48 @@ const DEFAULT_BOOKS_HEADER: string[] = ['', 'Title', 'Author', 'Description', 'C
   styleUrls: ['./books-table.component.scss']
 })
 
-export class BooksTableComponent implements OnInit {
+export class BooksTableComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(
+    private tableService: MdbTableService,
+    private cdRef: ChangeDetectorRef
+  ) { }
 
+  @ViewChild(MdbTablePaginationComponent)
+  public mdbTablePagination: MdbTablePaginationComponent;
   public allBooks: Book[] = BOOKS;
-  public headElements: string[] = DEFAULT_BOOKS_HEADER;
+  public headers: TableHead[] = DEFAULT_BOOKS_HEADER;
   public allLabels: Label[] = LABELS;
+  public firstItemIndex: number;
+  public lastItemIndex: number;
 
   ngOnInit() {
-    console.log(this.allBooks, this.allLabels);
+    this.tableService.setDataSource(this.allBooks);
+    this.allBooks = this.tableService.getDataSource();
   }
 
   public getBookLabels(book: Book): Label[] {
     return this.allLabels.filter(label => book.labelIds.some(id => id === label.id));
+  }
+
+  ngAfterViewInit() {
+    this.mdbTablePagination.setMaxVisibleItemsNumberTo(5);
+    this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
+    this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
+
+    this.mdbTablePagination.calculateFirstItemIndex();
+    this.mdbTablePagination.calculateLastItemIndex();
+    this.cdRef.detectChanges();
+  }
+
+  onNextPageClick(data: TablePagination): void {
+    this.firstItemIndex = data.first;
+    this.lastItemIndex = data.last;
+  }
+
+  onPreviousPageClick(data: TablePagination): void {
+    this.firstItemIndex = data.first;
+    this.lastItemIndex = data.last;
   }
 
 }

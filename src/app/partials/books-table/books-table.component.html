@@ -1,24 +1,68 @@
-<table mdbTable class="table">
+<table mdbTable class="table" hover="true">
   <thead class="white-text header">
   <tr>
-    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+    <th *ngFor="let head of headers; let i = index"
+        scope="col"
+        [mdbTableSort]="allBooks"
+        [sortBy]="headers[i].name">
+      {{head.name}}
+      <mdb-icon *ngIf="head.isSort"
+                icon="sort"
+                class="sort-icon">
+      </mdb-icon>
+    </th>
   </tr>
   </thead>
   <tbody class="body">
-  <tr mdbTableCol *ngFor="let book of allBooks">
-    <td class="td image">
+  <tr mdbTableCol *ngFor="let book of allBooks; let i = index">
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td image">
       <img src="{{book.image}}" class="picture">
     </td>
-    <td class="td">{{book.title}}</td>
-    <td class="td">{{book.author}}</td>
-    <td class="td description">{{book.description}}</td>
-    <td class="td count">{{book.availableCount}}/{{book.count}}</td>
-    <td class="td labels">
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td">
+      {{book.title}}
+    </td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td">
+      {{book.author}}
+    </td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td description">
+      {{book.description}}
+    </td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td count">
+      {{book.availableCount}}/{{book.count}}
+    </td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td labels">
       <a href="" *ngFor="let label of getBookLabels(book)">
-        <mdb-badge primary="true">{{label.name}}</mdb-badge>
+        <mdb-badge class="label-book">
+          {{label.name}}
+        </mdb-badge>
       </a>
+    </td>
+    <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" class="td event">
+      <button class="button-event" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>
+        <i class="fa fa-book"></i>
+      </button>
+      <button class="button-event" mdbBtn type="button" color="secondary" outline="true" mdbWavesEffect>
+        <i class="">reserve</i>
+      </button>
+      <button class="button-event" mdbBtn type="button" color="default" outline="true" mdbWavesEffect>
+        <i class="fa fa-comments"></i>
+      </button>
+      <button class="button-event" mdbBtn type="button" color="warning" outline="true" mdbWavesEffect>
+        <i class="fa fa-edit"></i>
+      </button>
+      <button class="button-event" mdbBtn type="button" color="danger" outline="true" mdbWavesEffect>
+        <i class="fa fa-trash"></i>
+      </button>
     </td>
   </tr>
   </tbody>
+  <tfoot class="grey lighten-5 w-100">
+    <tr>
+      <td colspan="12">
+        <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+        </mdb-table-pagination>
+      </td>
+    </tr>
+  </tfoot>
 </table>
 

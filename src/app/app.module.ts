@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule, TableModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, TableModule, WavesModule, InputsModule } from 'angular-bootstrap-md';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { AppRoutingModule } from './routing/app-routing.module';
 
@@ -36,6 +36,8 @@ import { EventBoardComponent } from './partials/event-board/event-board.componen
     AppRoutingModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
+    WavesModule,
+    InputsModule,
     TableModule,
     SnotifyModule,
     SocialLoginModule,
