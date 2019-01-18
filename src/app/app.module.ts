@@ -16,7 +16,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { BooksTableComponent } from './partials/books-table/books-table.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { EventBoardComponent } from './partials/event-board/event-board.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminBooksComponent } from './pages/admin/admin.books/admin.books.component';
+import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { EventBoardComponent } from './partials/event-board/event-board.componen
     BooksTableComponent,
     HomeComponent,
     NotFoundComponent,
-    EventBoardComponent
+    AdminComponent,
+    AdminBooksComponent,
+    AdminUsersComponent
   ],
   imports: [
     CommonModule,

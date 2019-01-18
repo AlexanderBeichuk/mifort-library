@@ -1,7 +1,18 @@
 import {Book} from './Book';
 import {Label} from './Item';
+import {User} from './User';
+import {UserRole} from './config';
 
-export const BOOKS = [
+export const AUTHORIZED_USER =
+  new User(
+    '1',
+    'ivan.ivanov@gmail.com',
+    'Ivan Ivanov',
+    'https://ozon-st.cdn.ngenix.net/multimedia/1013135735.jpg',
+    UserRole.admin
+  );
+
+export const BOOKS: Book[] = [
   new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
     'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
     'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
@@ -29,7 +40,7 @@ export const BOOKS = [
     'состоящее из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 4, 1, ['4', '6', '1', '2']),
 ];
 
-export const LABELS = [
+export const LABELS: Label[] = [
   new Label('1', 'JS'),
   new Label('2', 'Angular'),
   new Label('3', 'New'),

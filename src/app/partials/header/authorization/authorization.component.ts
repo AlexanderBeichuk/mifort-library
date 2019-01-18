@@ -13,11 +13,12 @@ import {Notification} from '../../../models/Notification';
 })
 export class AuthorizationComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService,
-              private notificationService: NotificationService) { }
+  constructor(
+    private readonly authorizationService: AuthorizationService,
+    private readonly notificationService: NotificationService
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public googleSignIn(): void {
     this.authorizationService.googleSignIn()
