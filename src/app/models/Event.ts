@@ -1,5 +1,6 @@
 import {Book} from './Book';
 import {User} from './User';
+import {DateHelper} from './DateHelper';
 
 export enum EventType {
   take = 'take',
@@ -12,20 +13,45 @@ export class Event {
   public readonly id;
   public book: Book;
   public user: User;
-  public date: number;
-  public type: EventType;
+  private _type: EventType;
+  private _date: Date;
+
 
   constructor(
     id: string = null,
     book: Book = new Book(),
     user: User = new User(),
-    date: number = new Date().getTime(),
+    date: Date | string = new Date(),
     type: EventType | string = EventType.take
   ) {
     this.id = id;
     this.book = book;
     this.user = user;
     this.date = date;
-    this.type = EventType[type] || EventType.take;
+    this.type = type;
   }
+
+  public get type(): EventType | string {
+    return this._type;
+  }
+
+  public set type(type: EventType | string) {
+    this._type = EventType[type] || EventType.take;
+  }
+
+  public get date(): Date | string {
+    return this._date;
+  }
+
+  public set date(date: Date | string) {
+    this._date = new DateHelper().convertStringToDate(date);
+  }
+}
+
+export interface ResponseEvent {
+  id: string;
+  book: Book;
+  user: User;
+  type: string;
+  date: string;
 }
