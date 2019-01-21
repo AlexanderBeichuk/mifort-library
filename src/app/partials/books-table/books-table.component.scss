@@ -1,6 +1,7 @@
 @import "../../../assets/scss/colors";
 
 .table {
+  display: inline-block;
   .header {
     background: $indigo-lighten-2;
   }

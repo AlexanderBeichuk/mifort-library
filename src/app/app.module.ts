@@ -19,6 +19,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminBooksComponent } from './pages/admin/admin.books/admin.books.component';
 import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.component';
+import {EventBoardComponent} from './partials/event-board/event-board.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.compo
     NotFoundComponent,
     AdminComponent,
     AdminBooksComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    EventBoardComponent
   ],
   imports: [
     CommonModule,
