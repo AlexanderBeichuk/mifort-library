@@ -19,9 +19,7 @@ export class BooksTableComponent implements OnInit {
   public headElements: string[] = DEFAULT_BOOKS_HEADER;
   public allLabels: Label[] = LABELS;
 
-  ngOnInit() {
-    console.log(this.allBooks, this.allLabels);
-  }
+  ngOnInit() {}
 
   public getBookLabels(book: Book): Label[] {
     return this.allLabels.filter(label => book.labelIds.some(id => id === label.id));

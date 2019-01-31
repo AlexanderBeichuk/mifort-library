@@ -42,6 +42,7 @@ export class Book {
     this.publishedDate = publishedDate;
     this.createdDate = createdDate;
     this.commentsCount = commentsCount;
+    this.labelIds = labelIds;
   }
 
   public get count(): number {
