@@ -1,6 +1,7 @@
 import {Book} from './Book';
 import {User} from './User';
 import {DateHelper} from './DateHelper';
+import {EnumValues} from 'enum-values';
 
 export enum EventType {
   take = 'take',
@@ -36,7 +37,8 @@ export class Event {
   }
 
   public set type(type: EventType | string) {
-    this._type = EventType[type] || EventType.take;
+    const orderName = EnumValues.getNameFromValue(EventType, type);
+    this._type = orderName ? EventType[orderName] : EventType.take;
   }
 
   public get date(): Date | string {

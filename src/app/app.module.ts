@@ -19,6 +19,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminBooksComponent } from './pages/admin/admin.books/admin.books.component';
 import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.component';
+import { TableHeaderComponent } from './partials/table-header/table-header.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.compo
     NotFoundComponent,
     AdminComponent,
     AdminBooksComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    TableHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -54,4 +56,7 @@ import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.compo
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+}

@@ -1,8 +1,6 @@
 <table *ngIf="allBooks.length; else noneBooks" mdbTable class="table" hover="true">
   <thead class="white-text header">
-    <tr>
-      <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-    </tr>
+    <app-table-header [headElements]="headElements" [tableList]="allBooks"></app-table-header>
   </thead>
   <tbody class="body">
     <tr mdbTableCol *ngFor="let book of allBooks">

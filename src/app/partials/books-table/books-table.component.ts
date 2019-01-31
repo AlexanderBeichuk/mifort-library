@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {Book} from '../../models/Book';
 import {BOOKS, LABELS} from '../../models/mock';
 import {Label} from '../../models/Item';
+import {TableHead} from '../../models/Table';
 
 const DEFAULT_BOOKS_HEADER: TableHead[] = [
   new TableHead(),
-  new TableHead('Title', true),
-  new TableHead('Author', true),
-  new TableHead('Description', true),
-  new TableHead('Count'),
-  new TableHead('Labels'),
+  new TableHead('Title', 'name', true),
+  new TableHead('Author', 'author', true),
+  new TableHead('Description', 'description', true),
+  new TableHead('Count', 'count'),
+  new TableHead('Labels', 'labelIds'),
   new TableHead()
 ];
 
@@ -24,7 +25,7 @@ export class BooksTableComponent implements OnInit {
   constructor() { }
 
   public allBooks: Book[] = BOOKS;
-  public headElements: string[] = DEFAULT_BOOKS_HEADER;
+  public headElements: TableHead[] = DEFAULT_BOOKS_HEADER;
   public allLabels: Label[] = LABELS;
 
   ngOnInit() {}
