@@ -15,6 +15,10 @@ const DEFAULT_BOOKS_HEADER: TableHead[] = [
   new TableHead()
 ];
 
+const BOOK_SEE_PAGE = {
+  bookList: 5
+};
+
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
@@ -24,8 +28,7 @@ const DEFAULT_BOOKS_HEADER: TableHead[] = [
 export class BooksTableComponent implements OnInit, AfterViewInit {
 
   constructor(
-    private tableService: MdbTableService,
-    private cdRef: ChangeDetectorRef
+    private tableService: MdbTableService
   ) { }
 
   @ViewChild(MdbTablePaginationComponent)
@@ -46,13 +49,12 @@ export class BooksTableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.mdbTablePagination.setMaxVisibleItemsNumberTo(5);
+    this.mdbTablePagination.setMaxVisibleItemsNumberTo(BOOK_SEE_PAGE.bookList);
     this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
     this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
 
     this.mdbTablePagination.calculateFirstItemIndex();
     this.mdbTablePagination.calculateLastItemIndex();
-    this.cdRef.detectChanges();
   }
 
   onNextPageClick(data: TablePagination): void {

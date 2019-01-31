@@ -12,14 +12,14 @@ export class Event {
   public readonly id;
   public book: Book;
   public user: User;
-  public date: number;
+  public date: string;
   public type: EventType;
 
   constructor(
     id: string = null,
     book: Book = new Book(),
     user: User = new User(),
-    date: number = new Date().getTime(),
+    date: string = new Date().toDateString(),
     type: EventType | string = EventType.take
   ) {
     this.id = id;

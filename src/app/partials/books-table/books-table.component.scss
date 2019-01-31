@@ -1,7 +1,6 @@
 @import "../../../assets/scss/colors";
 
 .table {
-  display: inline-block;
   .header {
     background: $indigo-lighten-2;
   }
@@ -31,7 +30,7 @@
         .label-book {
           margin: 3px;
           font-size: 14px;
-          background: rgba(3, 169, 244, 0.7);
+          background: $blue;
         }
       }
       &.event {
@@ -46,9 +45,14 @@
       }
     }
   }
+
+  .pagination-book {
+    background: $gray-light;
+    width: 100%;
+  }
 }
 .no-books {
   font-size: 80px;
-  color: rgba(63, 81, 181, 0.7);
+  color: $indigo;
   text-align: center;
 }

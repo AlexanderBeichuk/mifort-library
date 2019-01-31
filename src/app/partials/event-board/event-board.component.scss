@@ -1,7 +1,9 @@
-.page {
+.event-board {
   display: inline-block;
-  height: 87vh;
+  width: 100%;
+  margin: 0 20px;
+  height: 100%;
   padding: 10px;
-  overflow-y: hidden;
+  overflow-x: hidden;
 
 }

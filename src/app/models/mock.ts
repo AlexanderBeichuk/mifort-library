@@ -68,21 +68,21 @@ export const LABELS: Label[] = [
 export const EVENTS: Event[] = [
   new Event(
     '1',
-    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+    new Book('123456', 'Book3', 'http://www.angelique-world.ru/cover13.gif', 'HEtgrtgNA',
       'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
       'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
     AUTHORIZED_USER
     ),
   new Event(
     '2',
-    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+    new Book('123456', 'Book2', 'http://www.angelique-world.ru/cover13.gif', 'HErgrgNA',
       'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
       'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
     AUTHORIZED_USER
   ),
   new Event(
     '3',
-    new Book('123456', '1BLA', 'http://www.angelique-world.ru/cover13.gif', 'HENA',
+    new Book('123456', 'Boor1', 'http://www.angelique-world.ru/cover13.gif', 'sdbdbrgvdsNA',
       'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее ' +
       'из сброшюрованных или отдельных бумажных листов (страниц) или тетрадей', 5, 3, ['1', '3', '4']),
     AUTHORIZED_USER

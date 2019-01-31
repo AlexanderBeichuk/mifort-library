@@ -1,9 +1,15 @@
-<div class="row page">
-  <div class="menu col-2 container">
-    <h3>MENU</h3>
-</div>
-<div class="content col-10 container">
-  <h2>CONTENT</h2>
-  <router-outlet></router-outlet>
-</div>
+<div class="event-board">
+  <div>
+    <h3>Event board</h3>
+  </div>
+  <div class="list-group" *ngFor="let event of allEvents">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{event.user.nickName}}</h5>
+        <small>{{event.date}}</small>
+      </div>
+      <p class="mb-1">{{event.type}}</p>
+      <small>{{event.book.title}}</small>
+    </a>
+  </div>
 </div>

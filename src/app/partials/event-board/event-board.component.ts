@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EVENTS} from '../../models/mock';
+import {Event} from '../../models/Event';
 
 @Component({
   selector: 'app-event-board',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class EventBoardComponent implements OnInit {
 
   constructor() { }
+
+  public allEvents: Event[] = EVENTS;
 
   ngOnInit() {
   }
