@@ -1,4 +1,7 @@
-import {UserRole} from './config';
+export enum UserRole {
+  admin = 'admin',
+  user = 'user'
+}
 
 export class User {
 
@@ -6,7 +9,7 @@ export class User {
   public email: string;
   public nickName: string;
   public avatar: string;
-  public role: UserRole;
+  private _role: UserRole;
 
   constructor(
     id: string = null,
@@ -19,6 +22,22 @@ export class User {
     this.email = email;
     this.nickName = nickName;
     this.avatar = avatar;
-    this.role = UserRole[role] || UserRole.user;
+    this.role = role;
   }
+
+  public get role(): UserRole | string {
+    return this._role;
+  }
+
+  public set role(role: UserRole | string) {
+    this._role = UserRole[role] || UserRole.user;
+  }
+}
+
+export interface ResponseUser {
+  id: string;
+  email: string;
+  nickName: string;
+  avatar: string;
+  role: string;
 }
