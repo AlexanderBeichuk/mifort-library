@@ -1,0 +1,40 @@
+.book-card {
+  //display: flex;
+
+  &_image-container {
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+    flex-shrink: 0;
+    overflow: hidden;
+    img {
+      width: 100%;
+      display: block;
+      margin: auto;
+    }
+  }
+  &_main-info {
+    padding: 10px;
+  }
+  &_title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  &_author {
+    font-size: 14px;
+  }
+  &_description {
+    padding-top: 10px;
+    font-size: 16px;
+  }
+  &_details {
+    padding: 10px;
+    width: 300px;
+  }
+  &_button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+}

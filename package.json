@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 8800",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -18,9 +18,11 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0-rc.1",
+    "@angular/cdk": "^7.3.5",
     "@angular/common": "^6.0.0-rc.1",
     "@angular/compiler": "^6.0.0-rc.1",
     "@angular/core": "^6.0.0-rc.1",
+    "@angular/flex-layout": "^7.0.0-beta.23",
     "@angular/forms": "^6.0.0-rc.1",
     "@angular/http": "^6.0.0-rc.1",
     "@angular/platform-browser": "^6.0.0-rc.1",

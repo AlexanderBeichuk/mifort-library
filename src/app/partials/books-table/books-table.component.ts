@@ -16,6 +16,8 @@ export class BooksTableComponent implements OnInit {
   constructor() { }
 
   public allBooks: Book[] = BOOKS;
+  public updates: Book[] = BOOKS.splice(0, 2);
+  public wishlist: Book[] = BOOKS.splice(2, 4);
   public headElements: string[] = DEFAULT_BOOKS_HEADER;
   public allLabels: Label[] = LABELS;
 

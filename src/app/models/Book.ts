@@ -1,19 +1,27 @@
 import {DateHelper} from './DateHelper';
 
-const DEFAULT_BOOKS_COUNT = 1;
 const NONE_ELEMENTS_COUNT = 0;
+
+export enum BookStatus {
+  requested = 'Requested',
+  voting = 'Voting',
+  shipping = 'Shipping',
+  available = 'Available',
+  taken = 'Taken',
+  declined = 'Declined',
+  lost = 'Lost',
+}
 
 export class Book {
 
   public readonly id: string;
   public title: string;
   public image: string;
-  public author: string;
+  public author: string[];
   public description: string;
   public commentsCount: number;
   public labelIds: string[];
-  public _count: number;
-  private _availableCount: number;
+  public status: BookStatus;
   private _publishedDate: Date;
   private _createdDate: Date;
 
@@ -23,11 +31,10 @@ export class Book {
     id: string = null,
     title: string = null,
     image: string = null,
-    author: string = null,
+    author: string[] = [],
     description: string = null,
-    count: number = DEFAULT_BOOKS_COUNT,
-    availableCount: number = DEFAULT_BOOKS_COUNT,
     labelIds: string[] = [],
+    status: BookStatus = null,
     publishedDate: Date | string = new Date(),
     createdDate: Date | string = new Date(),
     commentsCount: number = NONE_ELEMENTS_COUNT
@@ -37,31 +44,11 @@ export class Book {
     this.image = image;
     this.author = author;
     this.description = description;
-    this.count = count;
-    this.availableCount = availableCount;
     this.publishedDate = publishedDate;
     this.createdDate = createdDate;
     this.commentsCount = commentsCount;
     this.labelIds = labelIds;
-  }
-
-  public get count(): number {
-    return this._count;
-  }
-
-  public set count(count: number) {
-    this._count = count < NONE_ELEMENTS_COUNT ? NONE_ELEMENTS_COUNT : count;
-  }
-
-  public get availableCount(): number {
-    return this._availableCount;
-  }
-
-  public set availableCount(count: number) {
-    this._availableCount = count > this.count ? this.count : count;
-    if (this._availableCount < NONE_ELEMENTS_COUNT) {
-      this._availableCount = NONE_ELEMENTS_COUNT;
-    }
+    this.status = BookStatus[status];
   }
 
   public get publishedDate(): Date | string {
@@ -85,10 +72,8 @@ export interface ResponseBook {
   id: string;
   title: string;
   image: string;
-  author: string;
+  author: string[];
   description: string;
-  count: number;
-  availableCount: number;
   labelIds: string[];
   publishedDate: string;
   createdDate: string;
