@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule, TableModule } from 'angular-bootstrap-md';
+import { TableModule } from 'angular-bootstrap-md';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AppRoutingModule } from './routing/app-routing.module';
 
@@ -20,7 +20,11 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminBooksComponent } from './pages/admin/admin.books/admin.books.component';
 import { AdminUsersComponent } from './pages/admin/admin.users/admin.users.component';
 import { BookCardComponent } from './partials/book-card/book-card.component';
-import { BookRatingComponent } from './partials/book-rating/book-rating.component';
+import { BooksService } from './services/books.service';
+import { CommentComponent } from './partials/comment/comment.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBottomSheetModule, MatButtonModule, MatDialog, MatExpansionModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
 
 @NgModule({
   declarations: [
@@ -36,24 +40,32 @@ import { BookRatingComponent } from './partials/book-rating/book-rating.componen
     AdminBooksComponent,
     AdminUsersComponent,
     BookCardComponent,
-    BookRatingComponent
+    CommentComponent,
+    PeriodSheetComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MDBBootstrapModule.forRoot(),
     TableModule,
     SnotifyModule,
-    SocialLoginModule
+    SocialLoginModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatBottomSheetModule,
+    MatMenuModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
-    SnotifyService
+    SnotifyService,
+    BooksService
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PeriodSheetComponent]
 })
 export class AppModule { }

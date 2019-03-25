@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Book} from '../../models/Book';
-import {BOOKS, LABELS} from '../../models/mock';
-import {Label} from '../../models/Item';
-
-const DEFAULT_BOOKS_HEADER: string[] = ['', 'Title', 'Author', 'Description', 'Count', 'Labels', ''];
+import { Book } from '../../models/Book';
+import { BooksService } from '../../services/books.service';
 
 @Component({
   selector: 'app-books-table',
@@ -13,18 +10,22 @@ const DEFAULT_BOOKS_HEADER: string[] = ['', 'Title', 'Author', 'Description', 'C
 
 export class BooksTableComponent implements OnInit {
 
-  constructor() { }
-
-  public allBooks: Book[] = BOOKS;
-  public updates: Book[] = BOOKS.splice(0, 2);
-  public wishlist: Book[] = BOOKS.splice(2, 4);
-  public headElements: string[] = DEFAULT_BOOKS_HEADER;
-  public allLabels: Label[] = LABELS;
-
-  ngOnInit() {}
-
-  public getBookLabels(book: Book): Label[] {
-    return this.allLabels.filter(label => book.labelIds.some(id => id === label.id));
+  constructor(private booksService: BooksService) {
   }
 
+  public allBooks: Book[] = [];
+  public updates: Book[] = [];
+  public wishlist: Book[] = [];
+
+  ngOnInit() {
+    this.booksService.getUpdatesList()
+      .subscribe((updatesList: Book[]) => {
+        this.updates = updatesList;
+      });
+
+    this.booksService.getBooksList()
+      .subscribe(books => {
+        this.allBooks = books;
+      });
+  }
 }

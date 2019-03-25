@@ -38,6 +38,6 @@ export interface ResponseUser {
   id: string;
   email: string;
   nickName: string;
-  avatar: string;
+  avatar?: string;
   role: string;
 }

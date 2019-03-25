@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <div mat-list-item
+       class="period-sheet_item"
+       [ngClass]="{'period-sheet_item_last': isLast}"
+       *ngFor="let item of listOptions; last as isLast"
+       (click)="choose(item.value)">
+    {{ item.name}} (до {{tillDate(item.value) | date: 'dd.MM.yyyy'}})
+  </div>
+</mat-nav-list>

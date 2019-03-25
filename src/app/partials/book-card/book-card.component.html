@@ -1,29 +1,60 @@
-<div class="book-card row">
-  <div class="col-sm-2">
-    <div class="book-card_image-container">
-      <img [src]="book.image">
-    </div>
+<div class="book-card">
+  <div class="book-card_image-container">
+    <img [src]="book.image">
   </div>
-  <div class="book-card_main-info col-sm-7">
-    <div class="book-card_title">{{book.title}}</div>
-    <div class="book-card_author">
-      <span *ngFor="let author of book.author; last as isLast">{{author}}<span *ngIf="!isLast">, </span></span>
+  <div class="book-card_main-info">
+    <div class="book-card_title mat-h4">
+      <span>{{book.title}}</span>
+      <div class="book-card_rating" *ngIf="book.inLibrary">
+        <span class="book-card_rating-block"><i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>{{book.likesCount}}</span>
+        <span class="book-card_rating-block"><i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>{{book.dislikesCount}}</span>
+      </div>
+    </div>
+    <div class="book-card_author mat-h5">
+      <span *ngFor="let author of book.author; last as isLast">{{author}}, </span>
+      <span>{{ book.publishedDate | date: 'yyyy' }}</span>
     </div>
     <div class="book-card_description">{{book.description}}</div>
+    <ng-container *ngIf="book.comments.length">
+      <div *ngFor="let comment of book.comments; let i = index">
+        <app-comment *ngIf="showComment(i)" [comment]="comment"></app-comment>
+      </div>
+      <button
+        mat-button
+        class="book-card_comments-button"
+        color="accent"
+        *ngIf="hasMoreComments()"
+        (click)="toggleComments()">{{ toggleCommentsButtonText }}</button>
+    </ng-container>
   </div>
-  <div class="book-card_details col-sm-3">
-    <button class="book-card_button" mdbBtn rounded="true" size="sm" type="button" outline="true" color="primary"
-            mdbWavesEffect>
-      <i class="fa fa-book"></i>
-    </button>
-    <button class="book-card_button" mdbBtn type="button" color="default" outline="true" mdbWavesEffect>
-      <i class="fa fa-comments"></i>
-    </button>
-    <button class="book-card_button" mdbBtn type="button" color="warning" outline="true" mdbWavesEffect>
-      <i class="fa fa-edit"></i>
-    </button>
-    <button class="book-card_button" mdbBtn type="button" color="danger" outline="true" mdbWavesEffect>
-      <i class="fa fa-trash"></i>
-    </button>
+  <div class="book-card_details">
+    <div class="book-card_voting" *ngIf="book.isUnderVoting">
+      <div class="book-card_voting-question">Купить?</div>
+      <div class="book-card_buttons">
+        <button mat-button (click)="vote(true)">Да
+          ({{book.votesFor}})
+        </button>
+        <button mat-button (click)="vote(false)">Нет
+          ({{book.votesAgainst}})
+        </button>
+      </div>
+    </div>
+    <div *ngIf="book.inLibrary">
+      <button (click)="addToWishlist()" mat-button color="accent">
+        Добавить в wishlist
+      </button>
+      <button [matMenuTriggerFor]="menu" mat-button color="accent">
+        Взять книгу
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let item of listOptions"
+          (click)="takeBook(item.value)">
+          {{ item.name}} (до {{tillDate(item.value) | date: 'dd.MM.yyyy'}})
+        </button>
+      </mat-menu>
+
+    </div>
   </div>
 </div>

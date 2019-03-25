@@ -1,10 +1,11 @@
 .book-card {
-  //display: flex;
+  display: flex;
 
   &_image-container {
     width: 150px;
     height: 200px;
-    padding: 10px;
+    padding: 10px 10px 10px 0;
+    box-sizing: border-box;
     flex-shrink: 0;
     overflow: hidden;
     img {
@@ -17,24 +18,51 @@
     padding: 10px;
   }
   &_title {
-    font-weight: bold;
-    font-size: 18px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
   }
-  &_author {
-    font-size: 14px;
+  &_comments-button {
+    margin: 20px auto;
+    display: block;
   }
   &_description {
     padding-top: 10px;
-    font-size: 16px;
+    font-weight: 300;
   }
   &_details {
-    padding: 10px;
-    width: 300px;
+    padding: 10px 0 10px;
+    width: 200px;
+    box-sizing: border-box;
+    flex-shrink: 0;
   }
-  &_button {
+  &_icon-button {
     border-radius: 50%;
     width: 30px;
     height: 30px;
     padding: 0;
+  }
+  &_rating {
+    height: 50px;
+    &-like {
+      color: #8bc34a;
+      top: 3px;
+    }
+    &-dislike {
+      color: #e53935;
+      top: 9px;
+    }
+    &-block {
+      margin-right: 15px;
+    }
+    &-icon {
+      position: relative;
+      margin-right: 5px;
+    }
+  }
+  &_voting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

@@ -1,11 +1,22 @@
 <div class="books-list">
-  <h3 class="books-list_section-title">Updates</h3>
-  <app-book-card *ngFor="let book of updates" [book]="book"></app-book-card>
-  <hr/>
-  <h3 class="books-list_section-title">Wishlist</h3>
-  <app-book-card *ngFor="let book of wishlist" [book]="book"></app-book-card>
-  <hr/>
-  <h3 class="books-list_section-title">Books</h3>
-  <app-book-card *ngFor="let book of allBooks" [book]="book"></app-book-card>
-  <hr/>
+  <mat-accordion displayMode="flat" multi="true">
+    <mat-expansion-panel expanded="true" *ngIf="updates.length">
+      <mat-expansion-panel-header>
+        <h3 class="books-list_section-title mat-h3">Updates</h3>
+      </mat-expansion-panel-header>
+      <app-book-card *ngFor="let book of updates" [book]="book"></app-book-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded="true" *ngIf="wishlist.length">
+      <mat-expansion-panel-header>
+        <h3 class="books-list_section-title mat-h3">Wishlist</h3>
+      </mat-expansion-panel-header>
+      <app-book-card *ngFor="let book of wishlist" [book]="book"></app-book-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded="true" *ngIf="allBooks.length">
+      <mat-expansion-panel-header>
+        <h3 class="books-list_section-title mat-h3">Books</h3>
+      </mat-expansion-panel-header>
+      <app-book-card *ngFor="let book of allBooks" [book]="book"></app-book-card>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
