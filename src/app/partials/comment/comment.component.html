@@ -1,0 +1,15 @@
+<div class="comment">
+  <div class="comment_header">
+    <div class="comment_rate">
+        <i *ngIf="isLike; else: dislike" class="material-icons comment_like comment_rate-icon">thumb_up</i>
+      <ng-template #dislike>
+          <i class="material-icons comment_dislike comment_rate-icon">thumb_down</i>
+      </ng-template>
+      <span class="comment_author">{{comment.user.nickName}}</span>
+    </div>
+    <div class="comment_date">
+      {{comment.date | date: 'dd.MM.yyyy'}}
+    </div>
+  </div>
+  <div class="comment_text">{{comment.text}}</div>
+</div>

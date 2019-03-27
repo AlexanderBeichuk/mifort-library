@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AuthService, GoogleLoginProvider} from 'angular5-social-login';
 import {SocialUser} from 'angular5-social-login/entities/user';
 import {StorageService} from '../../../services/storage.service';
+import { UserDTO } from '../../../models/User';
+import { Observable, of } from 'rxjs';
 
 const BEARER_TOKEN = 'bearerToken';
 
@@ -24,5 +26,14 @@ export class AuthorizationService {
 
   public getSessionToken(): string {
     return this.storageService.getLocalStorageItem(BEARER_TOKEN);
+  }
+
+  public getCurrentUser(): Observable<UserDTO> {
+    return of({
+      userId: '987654',
+      email: 'irina@mail.com',
+      nickName: 'Irina',
+      role: 'user'
+    });
   }
 }

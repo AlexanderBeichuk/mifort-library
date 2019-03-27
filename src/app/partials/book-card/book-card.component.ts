@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Book } from '../../models/Book';
+import { Book, BookStatus } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
-import { MatBottomSheet, MatDialog } from '@angular/material';
-import { PeriodSheetComponent } from './components/period-sheet';
+import { User, UserDTO } from '../../models/User';
+import { AuthorizationService } from '../header/authorization/authorization.service';
 
 @Component({
   selector: 'app-book-card',
@@ -13,32 +13,24 @@ export class BookCardComponent implements OnInit {
 
   public showAllComments = false;
   public defaultCommentsToShow = 1;
+  public isAvailable: boolean;
+  public takenByMe: boolean;
+  public currentUser: UserDTO;
 
   @Input()
   public book: Book;
-  public listOptions = [
-    {
-      name: 'На 1 неделю',
-      value: 1
-    },
-    {
-      name: 'На 2 недели',
-      value: 2
-    },
-    {
-      name: 'На 3 недели',
-      value: 3
-    },
-    {
-      name: 'На 4 недели',
-      value: 4
-    }
-  ];
 
-  private daysInWeek = 7;
-  constructor(private booksService: BooksService, private bottomSheet: MatBottomSheet) { }
+
+  constructor(private booksService: BooksService, private authorisationService: AuthorizationService) {
+  }
 
   ngOnInit() {
+    this.isAvailable = this.book.status === BookStatus.available;
+
+    this.authorisationService.getCurrentUser().subscribe(user => {
+      this.currentUser = user;
+      this.takenByMe = this.book.isTaken && this.book.takenBy.id === user.userId;
+    });
   }
 
   public get toggleCommentsButtonText(): string {
@@ -70,13 +62,15 @@ export class BookCardComponent implements OnInit {
     this.booksService.removeFromWishlist(this.book.id);
   }
 
-  public takeBook(weeks: number): void {
-    this.booksService.takeBook(this.book.id, weeks);
+  public takeBook(takeTo: string): void {
+    this.booksService.takeBook(this.book.id, takeTo);
   }
 
-  public tillDate(weeks): Date {
-    const date = new Date();
-    date.setDate(date.getDate() + this.daysInWeek * weeks);
-    return date;
+  public getInQueue({from, to}): void {
+    this.book.usersQueue.push({
+      user: this.currentUser,
+      from,
+      to
+    });
   }
 }

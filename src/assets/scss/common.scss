@@ -1,4 +1,14 @@
+@import 'colors';
+
 .ml-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
+}
+
+.mat-menu-panel .mat-menu-content:not(:empty) {
+  padding: 0;
+
+  .mat-menu-item {
+    border-bottom: 1px solid $light-primary-border;
+  }
 }

@@ -23,8 +23,18 @@ import { BookCardComponent } from './partials/book-card/book-card.component';
 import { BooksService } from './services/books.service';
 import { CommentComponent } from './partials/comment/comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatBottomSheetModule, MatButtonModule, MatDialog, MatExpansionModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import {
+  MatBottomSheetModule,
+  MatButtonModule,
+  MatDialog,
+  MatExpansionModule, MatIconModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
 import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
+import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
+import { TimePeriodsMenuComponent } from './partials/time-periods-menu/time-periods-menu.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +51,9 @@ import { PeriodSheetComponent } from './partials/book-card/components/period-she
     AdminUsersComponent,
     BookCardComponent,
     CommentComponent,
-    PeriodSheetComponent
+    PeriodSheetComponent,
+    UsersQueueTimelineComponent,
+    TimePeriodsMenuComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +68,9 @@ import { PeriodSheetComponent } from './partials/book-card/components/period-she
     MatToolbarModule,
     MatExpansionModule,
     MatBottomSheetModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule,
+    MatIconModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },

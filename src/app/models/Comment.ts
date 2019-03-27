@@ -1,4 +1,4 @@
-import { ResponseUser, User } from './User';
+import { UserDTO, User } from './User';
 import {DateHelper} from './DateHelper';
 
 export enum CommentTypes {
@@ -47,7 +47,7 @@ export interface ResponseComment {
 
 export interface CommentDTO {
   id: string;
-  user: ResponseUser;
+  user: UserDTO;
   text: string;
   type: string;
   date: string;

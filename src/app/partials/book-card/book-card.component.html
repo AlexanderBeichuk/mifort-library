@@ -15,7 +15,7 @@
       <span>{{ book.publishedDate | date: 'yyyy' }}</span>
     </div>
     <div class="book-card_description">{{book.description}}</div>
-    <ng-container *ngIf="book.comments.length">
+    <ng-container *ngIf="book.comments?.length">
       <div *ngFor="let comment of book.comments; let i = index">
         <app-comment *ngIf="showComment(i)" [comment]="comment"></app-comment>
       </div>
@@ -43,18 +43,19 @@
       <button (click)="addToWishlist()" mat-button color="accent">
         Добавить в wishlist
       </button>
-      <button [matMenuTriggerFor]="menu" mat-button color="accent">
-        Взять книгу
+      <button *ngIf="isAvailable" [matMenuTriggerFor]="menu" mat-button color="accent">
+        Взять книгу<i class="material-icons"> arrow_drop_down </i>
       </button>
       <mat-menu #menu="matMenu">
-        <button
-          mat-menu-item
-          *ngFor="let item of listOptions"
-          (click)="takeBook(item.value)">
-          {{ item.name}} (до {{tillDate(item.value) | date: 'dd.MM.yyyy'}})
-        </button>
+        <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
       </mat-menu>
-
+      <app-users-queue-timeline
+        *ngIf="book.isTaken"
+        (onGetInQueue)="getInQueue($event)"
+        [queue]="book.usersQueue"
+        [currentUser]="currentUser"
+        [takenTill]="book.takenTo"
+        [takenBy]="book.takenBy"></app-users-queue-timeline>
     </div>
   </div>
 </div>

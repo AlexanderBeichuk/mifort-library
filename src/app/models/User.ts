@@ -34,8 +34,8 @@ export class User {
   }
 }
 
-export interface ResponseUser {
-  id: string;
+export interface UserDTO {
+  userId: string;
   email: string;
   nickName: string;
   avatar?: string;

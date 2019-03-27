@@ -1,17 +1,33 @@
-import {DateHelper} from './DateHelper';
+import { DateHelper } from './DateHelper';
 import { ResponseItem } from './Item';
 import { CommentTypes, Comment } from './Comment';
+import { UserDTO, User } from './User';
+import { BookDetails, StatusDetailsDTO } from '../services/books.service';
 
 const NONE_ELEMENTS_COUNT = 0;
+const EMPTY_BOOK_DETAILS = {
+  title: '',
+  image: '',
+  author: [],
+  description: '',
+  labels: [],
+  publishedDate: '',
+};
 
 export enum BookStatus {
-  requested = 'Requested',
-  voting = 'Voting',
-  shipping = 'Shipping',
-  available = 'Available',
-  taken = 'Taken',
-  declined = 'Declined',
-  lost = 'Lost',
+  requested = 'requested',
+  voting = 'voting',
+  shipping = 'shipping',
+  available = 'available',
+  taken = 'taken',
+  declined = 'declined',
+  lost = 'lost',
+}
+
+export interface UsersQueueItem {
+  user: UserDTO;
+  from: string;
+  to: string;
 }
 
 export const statusWithRating = ['available', 'taken', 'declined', 'lost'];
@@ -32,6 +48,11 @@ export class Book {
   public isUnderVoting: boolean;
   public votesAgainst: number;
   public votesFor: number;
+  public usersQueue: UsersQueueItem[];
+  public takenBy: User;
+  public isTaken: boolean;
+  public takenFrom: Date;
+  public takenTo: Date;
   private _publishedDate: Date;
   private _createdDate: Date;
 
@@ -39,34 +60,43 @@ export class Book {
 
   constructor(
     id: string = null,
-    title: string = null,
-    image: string = null,
-    author: string[] = [],
-    description: string = null,
-    labels: ResponseItem[] = [],
+    details: BookDetails = EMPTY_BOOK_DETAILS,
     status: string = null,
-    publishedDate: Date | string = new Date(),
     createdDate: Date | string = new Date(),
     comments: Comment[] = [],
-    votesAgainst: number = 0,
-    votesFor: number = 0,
+    statusDetails: StatusDetailsDTO = {}
   ) {
     this.id = id;
-    this.title = title;
-    this.image = image;
-    this.author = author;
-    this.description = description;
-    this.publishedDate = publishedDate;
+    this.title = details.title;
+    this.image = details.image;
+    this.author = details.author;
+    this.description = details.description;
+    this.publishedDate = details.publishedDate;
     this.createdDate = createdDate;
-    this.comments = comments;
-    this.labels = labels;
+    this.labels = details.labels;
     this.status = BookStatus[status];
     this.inLibrary = statusWithRating.includes(status);
     this.isUnderVoting = status === BookStatus.voting;
-    this.likesCount = comments.filter(comment => comment.type === CommentTypes.like).length;
-    this.dislikesCount = comments.filter(comment => comment.type === CommentTypes.dislike).length;
-    this.votesAgainst = votesAgainst;
-    this.votesFor = votesFor;
+    this.isTaken = status === BookStatus.taken;
+
+    if (this.inLibrary) {
+      this.likesCount = comments.filter(comment => comment.type === CommentTypes.like).length;
+      this.dislikesCount = comments.filter(comment => comment.type === CommentTypes.dislike).length;
+      this.comments = comments;
+    }
+
+    if (this.isTaken) {
+      this.usersQueue = statusDetails.usersQueue;
+      const { userId, email, nickName, avatar, role } = statusDetails.takenBy;
+      this.takenBy = new User(userId, email, nickName, avatar, role);
+      this.takenFrom = new Date(statusDetails.takenFrom);
+      this.takenTo = new Date(statusDetails.takenTo);
+    }
+
+    if (this.isUnderVoting) {
+      this.votesAgainst = statusDetails.votesAgainst;
+      this.votesFor = statusDetails.votesFor;
+    }
   }
 
   public get publishedDate(): Date | string {
@@ -92,16 +122,4 @@ export class Book {
       this.votesAgainst++;
     }
   }
-}
-
-export interface ResponseBook {
-  id: string;
-  title: string;
-  image: string;
-  author: string[];
-  description: string;
-  labelIds: string[];
-  publishedDate: string;
-  createdDate: string;
-  commentsCount: number;
 }

@@ -1,0 +1,30 @@
+.comment {
+  margin-top: 20px;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_author {
+    line-height: 30px;
+    vertical-align: text-bottom;
+  }
+  &_text {
+    margin: 10px 0 0 40px;
+    font-weight: 300;
+  }
+  &_rate-icon {
+    position: relative;
+    margin-right: 15px;
+  }
+  &_like {
+    color: #8bc34a;
+    top: -4px;
+  }
+  &_dislike {
+    color: #e53935;
+    top: 3px;
+  }
+  &_date {
+    font-size: 12px;
+  }
+}
