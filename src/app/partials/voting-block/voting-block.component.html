@@ -1,0 +1,32 @@
+<div class="voting" *ngIf="!currentUserVote">
+  <div class="voting_question">Купить?</div>
+  <div class="voting_buttons">
+    <button class="voting_for" mat-button (click)="vote(true)">
+      <span>Да</span>
+    </button>
+    <button class="voting_against" mat-button (click)="vote(false)">Нет</button>
+  </div>
+</div>
+<div class="voting-message" *ngIf="userVoted">
+  <i *ngIf="currentUserVote.position; else: voteAgainst" class="material-icons voting-message_icon-for">
+    check_circle_outline
+  </i>
+  <ng-template #voteAgainst>
+    <i class="material-icons voting-message_icon-against"> highlight_off </i>
+  </ng-template>
+  <div>Ваш голос сохранен, спасибо</div>
+</div>
+<div class="voting-results">
+  <div class="voting-results_bar-group" [matTooltip]="votesFor.users">
+    <span class="voting-results_bar">
+      <span class="voting-results_for" [style.width.px]="votesFor.percent"></span>
+    </span>
+    <span>{{votesFor.count}}</span>
+  </div>
+  <div class="voting-results_bar-group" [matTooltip]="votesAgainst.users">
+    <span class="voting-results_bar">
+      <span class="voting-results_against" [style.width.px]="votesAgainst.percent"></span>
+    </span>
+    <span>{{votesAgainst.count}}</span>
+  </div>
+</div>

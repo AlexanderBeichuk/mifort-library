@@ -23,9 +23,14 @@ export interface BookDetails {
   publishedDate: string;
 }
 
+export interface Vote {
+  userId: string;
+  nickName: string;
+  position: boolean;
+}
+
 export interface StatusDetailsDTO {
-  votesAgainst?: number;
-  votesFor?: number;
+  votes?: Vote[];
   usersQueue?: UsersQueueItem[];
   takenBy?: UserDTO;
   takenFrom?: string;
@@ -56,8 +61,48 @@ export class BooksService {
         },
         status: 'voting',
         statusDetails: {
-          votesAgainst: 2,
-          votesFor: 5
+          votes: [
+            {
+              userId: 'lok987654',
+              nickName: 'Dima',
+              position: false
+            },
+            {
+              userId: 'eswf',
+              nickName: 'Nika',
+              position: false
+            },
+            {
+              userId: 'fgv',
+              nickName: 'Irina',
+              position: true
+            },
+            {
+              userId: '987sfgbh654',
+              nickName: 'Nik',
+              position: false
+            },
+            {
+              userId: 'fgbh',
+              nickName: 'Vitaly',
+              position: true
+            },
+            {
+              userId: 'ghn',
+              nickName: 'Ilya',
+              position: false
+            },
+            {
+              userId: '98gm7654',
+              nickName: 'Marina',
+              position: false
+            },
+            {
+              userId: 'qwe',
+              nickName: 'Alex',
+              position: true
+            },
+          ]
         }
       }
     ]).pipe(

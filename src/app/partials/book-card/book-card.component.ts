@@ -50,7 +50,11 @@ export class BookCardComponent implements OnInit {
   }
 
   public vote(position: boolean): void {
-    this.book.addVote(position);
+    this.book.addVote({
+      userId: this.currentUser.id,
+      nickName: this.currentUser.nickName,
+      position
+    });
     this.booksService.vote(this.book.id, position);
   }
 

@@ -38,17 +38,11 @@
     </ng-container>
   </div>
   <div class="book-card_details">
-    <div class="book-card_voting" *ngIf="book.isUnderVoting">
-      <div class="book-card_voting-question">Купить?</div>
-      <div class="book-card_voting-buttons">
-        <button class="book-card_voting-for" mat-button (click)="vote(true)">Да
-          ({{book.votesFor}})
-        </button>
-        <button class="book-card_voting-against" mat-button (click)="vote(false)">Нет
-          ({{book.votesAgainst}})
-        </button>
-      </div>
-    </div>
+    <app-voting-block
+      *ngIf="book.isUnderVoting"
+      [votes]="book.votes"
+      (onVote)="vote($event)"
+      [currentUser]="currentUser"></app-voting-block>
     <div *ngIf="book.inLibrary">
       <button *ngIf="isAvailable" [matMenuTriggerFor]="menu" mat-button color="accent">
         Взять книгу<i class="material-icons"> arrow_drop_down </i>

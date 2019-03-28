@@ -2,7 +2,7 @@ import { DateHelper } from './DateHelper';
 import { ResponseItem } from './Item';
 import { CommentTypes, Comment } from './Comment';
 import { UserDTO, User } from './User';
-import { BookDetails, StatusDetailsDTO } from '../services/books.service';
+import { BookDetails, StatusDetailsDTO, Vote } from '../services/books.service';
 
 const EMPTY_BOOK_DETAILS = {
   title: '',
@@ -45,8 +45,7 @@ export class Book {
   public dislikesCount: number;
   public inLibrary: boolean;
   public isUnderVoting: boolean;
-  public votesAgainst: number;
-  public votesFor: number;
+  public votes: Vote[];
   public usersQueue: UsersQueueItem[];
   public takenBy: User;
   public isTaken: boolean;
@@ -93,8 +92,7 @@ export class Book {
     }
 
     if (this.isUnderVoting) {
-      this.votesAgainst = statusDetails.votesAgainst;
-      this.votesFor = statusDetails.votesFor;
+      this.votes = statusDetails.votes;
     }
   }
 
@@ -114,11 +112,7 @@ export class Book {
     this._createdDate = this.dateHelper.convertStringToDate(date);
   }
 
-  public addVote(position): void {
-    if (position) {
-      this.votesFor++;
-    } else {
-      this.votesAgainst++;
-    }
+  public addVote(vote: Vote): void {
+    this.votes = [...this.votes, vote];
   }
 }

@@ -1,0 +1,78 @@
+@import "../../../assets/scss/colors";
+
+.voting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &_buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    color: #fff;
+  }
+
+  &_for {
+    background: $positive-accent;
+  }
+
+  &_against {
+    background: $negative-accent;
+  }
+}
+
+.voting-message {
+  height: 46px;
+  padding: 20px 0 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 300;
+  &_icon-for {
+    color: $positive-accent;
+    opacity: 0.5;
+  }
+  &_icon-against {
+    color: $negative-accent;
+    opacity: 0.5;
+  }
+}
+
+.voting-results {
+  &_label {
+    width: 60px;
+    display: inline-block;
+  }
+
+  &_bar-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_bar {
+    flex-grow: 1;
+    height: 1px;
+    margin-right: 10px;
+    border-bottom: 1px dashed $dark-primary-border;
+    margin-top: 9px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  &_for, &_against {
+    display: inline-block;
+    height: 8px;
+    position: absolute;
+    top: -4px;
+    border-radius: 4px;
+  }
+
+  &_for {
+    background: $positive-accent;
+  }
+
+  &_against {
+    background: $negative-accent;
+  }
+}
