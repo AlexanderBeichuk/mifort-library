@@ -1,0 +1,30 @@
+<div class="timeline-item">
+  <div class="timeline-item_marker timeline-item_marker_first"></div>
+  <div>книга у <span class="mat-body-strong">{{takenBy.nickName}}</span> до {{takenTill | date: 'dd/MM'}}</div>
+</div>
+<div class="timeline-item" *ngFor="let item of queue; last as last">
+  <div class="timeline-item_marker" [ngClass]="{takenByMe: isCurrentUser(item.user.id), last: last && isInQueue}"></div>
+  <div><span *ngIf="!isCurrentUser(item.user.id); else currentUser"><span
+    class="mat-body-strong">{{item.user.nickName}}</span> до <span
+    class="timeline-item_date">{{item.to | date: 'dd/MM'}}</span></span>
+    <ng-template #currentUser>
+      <span class="mat-body-strong">Вы</span>
+      до <span class="timeline-item_date">{{item.to | date: 'dd/MM'}}</span>
+      <button class="timeline-item_icon-button" mat-icon-button color="accent" matTooltip="Отказаться"
+              matTooltipPosition="right">
+        <mat-icon class="timeline-item_icon" aria-label="Example icon-button with a heart icon">close
+        </mat-icon>
+      </button>
+    </ng-template>
+  </div>
+</div>
+<div class="timeline-item" *ngIf="!isInQueue">
+  <div class="timeline-item_marker timeline-item_marker_empty"></div>
+  <div [matMenuTriggerFor]="menu" class="timeline-item_action-button mat-body-strong">
+    Хочу взять
+    <mat-icon class="timeline-item_icon">arrow_drop_down</mat-icon>
+  </div>
+  <mat-menu #menu="matMenu">
+    <app-time-periods-menu [startDate]="lastDate" (onChoosePeriod)="getInQueue($event)"></app-time-periods-menu>
+  </mat-menu>
+</div>

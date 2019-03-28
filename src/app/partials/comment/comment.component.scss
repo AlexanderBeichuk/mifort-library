@@ -1,3 +1,5 @@
+@import '../../../assets/scss/colors';
+
 .comment {
   margin-top: 20px;
   &_header {
@@ -17,11 +19,11 @@
     margin-right: 15px;
   }
   &_like {
-    color: #8bc34a;
+    color: $positive-accent;
     top: -4px;
   }
   &_dislike {
-    color: #e53935;
+    color: $negative-accent;
     top: 3px;
   }
   &_date {

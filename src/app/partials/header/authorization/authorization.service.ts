@@ -30,7 +30,7 @@ export class AuthorizationService {
 
   public getCurrentUser(): Observable<UserDTO> {
     return of({
-      userId: '987654',
+      id: '987654',
       email: 'irina@mail.com',
       nickName: 'Irina',
       role: 'user'

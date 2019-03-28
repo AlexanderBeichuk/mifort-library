@@ -35,6 +35,7 @@ import {
 import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
 import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
 import { TimePeriodsMenuComponent } from './partials/time-periods-menu/time-periods-menu.component';
+import { VotingBlockComponent } from './partials/voting-block/voting-block.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TimePeriodsMenuComponent } from './partials/time-periods-menu/time-peri
     CommentComponent,
     PeriodSheetComponent,
     UsersQueueTimelineComponent,
-    TimePeriodsMenuComponent
+    TimePeriodsMenuComponent,
+    VotingBlockComponent
   ],
   imports: [
     CommonModule,

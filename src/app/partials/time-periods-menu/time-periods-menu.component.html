@@ -1,0 +1,6 @@
+<button
+  mat-menu-item
+  *ngFor="let item of listOptions"
+  (click)="choosePeriod(item.value)">
+  {{ item.name}} (до {{tillDate(item.value) | date: 'dd.MM.yyyy'}})
+</button>

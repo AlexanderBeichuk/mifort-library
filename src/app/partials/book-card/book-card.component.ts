@@ -29,7 +29,7 @@ export class BookCardComponent implements OnInit {
 
     this.authorisationService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
-      this.takenByMe = this.book.isTaken && this.book.takenBy.id === user.userId;
+      this.takenByMe = this.book.isTaken && this.book.takenBy.id === user.id;
     });
   }
 

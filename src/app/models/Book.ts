@@ -4,7 +4,6 @@ import { CommentTypes, Comment } from './Comment';
 import { UserDTO, User } from './User';
 import { BookDetails, StatusDetailsDTO } from '../services/books.service';
 
-const NONE_ELEMENTS_COUNT = 0;
 const EMPTY_BOOK_DETAILS = {
   title: '',
   image: '',
@@ -59,14 +58,14 @@ export class Book {
   private dateHelper: DateHelper = new DateHelper();
 
   constructor(
-    id: string = null,
+    userId: string = null,
     details: BookDetails = EMPTY_BOOK_DETAILS,
     status: string = null,
     createdDate: Date | string = new Date(),
     comments: Comment[] = [],
     statusDetails: StatusDetailsDTO = {}
   ) {
-    this.id = id;
+    this.id = userId;
     this.title = details.title;
     this.image = details.image;
     this.author = details.author;
@@ -87,8 +86,8 @@ export class Book {
 
     if (this.isTaken) {
       this.usersQueue = statusDetails.usersQueue;
-      const { userId, email, nickName, avatar, role } = statusDetails.takenBy;
-      this.takenBy = new User(userId, email, nickName, avatar, role);
+      const { id, email, nickName, avatar, role } = statusDetails.takenBy;
+      this.takenBy = new User(id, email, nickName, avatar, role);
       this.takenFrom = new Date(statusDetails.takenFrom);
       this.takenTo = new Date(statusDetails.takenTo);
     }

@@ -402,8 +402,8 @@ export class BooksService {
 
   private userDtoToModel(user: UserDTO): User {
     if (user) {
-      const { userId, email, nickName, avatar, role } = user;
-      return new User(userId, email, nickName, avatar, role);
+      const { id, email, nickName, avatar, role } = user;
+      return new User(id, email, nickName, avatar, role);
     }
 
     return null;

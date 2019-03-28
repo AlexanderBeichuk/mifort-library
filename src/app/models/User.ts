@@ -35,7 +35,7 @@ export class User {
 }
 
 export interface UserDTO {
-  userId: string;
+  id: string;
   email: string;
   nickName: string;
   avatar?: string;

@@ -1,6 +1,16 @@
 <div class="book-card">
-  <div class="book-card_image-container">
-    <img [src]="book.image">
+  <div class="book-card_cover">
+    <div class="book-card_image-container">
+      <img [src]="book.image">
+    </div>
+    <button
+      *ngIf="book.inLibrary"
+      (click)="addToWishlist()"
+      mat-button color="accent"
+      class="book-card_favorite-button">
+      <i class="material-icons"> favorite_border </i>
+      в избранное
+    </button>
   </div>
   <div class="book-card_main-info">
     <div class="book-card_title mat-h4">
@@ -30,19 +40,16 @@
   <div class="book-card_details">
     <div class="book-card_voting" *ngIf="book.isUnderVoting">
       <div class="book-card_voting-question">Купить?</div>
-      <div class="book-card_buttons">
-        <button mat-button (click)="vote(true)">Да
+      <div class="book-card_voting-buttons">
+        <button class="book-card_voting-for" mat-button (click)="vote(true)">Да
           ({{book.votesFor}})
         </button>
-        <button mat-button (click)="vote(false)">Нет
+        <button class="book-card_voting-against" mat-button (click)="vote(false)">Нет
           ({{book.votesAgainst}})
         </button>
       </div>
     </div>
     <div *ngIf="book.inLibrary">
-      <button (click)="addToWishlist()" mat-button color="accent">
-        Добавить в wishlist
-      </button>
       <button *ngIf="isAvailable" [matMenuTriggerFor]="menu" mat-button color="accent">
         Взять книгу<i class="material-icons"> arrow_drop_down </i>
       </button>
