@@ -40,6 +40,11 @@
 }
 
 .voting-results {
+  &_title{
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
   &_label {
     width: 60px;
     display: inline-block;

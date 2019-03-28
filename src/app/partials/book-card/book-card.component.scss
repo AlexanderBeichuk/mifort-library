@@ -1,7 +1,12 @@
 @import '../../../assets/scss/colors';
 
+:host.odd-item .book-card {
+  background: #8080801c;
+}
+
 .book-card {
   display: flex;
+  padding: 10px 15px;
 
   &_cover {
     width: 150px;
