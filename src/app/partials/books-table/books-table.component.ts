@@ -15,7 +15,7 @@ export class BooksTableComponent implements OnInit {
 
   public allBooks: Book[] = [];
   public updates: Book[] = [];
-  public wishlist: Book[] = [];
+  public takenByMe: Book[] = [];
 
   ngOnInit() {
     this.booksService.getUpdatesList()
@@ -26,6 +26,11 @@ export class BooksTableComponent implements OnInit {
     this.booksService.getBooksList()
       .subscribe(books => {
         this.allBooks = books;
+      });
+
+    this.booksService.getTakenByMe()
+      .subscribe(books => {
+        this.takenByMe = books;
       });
   }
 }

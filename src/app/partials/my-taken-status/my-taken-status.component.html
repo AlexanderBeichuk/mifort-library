@@ -1,0 +1,29 @@
+<div class="my-taken-status">
+  <div class="my-taken-status_return-label">Вернуть <span *ngIf="daysLeft > 1">через</span></div>
+  <div class="my-taken-status_left-time" [ngClass]="{
+      'warning': daysLeft === 1,
+      'danger': !daysLeft
+    }">
+    <div class="my-taken-status_days-count" >
+      <span *ngIf="daysLeft > 1">{{daysLeft}} </span>
+      <span>{daysLeft, plural, =0 {сегодня} =1 {завтра} one {день} few {дня} many {дней}}</span>
+    </div>
+    <svg class="my-taken-status_svg" width="180" height="180" viewPort="0 0 100 100" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+      <circle r="70" cx="90" cy="90" fill="transparent" stroke-dashoffset="0" stroke-dasharray="4"></circle>
+      <circle class="my-taken-status_svg-bar"
+              [attr.stroke-dashoffset]="timeLeftOffset"
+              [attr.r]="circleRadius" cx="90" cy="90"
+              fill="transparent"
+              [attr.stroke-dasharray]="circuit"
+              stroke-linecap="round"
+              transform="rotate(-90 90 90)"></circle>
+    </svg>
+  </div>
+  <div *ngIf="usersCount" [matTooltip]="usersList">
+    В очереди
+    <span class="mat-body-strong"
+          i18n>{usersCount, plural, one {1 человек} few {{{usersCount}} человека} other {{{usersCount}} человек}}</span>
+  </div>
+  <button mat-button color="accent">Вернуть</button>
+</div>

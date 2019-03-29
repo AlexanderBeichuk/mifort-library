@@ -139,7 +139,7 @@ export class BooksService {
     );
   }
 
-  public getWhishlist(): Observable<Book[]> {
+  public getTakenByMe(): Observable<Book[]> {
     return of([
       {
         id: '1',
@@ -168,7 +168,111 @@ export class BooksService {
             role: 'user'
           },
           takenFrom: '2019-03-20T08:43:41.043Z',
-          takenTo: '2019-04-20T08:43:41.043Z',
+          takenTo: '2019-03-29T08:43:41.043Z',
+          usersQueue: [
+            {
+              user: {
+                id: '123',
+                email: 'irina@mail.com',
+                nickName: 'Marina',
+                role: 'user'
+              },
+              from: '2019-03-20T08:43:41.043Z',
+              to: '2019-04-20T08:43:41.043Z',
+            },
+            {
+              user: {
+                id: '987654',
+                email: 'irina@mail.com',
+                nickName: 'Irina',
+                role: 'user'
+              },
+              from: '2019-04-20T08:43:41.043Z',
+              to: '2019-05-15T08:43:41.043Z',
+            },
+            {
+              user: {
+                id: '123',
+                email: 'irina@mail.com',
+                nickName: 'Lena',
+                role: 'user'
+              },
+              from: '2019-05-15T08:43:41.043Z',
+              to: '2019-06-03T08:43:41.043Z',
+            }
+          ]
+        }
+      },
+      {
+        id: '1',
+        createdDate: '2019-03-20T08:43:41.043Z',
+        comments: [],
+        details: {
+          title: '1BLA',
+          image: 'http://www.angelique-world.ru/cover13.gif',
+          author: [
+            'HENA',
+            'Author'
+          ],
+          description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
+          publishedDate: '2019-03-20T08:43:41.043Z',
+          labels: [
+            { id: '1', name: 'JS' },
+            { id: '3', name: 'TS' },
+          ],
+        },
+        status: 'taken',
+        statusDetails: {
+          takenBy: {
+            id: '987654',
+            email: 'irina@mail.com',
+            nickName: 'Irina',
+            role: 'user'
+          },
+          takenFrom: '2019-03-20T08:43:41.043Z',
+          takenTo: '2019-03-30T08:43:41.043Z'
+        }
+      },
+      {
+        id: '1',
+        createdDate: '2019-03-20T08:43:41.043Z',
+        comments: [],
+        details: {
+          title: '1BLA',
+          image: 'http://www.angelique-world.ru/cover13.gif',
+          author: [
+            'HENA',
+            'Author'
+          ],
+          description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
+          publishedDate: '2019-03-20T08:43:41.043Z',
+          labels: [
+            { id: '1', name: 'JS' },
+            { id: '3', name: 'TS' },
+          ],
+        },
+        status: 'taken',
+        statusDetails: {
+          takenBy: {
+            id: '987654',
+            email: 'irina@mail.com',
+            nickName: 'Irina',
+            role: 'user'
+          },
+          takenFrom: '2019-03-20T08:43:41.043Z',
+          takenTo: '2019-04-04T08:43:41.043Z',
+          usersQueue: [
+            {
+              user: {
+                id: '123',
+                email: 'irina@mail.com',
+                nickName: 'Lena',
+                role: 'user'
+              },
+              from: '2019-05-15T08:43:41.043Z',
+              to: '2019-06-03T08:43:41.043Z',
+            }
+          ]
         }
       }
     ]).pipe(

@@ -1,0 +1,47 @@
+@import "../../../assets/scss/colors";
+
+.my-taken-status {
+  font-weight: 300;
+  text-align: center;
+
+  &_left-time {
+    margin: 5px 0;
+    position: relative;
+    color: $positive-accent;
+    .my-taken-status_svg-bar {
+      stroke: $positive-accent;
+    }
+
+    &.danger {
+      color: $negative-accent;
+      .my-taken-status_svg-bar {
+        stroke: $negative-accent;
+      }
+    }
+
+    &.warning {
+      color: $warning-accent;
+      .my-taken-status_svg-bar {
+        stroke: $warning-accent;
+      }
+    }
+  }
+
+  &_days-count {
+    position: absolute;
+    left: 0;
+    font-size: 30px;
+    line-height: 180px;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  &_svg {
+    stroke: $light-primary-border;
+    stroke-width: 1px;
+
+    &-bar {
+      stroke-width: 5px;
+    }
+  }
+}

@@ -2,25 +2,25 @@
   <mat-accordion displayMode="flat" multi="true">
     <mat-expansion-panel expanded="true" *ngIf="updates.length">
       <mat-expansion-panel-header>
-        <h3 class="books-list_section-title mat-h3">Updates</h3>
+        <h3 class="books-list_section-title mat-h3">Обновления</h3>
       </mat-expansion-panel-header>
       <app-book-card
         *ngFor="let book of updates; let odd = odd"
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
-    <mat-expansion-panel expanded="true" *ngIf="wishlist.length">
+    <mat-expansion-panel expanded="true" *ngIf="takenByMe.length">
       <mat-expansion-panel-header>
-        <h3 class="books-list_section-title mat-h3">Wishlist</h3>
+        <h3 class="books-list_section-title mat-h3">У меня</h3>
       </mat-expansion-panel-header>
       <app-book-card
-        *ngFor="let book of wishlist; let odd = odd"
+        *ngFor="let book of takenByMe; let odd = odd"
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
     <mat-expansion-panel expanded="true" *ngIf="allBooks.length">
       <mat-expansion-panel-header>
-        <h3 class="books-list_section-title mat-h3">Books</h3>
+        <h3 class="books-list_section-title mat-h3">Все книги</h3>
       </mat-expansion-panel-header>
       <app-book-card
         *ngFor="let book of allBooks; let odd = odd"

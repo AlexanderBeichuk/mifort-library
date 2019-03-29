@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book, BookStatus } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
-import { User, UserDTO } from '../../models/User';
+import { UserDTO } from '../../models/User';
 import { AuthorizationService } from '../header/authorization/authorization.service';
 
 @Component({
@@ -19,7 +19,6 @@ export class BookCardComponent implements OnInit {
 
   @Input()
   public book: Book;
-
 
   constructor(private booksService: BooksService, private authorisationService: AuthorizationService) {
   }

@@ -36,6 +36,12 @@ import { PeriodSheetComponent } from './partials/book-card/components/period-she
 import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
 import { TimePeriodsMenuComponent } from './partials/time-periods-menu/time-periods-menu.component';
 import { VotingBlockComponent } from './partials/voting-block/voting-block.component';
+import { MyTakenStatusComponent } from './partials/my-taken-status/my-taken-status.component';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import {LOCALE_ID} from '@angular/core';
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
@@ -55,7 +61,8 @@ import { VotingBlockComponent } from './partials/voting-block/voting-block.compo
     PeriodSheetComponent,
     UsersQueueTimelineComponent,
     TimePeriodsMenuComponent,
-    VotingBlockComponent
+    VotingBlockComponent,
+    MyTakenStatusComponent
   ],
   imports: [
     CommonModule,
@@ -77,6 +84,7 @@ import { VotingBlockComponent } from './partials/voting-block/voting-block.compo
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    { provide: LOCALE_ID, useValue: 'ru' },
     SnotifyService,
     BooksService
   ],
