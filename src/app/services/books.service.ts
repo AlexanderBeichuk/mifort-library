@@ -338,7 +338,29 @@ export class BooksService {
             date: '2019-02-20T08:43:41.043Z'
           }
         ],
-        status: 'available'
+        status: 'taken',
+        statusDetails: {
+          takenBy: {
+            id: '46456',
+            email: 'irina@mail.com',
+            nickName: 'Irina',
+            role: 'user'
+          },
+          takenFrom: '2019-03-20T08:43:41.043Z',
+          takenTo: '2019-04-24T08:43:41.043Z',
+          usersQueue: [
+            {
+              user: {
+                id: '123',
+                email: 'irina@mail.com',
+                nickName: 'Lena',
+                role: 'user'
+              },
+              from: '2019-05-15T08:43:41.043Z',
+              to: '2019-06-03T08:43:41.043Z',
+            }
+          ]
+        }
       },
       {
         id: '2',

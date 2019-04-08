@@ -34,6 +34,9 @@
     line-height: 180px;
     font-weight: 400;
     width: 100%;
+    &_small {
+      font-size: 20px;
+    }
   }
 
   &_svg {

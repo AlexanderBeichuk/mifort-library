@@ -9,14 +9,18 @@ import { UserDTO } from '../../models/User';
 })
 export class UsersQueueTimelineComponent implements OnInit {
 
-  @Input()
-  queue: UsersQueueItem[];
+  public queue: UsersQueueItem[];
 
   @Input()
-  currentUser: UserDTO;
+  public set usersQueue(queue: UsersQueueItem[]) {
+    this.queue = queue || [];
+  }
 
   @Input()
-  takenBy: UserDTO;
+  public currentUser: UserDTO;
+
+  @Input()
+  public takenBy: UserDTO;
 
   @Input()
   public takenTill: string;
@@ -38,6 +42,10 @@ export class UsersQueueTimelineComponent implements OnInit {
   }
 
   public get lastDate(): string {
+    if (!this.queue.length) {
+      return (new Date()).toString();
+    }
+
     const lastQueueIndex = this.queue.length - 1;
     return this.queue[lastQueueIndex].to;
   }

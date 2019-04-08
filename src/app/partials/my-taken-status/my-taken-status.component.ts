@@ -15,6 +15,7 @@ export class MyTakenStatusComponent implements OnInit {
   public timeLeftOffset: number;
   public takenFrom: Date;
   public takenTo: Date;
+  public outOfDays: boolean;
   public circleRadius = 70;
   public circuit = Math.PI * (this.circleRadius * 2);
   private maxPercent = 100;
@@ -23,6 +24,7 @@ export class MyTakenStatusComponent implements OnInit {
   @Input()
   public set timeRange({ from, to }: { from: Date, to: Date }) {
     this.daysLeft = this.calculateLeftDays(to);
+    this.outOfDays = this.daysLeft < 0;
     this.timeLeftOffset = this.calculateTimeLeftOffset(this.timeLeftPercent(from, to));
     this.takenFrom = from;
     this.takenTo = to;
@@ -44,6 +46,9 @@ export class MyTakenStatusComponent implements OnInit {
   }
 
   private timeLeftPercent(from: Date, to: Date): number {
+    if (this.outOfDays) {
+      return 0;
+    }
     const startDate = moment(from).endOf('day');
     const endDate = moment(to).endOf('day');
     const totalDays = endDate.diff(startDate, 'days');

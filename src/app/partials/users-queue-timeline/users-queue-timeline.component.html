@@ -2,7 +2,7 @@
   <div class="timeline-item_marker timeline-item_marker_first"></div>
   <div>книга у <span class="mat-body-strong">{{takenBy.nickName}}</span> до {{takenTill | date: 'dd/MM'}}</div>
 </div>
-<div class="timeline-item" *ngFor="let item of queue; last as last">
+<div class="timeline-item" *ngFor="let item of usersQueue; last as last">
   <div class="timeline-item_marker" [ngClass]="{takenByMe: isCurrentUser(item.user.id), last: last && isInQueue}"></div>
   <div><span *ngIf="!isCurrentUser(item.user.id); else currentUser"><span
     class="mat-body-strong">{{item.user.nickName}}</span> до <span

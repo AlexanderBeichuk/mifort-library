@@ -45,20 +45,20 @@
       [currentUser]="currentUser"></app-voting-block>
     <div *ngIf="book.inLibrary">
       <ng-container *ngIf="isAvailable">
-      <button [matMenuTriggerFor]="menu" mat-button color="accent">
-        Взять книгу<i class="material-icons"> arrow_drop_down </i>
-      </button>
-      <mat-menu #menu="matMenu">
-        <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
-      </mat-menu>
+        <button [matMenuTriggerFor]="menu" mat-button color="accent">
+          Взять книгу<i class="material-icons"> arrow_drop_down </i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
+        </mat-menu>
+      </ng-container>
       <app-users-queue-timeline
         *ngIf="book.isTaken"
         (onGetInQueue)="getInQueue($event)"
-        [queue]="book.usersQueue"
+        [usersQueue]="book.usersQueue"
         [currentUser]="currentUser"
         [takenTill]="book.takenTo"
         [takenBy]="book.takenBy"></app-users-queue-timeline>
-      </ng-container>
       <app-my-taken-status
         *ngIf="takenByMe"
         [usersQueue]="book.usersQueue"
