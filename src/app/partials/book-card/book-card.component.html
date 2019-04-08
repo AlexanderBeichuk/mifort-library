@@ -55,6 +55,7 @@
       <app-users-queue-timeline
         *ngIf="book.isTaken"
         (onGetInQueue)="getInQueue($event)"
+        (onGetOutOfQueue)="getOutOfQueue()"
         [usersQueue]="book.usersQueue"
         [currentUser]="currentUser"
         [takenTill]="book.takenTo"

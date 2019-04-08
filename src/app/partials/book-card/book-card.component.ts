@@ -69,11 +69,17 @@ export class BookCardComponent implements OnInit {
     this.booksService.takeBook(this.book.id, takeTo);
   }
 
-  public getInQueue({from, to}): void {
-    this.book.usersQueue.push({
-      user: this.currentUser,
-      from,
-      to
-    });
+  public getInQueue(forWeeks: number): void {
+    this.book.usersQueue = [
+      ...this.book.usersQueue,
+      {
+        user: this.currentUser,
+        forWeeks,
+      }
+    ];
+  }
+
+  public getOutOfQueue(): void {
+    this.book.usersQueue = this.book.usersQueue.filter(({ user: { id } }) => id !== this.currentUser.id);
   }
 }

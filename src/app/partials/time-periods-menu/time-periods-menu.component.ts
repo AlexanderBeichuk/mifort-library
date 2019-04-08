@@ -11,7 +11,7 @@ export class TimePeriodsMenuComponent {
   public startDate: string = (new Date()).toString();
 
   @Output()
-  public onChoosePeriod = new EventEmitter<string>();
+  public onChoosePeriod = new EventEmitter<{tillDate: string, forWeeks: number}>();
 
   public listOptions = [
     {
@@ -43,7 +43,7 @@ export class TimePeriodsMenuComponent {
   }
 
   public choosePeriod(weeks: number) {
-    this.onChoosePeriod.emit(this.tillDate(weeks).toString());
+    this.onChoosePeriod.emit({tillDate: this.tillDate(weeks).toString(), forWeeks: weeks});
   }
 
 }

@@ -3,6 +3,7 @@ import { ResponseItem } from './Item';
 import { CommentTypes, Comment } from './Comment';
 import { UserDTO, User } from './User';
 import { BookDetails, StatusDetailsDTO, Vote } from '../services/books.service';
+import { Moment } from 'moment';
 
 const EMPTY_BOOK_DETAILS = {
   title: '',
@@ -25,8 +26,11 @@ export enum BookStatus {
 
 export interface UsersQueueItem {
   user: UserDTO;
-  from: string;
-  to: string;
+  forWeeks: number;
+  from?: Moment;
+  to?: Moment;
+  fromFormatted?: string;
+  toFormatted?: string;
 }
 
 export const statusWithRating = ['available', 'taken', 'declined', 'lost'];

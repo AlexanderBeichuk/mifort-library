@@ -177,8 +177,7 @@ export class BooksService {
                 nickName: 'Marina',
                 role: 'user'
               },
-              from: '2019-03-20T08:43:41.043Z',
-              to: '2019-04-20T08:43:41.043Z',
+              forWeeks: 2
             },
             {
               user: {
@@ -187,8 +186,7 @@ export class BooksService {
                 nickName: 'Irina',
                 role: 'user'
               },
-              from: '2019-04-20T08:43:41.043Z',
-              to: '2019-05-15T08:43:41.043Z',
+              forWeeks: 3
             },
             {
               user: {
@@ -197,8 +195,7 @@ export class BooksService {
                 nickName: 'Lena',
                 role: 'user'
               },
-              from: '2019-05-15T08:43:41.043Z',
-              to: '2019-06-03T08:43:41.043Z',
+              forWeeks: 4
             }
           ]
         }
@@ -269,8 +266,7 @@ export class BooksService {
                 nickName: 'Lena',
                 role: 'user'
               },
-              from: '2019-05-15T08:43:41.043Z',
-              to: '2019-06-03T08:43:41.043Z',
+              forWeeks: 4
             }
           ]
         }
@@ -356,8 +352,7 @@ export class BooksService {
                 nickName: 'Lena',
                 role: 'user'
               },
-              from: '2019-05-15T08:43:41.043Z',
-              to: '2019-06-03T08:43:41.043Z',
+              forWeeks: 6
             }
           ]
         }
@@ -394,33 +389,30 @@ export class BooksService {
           usersQueue: [
             {
               user: {
-                id: '123',
+                id: '1t23',
                 email: 'irina@mail.com',
                 nickName: 'Marina',
                 role: 'user'
               },
-              from: '2019-03-20T08:43:41.043Z',
-              to: '2019-04-20T08:43:41.043Z',
+              forWeeks: 2,
             },
             {
               user: {
-                id: '987654',
+                id: '98t7654',
                 email: 'irina@mail.com',
                 nickName: 'Irina',
                 role: 'user'
               },
-              from: '2019-04-20T08:43:41.043Z',
-              to: '2019-05-15T08:43:41.043Z',
+              forWeeks: 4,
             },
             {
               user: {
-                id: '123',
+                id: '12t3',
                 email: 'irina@mail.com',
                 nickName: 'Lena',
                 role: 'user'
               },
-              from: '2019-05-15T08:43:41.043Z',
-              to: '2019-06-03T08:43:41.043Z',
+              forWeeks: 6,
             }
           ]
         }
@@ -505,8 +497,7 @@ export class BooksService {
                 nickName: 'Marina',
                 role: 'user'
               },
-              from: '2019-03-20T08:43:41.043Z',
-              to: '2019-04-20T08:43:41.043Z',
+              forWeeks: 1
             },
             {
               user: {
@@ -515,8 +506,7 @@ export class BooksService {
                 nickName: 'Lena',
                 role: 'user'
               },
-              from: '2019-05-15T08:43:41.043Z',
-              to: '2019-06-03T08:43:41.043Z',
+              forWeeks: 3
             }
           ]
         }

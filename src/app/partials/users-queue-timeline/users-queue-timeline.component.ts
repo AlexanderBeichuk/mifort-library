@@ -1,19 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UsersQueueItem } from '../../models/Book';
 import { UserDTO } from '../../models/User';
+import * as moment from 'moment';
+import { Moment } from 'moment';
+import DurationConstructor = moment.unitOfTime.DurationConstructor;
 
 @Component({
   selector: 'app-users-queue-timeline',
   templateUrl: './users-queue-timeline.component.html',
   styleUrls: ['./users-queue-timeline.component.scss']
 })
-export class UsersQueueTimelineComponent implements OnInit {
+export class UsersQueueTimelineComponent {
 
   public queue: UsersQueueItem[];
 
   @Input()
-  public set usersQueue(queue: UsersQueueItem[]) {
+  public set usersQueue (queue: UsersQueueItem[]) {
     this.queue = queue || [];
+    this.setQueueDates();
   }
 
   @Input()
@@ -26,32 +30,50 @@ export class UsersQueueTimelineComponent implements OnInit {
   public takenTill: string;
 
   @Output()
-  public onGetInQueue = new EventEmitter<{from: string, to: string}>();
+  public onGetInQueue = new EventEmitter<number>();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Output()
+  public onGetOutOfQueue = new EventEmitter<void>();
 
   public isCurrentUser(id: string): boolean {
     return id === this.currentUser.id;
   }
 
   public get isInQueue(): boolean {
-    return !!this.queue.some(({ user: { id } }) => id === this.currentUser.id);
+    return this.queue.some(({ user: { id } }) => id === this.currentUser.id);
   }
 
-  public get lastDate(): string {
+  public get lastDate(): Moment {
     if (!this.queue.length) {
-      return (new Date()).toString();
+      return moment(this.takenTill);
     }
 
     const lastQueueIndex = this.queue.length - 1;
     return this.queue[lastQueueIndex].to;
   }
 
-  public getInQueue(timeTo: string) {
-    this.onGetInQueue.emit({from: this.lastDate, to: timeTo});
+  public getInQueue({forWeeks}: {tillDate: string, forWeeks: number}): void {
+    this.onGetInQueue.emit(forWeeks);
+  }
+
+  public getOutOfQueue(): void {
+    this.onGetOutOfQueue.emit();
+  }
+
+  private setQueueDates() {
+    let periodStart: Moment;
+    let periodEnd: Moment = moment(this.takenTill);
+    this.queue = this.queue.map(item => {
+      periodStart = moment(periodEnd);
+      periodEnd = moment(periodStart).add(item.forWeeks, 'w');
+      return {
+        ...item,
+        from: periodStart,
+        to: periodEnd,
+        fromFormatted: periodStart.format('DD/MM'),
+        toFormatted: periodEnd.format('DD/MM')
+      };
+    });
   }
 
 }
