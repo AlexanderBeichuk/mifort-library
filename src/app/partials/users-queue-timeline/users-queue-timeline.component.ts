@@ -10,7 +10,7 @@ import DurationConstructor = moment.unitOfTime.DurationConstructor;
   templateUrl: './users-queue-timeline.component.html',
   styleUrls: ['./users-queue-timeline.component.scss']
 })
-export class UsersQueueTimelineComponent {
+export class UsersQueueTimelineComponent implements OnInit {
 
   public queue: UsersQueueItem[];
 
@@ -34,6 +34,10 @@ export class UsersQueueTimelineComponent {
 
   @Output()
   public onGetOutOfQueue = new EventEmitter<void>();
+
+  public ngOnInit(): void {
+    this.setQueueDates();
+  }
 
   public isCurrentUser(id: string): boolean {
     return id === this.currentUser.id;

@@ -53,7 +53,7 @@
         </mat-menu>
       </ng-container>
       <app-users-queue-timeline
-        *ngIf="book.isTaken"
+        *ngIf="book.isTaken && !takenByMe"
         (onGetInQueue)="getInQueue($event)"
         (onGetOutOfQueue)="getOutOfQueue()"
         [usersQueue]="book.usersQueue"
