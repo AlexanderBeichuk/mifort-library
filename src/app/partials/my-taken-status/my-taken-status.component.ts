@@ -18,7 +18,7 @@ export class MyTakenStatusComponent implements OnInit {
   public takenFrom: Date;
   public takenTo: Date;
   public outOfDays: boolean;
-  public circleRadius = 70;
+  public circleRadius = 50;
   public circuit = Math.PI * (this.circleRadius * 2);
   private maxPercent = 100;
 

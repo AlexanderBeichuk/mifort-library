@@ -28,8 +28,23 @@
   }
 
   &_favorite-button {
-    width: 100%;
-    margin-top: 15px;
+    color: #d81b60;
+    margin-right: 10px;
+  }
+
+  &_icon-button {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 0;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &_main-info {
@@ -40,6 +55,9 @@
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
+    &-text {
+      vertical-align: middle;
+    }
   }
 
   &_comments-button {

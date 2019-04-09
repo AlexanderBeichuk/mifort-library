@@ -3,18 +3,24 @@
     <div class="book-card_image-container">
       <img [src]="book.image">
     </div>
-    <button
-      *ngIf="book.inLibrary"
-      (click)="addToWishlist()"
-      mat-button color="accent"
-      class="book-card_favorite-button">
-      <i class="material-icons"> favorite_border </i>
-      в избранное
-    </button>
   </div>
   <div class="book-card_main-info">
     <div class="book-card_title mat-h4">
-      <span>{{book.title}}</span>
+      <div>
+        <button
+        *ngIf="book.inLibrary"
+        (click)="addToWishlist()"
+        [matTooltip]="favorteTooltip"
+        matTooltipPosition="before"
+        color="accent"
+        class="book-card_favorite-button book-card_icon-button">
+        <mat-icon *ngIf="isMyFavorite; else: notInFavorites" class="material-icons"> favorite </mat-icon>
+        <ng-template #notInFavorites>
+          <mat-icon class="material-icons"> favorite_border </mat-icon>
+        </ng-template>
+      </button>
+        <span class="book-card_title-text">{{book.title}}</span>
+      </div>
       <div class="book-card_rating" *ngIf="book.inLibrary">
         <span class="book-card_rating-block"><i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>{{book.likesCount}}</span>
         <span class="book-card_rating-block"><i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>{{book.dislikesCount}}</span>

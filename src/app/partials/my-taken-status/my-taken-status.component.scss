@@ -30,12 +30,12 @@
   &_days-count {
     position: absolute;
     left: 0;
-    font-size: 30px;
-    line-height: 180px;
+    font-size: 20px;
+    line-height: 120px;
     font-weight: 400;
     width: 100%;
     &_small {
-      font-size: 20px;
+      font-size: 14px;
     }
   }
 
@@ -44,7 +44,7 @@
     stroke-width: 1px;
 
     &-bar {
-      stroke-width: 5px;
+      stroke-width: 4px;
     }
   }
 }

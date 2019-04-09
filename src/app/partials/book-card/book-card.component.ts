@@ -16,6 +16,7 @@ export class BookCardComponent implements OnInit {
   public isAvailable: boolean;
   public takenByMe: boolean;
   public currentUser: UserDTO;
+  public isMyFavorite = false;
 
   @Input()
   public book: Book;
@@ -58,6 +59,7 @@ export class BookCardComponent implements OnInit {
   }
 
   public addToWishlist(): void {
+    this.isMyFavorite = !this.isMyFavorite;
     this.booksService.addToWishlist(this.book.id);
   }
 
@@ -81,5 +83,9 @@ export class BookCardComponent implements OnInit {
 
   public getOutOfQueue(): void {
     this.book.usersQueue = this.book.usersQueue.filter(({ user: { id } }) => id !== this.currentUser.id);
+  }
+
+  public get favorteTooltip(): string {
+    return this.isMyFavorite ? 'Убрать из избранного' : 'Добавить в избранное';
   }
 }
