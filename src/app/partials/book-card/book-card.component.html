@@ -48,6 +48,7 @@
     </ng-container>
     <button
       mat-button
+      *ngIf="isExpanded"
       class="book-card_main-info_button"
       color="accent"
       (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
