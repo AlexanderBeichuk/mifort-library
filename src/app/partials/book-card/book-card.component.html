@@ -10,7 +10,7 @@
         <button
         *ngIf="book.inLibrary"
         (click)="addToWishlist()"
-        [matTooltip]="favorteTooltip"
+        [matTooltip]="favoriteTooltip"
         matTooltipPosition="before"
         color="accent"
         class="book-card_favorite-button book-card_icon-button">
@@ -22,8 +22,18 @@
         <span class="book-card_title-text">{{book.title}}</span>
       </div>
       <div class="book-card_rating" *ngIf="book.inLibrary">
-        <span class="book-card_rating-block"><i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>{{book.likesCount}}</span>
-        <span class="book-card_rating-block"><i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>{{book.dislikesCount}}</span>
+        <div class="book-card_rating-block">
+          <button (click)="addRating(commentTypes.like)" class="book-card_icon-button book-card_rating-button" >
+            <i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>
+          </button>
+          <span class="book-card_rating-counts">{{book.likesCount}}</span>
+        </div>
+        <div class="book-card_rating-block">
+          <button (click)="addRating(commentTypes.dislike)" class="book-card_icon-button book-card_rating-button">
+            <i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>
+          </button>
+          <span>{{book.dislikesCount}}</span>
+        </div>
       </div>
     </div>
     <div class="book-card_author mat-h5">

@@ -43,6 +43,7 @@ export class Book {
   public author: string[];
   public description: string;
   public comments: Comment[];
+  public commonRating: Comment[];
   public labels: ResponseItem[];
   public status: BookStatus;
   public likesCount: number;
@@ -82,9 +83,8 @@ export class Book {
     this.isTaken = status === BookStatus.taken;
 
     if (this.inLibrary) {
-      this.likesCount = comments.filter(comment => comment.type === CommentTypes.like).length;
-      this.dislikesCount = comments.filter(comment => comment.type === CommentTypes.dislike).length;
-      this.comments = comments;
+      this.commonRating = comments;
+      this.setRatings();
     }
 
     if (this.isTaken) {
@@ -118,5 +118,16 @@ export class Book {
 
   public addVote(vote: Vote): void {
     this.votes = [...this.votes, vote];
+  }
+
+  public addComment(comment: Comment) {
+    this.commonRating.push(comment);
+    this.setRatings();
+  }
+
+  public setRatings(): void {
+    this.likesCount = this.commonRating.filter(comment => comment.type === CommentTypes.like).length;
+    this.dislikesCount = this.commonRating.filter(comment => comment.type === CommentTypes.dislike).length;
+    this.comments = this.commonRating.filter(({text}) => !!text);
   }
 }

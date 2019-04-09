@@ -90,20 +90,31 @@
     &-like {
       color: $positive-accent;
       top: 3px;
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     &-dislike {
       color: $negative-accent;
       top: 9px;
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     &-block {
       margin-right: 15px;
+      display: inline-block;
     }
 
     &-icon {
       position: relative;
       margin-right: 5px;
+    }
+
+    &-button {
+      vertical-align: baseline;
     }
   }
 

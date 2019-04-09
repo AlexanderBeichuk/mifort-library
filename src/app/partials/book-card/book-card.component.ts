@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book, BookStatus } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
-import { UserDTO } from '../../models/User';
+import { User, UserDTO } from '../../models/User';
 import { AuthorizationService } from '../header/authorization/authorization.service';
+import { CommentTypes } from '../../models/Comment';
+import { Comment } from '../../models/Comment';
 
 @Component({
   selector: 'app-book-card',
@@ -17,6 +19,7 @@ export class BookCardComponent implements OnInit {
   public takenByMe: boolean;
   public currentUser: UserDTO;
   public isMyFavorite = false;
+  public commentTypes = CommentTypes;
 
   @Input()
   public book: Book;
@@ -85,7 +88,24 @@ export class BookCardComponent implements OnInit {
     this.book.usersQueue = this.book.usersQueue.filter(({ user: { id } }) => id !== this.currentUser.id);
   }
 
-  public get favorteTooltip(): string {
+  public get favoriteTooltip(): string {
     return this.isMyFavorite ? 'Убрать из избранного' : 'Добавить в избранное';
+  }
+
+  public addRating(type: CommentTypes): void {
+    this.book.addComment(new Comment(
+      '123',
+      new User(
+        this.currentUser.id,
+        this.currentUser.email,
+        this.currentUser.nickName,
+        this.currentUser.avatar,
+        this.currentUser.role
+      ),
+      '',
+      CommentTypes[type],
+    ));
+
+    this.book.setRatings();
   }
 }
