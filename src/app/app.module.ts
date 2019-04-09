@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'angular-bootstrap-md';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { AuthServiceConfig, SocialLoginModule } from 'angular5-social-login';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { AuthorizationComponent } from './partials/header/authorization/authorization.component';
 import { GET_AUTHORIZATION_SERVICE_CONFIG } from './partials/header/authorization/config';
 import { LoginComponent } from './pages/login/login.component';
@@ -26,20 +26,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatBottomSheetModule,
   MatButtonModule,
-  MatDialog,
-  MatExpansionModule, MatIconModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatIconModule,
   MatMenuModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
 import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
 import { TimePeriodsMenuComponent } from './partials/time-periods-menu/time-periods-menu.component';
 import { VotingBlockComponent } from './partials/voting-block/voting-block.component';
 import { MyTakenStatusComponent } from './partials/my-taken-status/my-taken-status.component';
-import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import {LOCALE_ID} from '@angular/core';
+import { FeedbackDialogComponent } from './partials/feedback-dialog/feedback-dialog.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -62,7 +65,8 @@ registerLocaleData(localeRu, 'ru');
     UsersQueueTimelineComponent,
     TimePeriodsMenuComponent,
     VotingBlockComponent,
-    MyTakenStatusComponent
+    MyTakenStatusComponent,
+    FeedbackDialogComponent
   ],
   imports: [
     CommonModule,
@@ -73,13 +77,18 @@ registerLocaleData(localeRu, 'ru');
     SnotifyModule,
     SocialLoginModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
     MatBottomSheetModule,
     MatMenuModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },
@@ -90,6 +99,6 @@ registerLocaleData(localeRu, 'ru');
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents: [PeriodSheetComponent]
+  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent]
 })
 export class AppModule { }

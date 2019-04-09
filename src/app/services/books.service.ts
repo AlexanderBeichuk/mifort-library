@@ -227,7 +227,7 @@ export class BooksService {
             role: 'user'
           },
           takenFrom: '2019-03-20T08:43:41.043Z',
-          takenTo: '2019-03-30T08:43:41.043Z'
+          takenTo: '2019-04-30T08:43:41.043Z'
         }
       },
       {
@@ -257,7 +257,7 @@ export class BooksService {
             role: 'user'
           },
           takenFrom: '2019-03-20T08:43:41.043Z',
-          takenTo: '2019-04-04T08:43:41.043Z',
+          takenTo: '2019-04-10T08:43:41.043Z',
           usersQueue: [
             {
               user: {
@@ -389,7 +389,7 @@ export class BooksService {
           usersQueue: [
             {
               user: {
-                id: '1t23',
+                id: '123',
                 email: 'irina@mail.com',
                 nickName: 'Marina',
                 role: 'user'
@@ -479,37 +479,7 @@ export class BooksService {
             date: '2019-02-20T08:43:41.043Z'
           }
         ],
-        status: 'taken',
-        statusDetails: {
-          takenBy: {
-            id: '123',
-            email: 'irina@mail.com',
-            nickName: 'Irina',
-            role: 'user'
-          },
-          takenFrom: '2019-03-20T08:43:41.043Z',
-          takenTo: '2019-04-20T08:43:41.043Z',
-          usersQueue: [
-            {
-              user: {
-                id: '123',
-                email: 'irina@mail.com',
-                nickName: 'Marina',
-                role: 'user'
-              },
-              forWeeks: 1
-            },
-            {
-              user: {
-                id: '123',
-                email: 'irina@mail.com',
-                nickName: 'Lena',
-                role: 'user'
-              },
-              forWeeks: 3
-            }
-          ]
-        }
+        status: 'available'
       }
     ]).pipe(
       map(list => this.bookDtoToModel(list))

@@ -1,0 +1,36 @@
+<h1 class="feedback-dialog-header" mat-dialog-title>Как вы оцениваете книгу?</h1>
+<div mat-dialog-content class="feedback-dialog">
+  <mat-horizontal-stepper [linear]="false" #stepper>
+    <mat-step-header active="false"></mat-step-header>
+    <mat-step>
+      <div class="feedback-dialog_rating">
+        <div class="feedback-dialog_rating-button-group">
+          <button mat-fab matStepperNext class="feedback-dialog_rating-like feedback-dialog_rating-button" (click)="setRating(commentTypes.like)">
+            <mat-icon class="material-icons feedback-dialog_rating-icon">thumb_up</mat-icon>
+          </button>
+          <span>Понравилось!</span>
+        </div>
+        <div class="feedback-dialog_rating-button-group">
+          <button mat-fab matStepperNext class="feedback-dialog_rating-dislike feedback-dialog_rating-button"
+                  (click)="setRating(commentTypes.dislike)">
+            <mat-icon class="material-icons feedback-dialog_rating-icon">thumb_down</mat-icon>
+          </button>
+          <span>Не понравилось!</span>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Добавьте комментарий</mat-label>
+          <textarea rows="6" matInput [formControl]="commentText"></textarea>
+        </mat-form-field>
+        <div class="feedback-dialog_comment-footer">
+          <button mat-button matStepperPrevious>Назад</button>
+          <button mat-button color="accent" (click)="onSaveClick()">Сохранить</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+

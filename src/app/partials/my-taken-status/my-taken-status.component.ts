@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UsersQueueItem } from '../../models/Book';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material';
+import { FeedbackDialogComponent } from '../feedback-dialog/feedback-dialog.component';
 
 @Component({
   selector: 'app-my-taken-status',
@@ -39,10 +41,22 @@ export class MyTakenStatusComponent implements OnInit {
     this.usersList = queue.map(({ user: { nickName } }) => nickName).join(', ');
   }
 
-  public daysMessage: { [k: string]: string } = {};
+  constructor(public dialog: MatDialog) {
 
+  }
   public ngOnInit(): void {
 
+  }
+
+  public returnBook(): void {
+    const dialogRef = this.dialog.open(FeedbackDialogComponent, {
+      width: '500px',
+      height: '310px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed: ', result);
+    });
   }
 
   private timeLeftPercent(from: Date, to: Date): number {
