@@ -1,4 +1,4 @@
-<div class="book-card">
+<div class="book-card" [ngClass]="{'book-card-expanded': isExpanded}">
   <div class="book-card_cover">
     <div class="book-card_image-container">
       <img [src]="book.image">
@@ -8,22 +8,22 @@
     <div class="book-card_title mat-h4">
       <div>
         <button
-        *ngIf="book.inLibrary"
-        (click)="addToWishlist()"
-        [matTooltip]="favoriteTooltip"
-        matTooltipPosition="before"
-        color="accent"
-        class="book-card_favorite-button book-card_icon-button">
-        <mat-icon *ngIf="isMyFavorite; else: notInFavorites" class="material-icons"> favorite </mat-icon>
-        <ng-template #notInFavorites>
-          <mat-icon class="material-icons"> favorite_border </mat-icon>
-        </ng-template>
-      </button>
+          *ngIf="book.inLibrary"
+          (click)="addToWishlist()"
+          [matTooltip]="favoriteTooltip"
+          matTooltipPosition="before"
+          color="accent"
+          class="book-card_favorite-button book-card_icon-button">
+          <mat-icon *ngIf="isMyFavorite; else: notInFavorites" class="material-icons"> favorite</mat-icon>
+          <ng-template #notInFavorites>
+            <mat-icon class="material-icons"> favorite_border</mat-icon>
+          </ng-template>
+        </button>
         <span class="book-card_title-text">{{book.title}}</span>
       </div>
       <div class="book-card_rating" *ngIf="book.inLibrary">
         <div class="book-card_rating-block">
-          <button (click)="addRating(commentTypes.like)" class="book-card_icon-button book-card_rating-button" >
+          <button (click)="addRating(commentTypes.like)" class="book-card_icon-button book-card_rating-button">
             <i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>
           </button>
           <span class="book-card_rating-counts">{{book.likesCount}}</span>
@@ -43,15 +43,21 @@
     <div class="book-card_description">{{book.description}}</div>
     <ng-container *ngIf="book.comments?.length">
       <div *ngFor="let comment of book.comments; let i = index">
-        <app-comment *ngIf="showComment(i)" [comment]="comment"></app-comment>
+        <app-comment [comment]="comment"></app-comment>
       </div>
+    </ng-container>
+    <button
+      mat-button
+      class="book-card_main-info_button"
+      color="accent"
+      (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
+    <div class="book-card_main-info-backdrop">
       <button
         mat-button
-        class="book-card_comments-button"
+        class="book-card_main-info_button book-card_main-info-backdrop-button"
         color="accent"
-        *ngIf="hasMoreComments()"
-        (click)="toggleComments()">{{ toggleCommentsButtonText }}</button>
-    </ng-container>
+        (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
+    </div>
   </div>
   <div class="book-card_details">
     <app-voting-block

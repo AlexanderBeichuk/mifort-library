@@ -1,12 +1,26 @@
 @import '../../../assets/scss/colors';
 
 :host.odd-item .book-card {
-  background: #8080801c;
+  background: #f2f2f2;
+  &_main-info-backdrop {
+    background: linear-gradient(to bottom, rgba(242,242,242,0) 0%,rgba(242,242,242,0) 1%,rgba(242,242,242,1) 55%,rgba(242,242,242,1) 100%);
+  }
 }
 
 .book-card {
   display: flex;
   padding: 10px 15px;
+  height: 240px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &-expanded {
+    height: auto;
+
+    .book-card_main-info-backdrop {
+      display: none;
+    }
+  }
 
   &_cover {
     width: 150px;
@@ -49,10 +63,29 @@
 
   &_main-info {
     padding: 10px;
+    position: relative;
+    overflow: hidden;
+
+    &_button {
+      display: block;
+      margin: auto;
+    }
+
+    &-backdrop {
+      position: absolute;
+      bottom: 0;
+      height: 90px;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 100%);
+      &-button {
+        margin-top: 45px;
+      }
+    }
+
   }
 
   &_title {
-    margin-bottom: 0;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     &-text {
@@ -66,7 +99,6 @@
   }
 
   &_description {
-    padding-top: 10px;
     font-weight: 300;
   }
 
@@ -85,7 +117,6 @@
   }
 
   &_rating {
-    height: 50px;
 
     &-like {
       color: $positive-accent;

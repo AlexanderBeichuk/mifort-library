@@ -13,7 +13,7 @@ import { Comment } from '../../models/Comment';
 })
 export class BookCardComponent implements OnInit {
 
-  public showAllComments = false;
+  public isExpanded = false;
   public defaultCommentsToShow = 1;
   public isAvailable: boolean;
   public takenByMe: boolean;
@@ -37,7 +37,7 @@ export class BookCardComponent implements OnInit {
   }
 
   public get toggleCommentsButtonText(): string {
-    return this.showAllComments ? 'Скрыть' : 'Посмотреть все';
+    return this.isExpanded ? 'Скрыть' : 'Посмотреть все';
   }
 
   public hasMoreComments(): boolean {
@@ -45,11 +45,11 @@ export class BookCardComponent implements OnInit {
   }
 
   public showComment(index: number): boolean {
-    return index < this.defaultCommentsToShow || this.showAllComments;
+    return index < this.defaultCommentsToShow || this.isExpanded;
   }
 
-  public toggleComments(): void {
-    this.showAllComments = !this.showAllComments;
+  public toggleCard(): void {
+    this.isExpanded = !this.isExpanded;
   }
 
   public vote(position: boolean): void {
