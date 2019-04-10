@@ -20,6 +20,7 @@ export class BooksTableComponent implements OnInit {
   public allBooks: Book[] = [];
   public updates: Book[] = [];
   public takenByMe: Book[] = [];
+  public myWishlist: Book[] = [];
   public searchText: string;
   public searchFields: string[] = ['title', 'description'];
 
@@ -37,6 +38,11 @@ export class BooksTableComponent implements OnInit {
     this.booksService.getTakenByMe()
       .subscribe(books => {
         this.takenByMe = books;
+      });
+
+    this.booksService.getMyWishlist()
+      .subscribe(books => {
+        this.myWishlist = books;
       });
 
     this.searchService.searchText.subscribe(searchText => {

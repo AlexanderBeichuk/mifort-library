@@ -18,6 +18,15 @@
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
+    <mat-expansion-panel expanded="true" *ngIf="myWishlist.length">
+      <mat-expansion-panel-header>
+        <h3 class="books-list_section-title mat-h3">Избранное</h3>
+      </mat-expansion-panel-header>
+      <app-book-card
+        *ngFor="let book of myWishlist | searchFilter : searchText : searchFields; let odd = odd"
+        [book]="book"
+        [ngClass]="{'odd-item': odd}"></app-book-card>
+    </mat-expansion-panel>
     <mat-expansion-panel expanded="true" *ngIf="allBooks.length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">Все книги</h3>
