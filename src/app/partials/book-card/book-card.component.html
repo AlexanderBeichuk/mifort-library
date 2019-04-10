@@ -41,6 +41,8 @@
       <span>{{ book.publishedDate | date: 'yyyy' }}</span>
     </div>
     <div class="book-card_description">{{book.description}}</div>
+    <div class="book-card_description" *ngIf="book.pages">Страниц: {{book.pages}}</div>
+    <div class="book-card_description" *ngIf="book.isbn">ISBN: {{book.isbn}}</div>
     <ng-container *ngIf="book.comments?.length">
       <div *ngFor="let comment of book.comments; let i = index">
         <app-comment [comment]="comment"></app-comment>

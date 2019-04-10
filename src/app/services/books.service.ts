@@ -21,6 +21,8 @@ export interface BookDetails {
   description: string;
   labels?: ResponseItem[];
   publishedDate: string;
+  pages?: number;
+  isbn?: string;
 }
 
 export interface Vote {
@@ -243,6 +245,8 @@ export class BooksService {
           ],
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
           publishedDate: '2019-03-20T08:43:41.043Z',
+          pages: 896,
+          isbn: '978-5-9909805-1-8',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -297,6 +301,8 @@ export class BooksService {
             'размышлять, поможет создать совершенный код.\n\n' +
             'Книга состоит из 35 глав, предметного указателя и библиографии.',
           publishedDate: '2017-01-01T00:00:00.043Z',
+          pages: 896,
+          isbn: '978-5-9909805-1-8',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -371,6 +377,8 @@ export class BooksService {
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
           publishedDate: '2009-01-01T00:00:00.043Z',
+          pages: 896,
+          isbn: '978-5-9909805-1-8',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -431,6 +439,8 @@ export class BooksService {
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
           publishedDate: '2009-01-01T00:00:00.043Z',
+          pages: 896,
+          isbn: '978-5-9909805-1-8',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },

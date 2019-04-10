@@ -42,6 +42,8 @@ export class Book {
   public image: string;
   public author: string[];
   public description: string;
+  public pages: number;
+  public isbn: string;
   public comments: Comment[];
   public commonRating: Comment[];
   public labels: ResponseItem[];
@@ -75,6 +77,8 @@ export class Book {
     this.author = details.author;
     this.description = details.description;
     this.publishedDate = details.publishedDate;
+    this.pages = details.pages;
+    this.isbn = details.isbn;
     this.createdDate = createdDate;
     this.labels = details.labels;
     this.status = BookStatus[status];
