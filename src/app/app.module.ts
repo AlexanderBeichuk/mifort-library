@@ -44,6 +44,7 @@ import localeRu from '@angular/common/locales/ru';
 import { FeedbackDialogComponent } from './partials/feedback-dialog/feedback-dialog.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { AskForBookDialogComponent } from './partials/ask-for-book-dialog/ask-for-book-dialog.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -68,7 +69,8 @@ registerLocaleData(localeRu, 'ru');
     VotingBlockComponent,
     MyTakenStatusComponent,
     FeedbackDialogComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AskForBookDialogComponent
   ],
   imports: [
     CommonModule,
@@ -101,6 +103,6 @@ registerLocaleData(localeRu, 'ru');
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent]
+  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent, AskForBookDialogComponent]
 })
 export class AppModule { }

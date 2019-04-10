@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
 import { SearchService } from '../../services/search.service';
+import { FeedbackDialogComponent } from '../feedback-dialog/feedback-dialog.component';
+import { AskForBookDialogComponent } from '../ask-for-book-dialog/ask-for-book-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-books-table',
@@ -11,7 +14,7 @@ import { SearchService } from '../../services/search.service';
 
 export class BooksTableComponent implements OnInit {
 
-  constructor(private booksService: BooksService, private searchService: SearchService) {
+  constructor(private booksService: BooksService, private searchService: SearchService, public dialog: MatDialog) {
   }
 
   public allBooks: Book[] = [];
@@ -39,5 +42,13 @@ export class BooksTableComponent implements OnInit {
     this.searchService.searchText.subscribe(searchText => {
       this.searchText = searchText;
     });
+  }
+
+  public askForBook(): void {
+    const dialogRef = this.dialog.open(AskForBookDialogComponent, {
+      width: '500px',
+      height: '310px'
+    });
+
   }
 }
