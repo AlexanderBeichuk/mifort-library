@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-books-table',
@@ -10,12 +11,14 @@ import { BooksService } from '../../services/books.service';
 
 export class BooksTableComponent implements OnInit {
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService, private searchService: SearchService) {
   }
 
   public allBooks: Book[] = [];
   public updates: Book[] = [];
   public takenByMe: Book[] = [];
+  public searchText: string;
+  public searchFields: string[] = ['title', 'description'];
 
   ngOnInit() {
     this.booksService.getUpdatesList()
@@ -32,5 +35,9 @@ export class BooksTableComponent implements OnInit {
       .subscribe(books => {
         this.takenByMe = books;
       });
+
+    this.searchService.searchText.subscribe(searchText => {
+      this.searchText = searchText;
+    });
   }
 }

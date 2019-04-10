@@ -43,6 +43,7 @@ import { MyTakenStatusComponent } from './partials/my-taken-status/my-taken-stat
 import localeRu from '@angular/common/locales/ru';
 import { FeedbackDialogComponent } from './partials/feedback-dialog/feedback-dialog.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -66,7 +67,8 @@ registerLocaleData(localeRu, 'ru');
     TimePeriodsMenuComponent,
     VotingBlockComponent,
     MyTakenStatusComponent,
-    FeedbackDialogComponent
+    FeedbackDialogComponent,
+    SearchFilterPipe
   ],
   imports: [
     CommonModule,

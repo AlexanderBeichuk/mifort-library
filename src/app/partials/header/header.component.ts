@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounce, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public searchText = new FormControl('');
 
-  ngOnInit() {
+  @Output()
+  public onSearchChanges = new EventEmitter<string>();
+
+  constructor(private searchService: SearchService) {
   }
 
+  ngOnInit() {
+    this.searchText
+      .valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(500)
+      )
+      .subscribe(text => {
+          this.searchService.changeSearchText(text);
+        }
+      );
+  }
 }

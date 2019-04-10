@@ -5,7 +5,7 @@
         <h3 class="books-list_section-title mat-h3">Обновления</h3>
       </mat-expansion-panel-header>
       <app-book-card
-        *ngFor="let book of updates; let odd = odd"
+        *ngFor="let book of updates | searchFilter : searchText : searchFields; let odd = odd"
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
@@ -14,7 +14,7 @@
         <h3 class="books-list_section-title mat-h3">У меня</h3>
       </mat-expansion-panel-header>
       <app-book-card
-        *ngFor="let book of takenByMe; let odd = odd"
+        *ngFor="let book of takenByMe | searchFilter : searchText : searchFields; let odd = odd"
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
@@ -23,7 +23,7 @@
         <h3 class="books-list_section-title mat-h3">Все книги</h3>
       </mat-expansion-panel-header>
       <app-book-card
-        *ngFor="let book of allBooks; let odd = odd"
+        *ngFor="let book of allBooks | searchFilter : searchText : searchFields; let odd = odd"
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>

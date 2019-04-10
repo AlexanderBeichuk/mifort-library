@@ -283,7 +283,8 @@ export class BooksService {
         createdDate: '2019-03-20T08:43:41.043Z',
         details: {
           title: 'Совершенный код. Мастер-класс',
-          image: 'https://s4-goods.ozstatic.by/2000/206/15/1/1015206_0.jpg',
+          image: 'https://img.yakaboo.ua/media/catalog/product/cache/1/image/398x565/234c7c011ba026e66d29567e1be1d1f7' +
+            '/3/2/324757_25692061.jpg',
           author: [
             'Стив МакКоннелл'
           ],
