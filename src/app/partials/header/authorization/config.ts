@@ -3,7 +3,7 @@ import {
   GoogleLoginProvider,
 } from 'angular5-social-login';
 
-const GOOGLE_CLIENT_ID = '361433919177-bebadf2oaq6l18n04ap2cn0imkqt1m78.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '746088326666-blhd9m4ktcv8tspvcsags05bicme6q1c.apps.googleusercontent.com';
 
 export function GET_AUTHORIZATION_SERVICE_CONFIG(): AuthServiceConfig {
  return new AuthServiceConfig([{

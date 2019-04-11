@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {AuthService, GoogleLoginProvider} from 'angular5-social-login';
 import {SocialUser} from 'angular5-social-login/entities/user';
 import {StorageService} from '../../../services/storage.service';
-import { UserDTO } from '../../../models/User';
-import { Observable, of } from 'rxjs';
+import { User } from '../../../models/User';
+import { BehaviorSubject } from 'rxjs';
 
 const BEARER_TOKEN = 'bearerToken';
 
@@ -12,6 +12,8 @@ const BEARER_TOKEN = 'bearerToken';
 })
 
 export class AuthorizationService {
+
+  public currentUser: BehaviorSubject<User> = new BehaviorSubject(new User());
 
   constructor(private socialAuthService: AuthService,
               private storageService: StorageService) { }
@@ -28,12 +30,7 @@ export class AuthorizationService {
     return this.storageService.getLocalStorageItem(BEARER_TOKEN);
   }
 
-  public getCurrentUser(): Observable<UserDTO> {
-    return of({
-      id: '987654',
-      email: 'irina@mail.com',
-      nickName: 'Irina',
-      role: 'user'
-    });
+  public updateUser(user: User): void {
+    this.currentUser.next(user);
   }
 }

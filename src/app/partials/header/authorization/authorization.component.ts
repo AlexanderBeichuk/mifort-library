@@ -23,6 +23,7 @@ export class AuthorizationComponent implements OnInit {
     this.authorizationService.googleSignIn()
       .then((socialUser: SocialUser) => {
         const user = new User(socialUser.id, socialUser.email, socialUser.name, socialUser.image, UserRole.admin);
+        this.authorizationService.updateUser(user);
         console.log(user);
       })
       .catch(error => this.notificationService.show(new Notification(NotificationStatus.Error, error.message)));

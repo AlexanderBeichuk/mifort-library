@@ -34,7 +34,7 @@ export class BookCardComponent implements OnInit {
   ngOnInit() {
     this.isAvailable = this.book.status === BookStatus.available;
 
-    this.authorisationService.getCurrentUser().subscribe(user => {
+    this.authorisationService.currentUser.subscribe(user => {
       this.currentUser = user;
       this.takenByMe = this.book.isTaken && this.book.takenBy.id === user.id;
     });
