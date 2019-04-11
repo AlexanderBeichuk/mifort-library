@@ -22,7 +22,7 @@ export class BooksTableComponent implements OnInit {
   public takenByMe: Book[] = [];
   public myWishlist: Book[] = [];
   public searchText: string;
-  public searchFields: string[] = ['title', 'description'];
+  public searchFields: string[] = ['title', 'description', 'author', 'publishedDate'];
 
   ngOnInit() {
     this.booksService.getUpdatesList()

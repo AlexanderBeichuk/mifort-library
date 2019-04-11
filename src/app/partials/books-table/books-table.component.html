@@ -1,6 +1,6 @@
 <div class="books-list">
   <mat-accordion displayMode="flat" multi="true">
-    <mat-expansion-panel expanded="true" *ngIf="updates.length">
+    <mat-expansion-panel expanded="true" *ngIf="(updates | searchFilter : searchText : searchFields).length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">Обновления</h3>
       </mat-expansion-panel-header>
@@ -9,7 +9,7 @@
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
-    <mat-expansion-panel expanded="true" *ngIf="takenByMe.length">
+    <mat-expansion-panel expanded="true" *ngIf="(takenByMe | searchFilter : searchText : searchFields).length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">У меня</h3>
       </mat-expansion-panel-header>
@@ -18,7 +18,7 @@
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
-    <mat-expansion-panel expanded="true" *ngIf="myWishlist.length">
+    <mat-expansion-panel expanded="true" *ngIf="(myWishlist | searchFilter : searchText : searchFields).length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">Избранное</h3>
       </mat-expansion-panel-header>
@@ -27,7 +27,7 @@
         [book]="book"
         [ngClass]="{'odd-item': odd}"></app-book-card>
     </mat-expansion-panel>
-    <mat-expansion-panel expanded="true" *ngIf="allBooks.length">
+    <mat-expansion-panel expanded="true" *ngIf="(allBooks | searchFilter : searchText : searchFields).length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">Все книги</h3>
       </mat-expansion-panel-header>
