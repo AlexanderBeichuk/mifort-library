@@ -1,94 +1,99 @@
-<div class="book-card" [ngClass]="{'book-card-expanded': isExpanded}">
-  <div class="book-card_cover">
-    <div class="book-card_image-container">
-      <img [src]="book.image">
-    </div>
-  </div>
-  <div class="book-card_main-info">
-    <div class="book-card_title mat-h4">
-      <div>
-        <button
-          *ngIf="book.inLibrary"
-          (click)="addToWishlist()"
-          [matTooltip]="favoriteTooltip"
-          matTooltipPosition="before"
-          color="accent"
-          class="book-card_favorite-button book-card_icon-button">
-          <mat-icon *ngIf="isMyFavorite; else: notInFavorites" class="material-icons"> favorite</mat-icon>
-          <ng-template #notInFavorites>
-            <mat-icon class="material-icons"> favorite_border</mat-icon>
-          </ng-template>
-        </button>
-        <span class="book-card_title-text">{{book.title}}</span>
+<div class="book-card-wrapper">
+  <div class="book-card" [ngClass]="{'book-card-expanded': isExpanded}">
+    <div class="book-card_cover">
+      <div class="book-card_image-container">
+        <img [src]="book.image">
       </div>
-      <div class="book-card_rating" *ngIf="book.inLibrary">
-        <div class="book-card_rating-block">
-          <button (click)="addRating(commentTypes.like)" class="book-card_icon-button book-card_rating-button">
-            <i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>
+    </div>
+    <div class="book-card_main-info">
+      <div class="book-card_title mat-h4">
+        <div>
+          <button
+            *ngIf="book.inLibrary"
+            (click)="addToWishlist()"
+            [matTooltip]="favoriteTooltip"
+            matTooltipPosition="before"
+            color="accent"
+            class="book-card_favorite-button book-card_icon-button">
+            <mat-icon *ngIf="isMyFavorite; else: notInFavorites" class="material-icons"> favorite</mat-icon>
+            <ng-template #notInFavorites>
+              <mat-icon class="material-icons"> favorite_border</mat-icon>
+            </ng-template>
           </button>
-          <span class="book-card_rating-counts">{{book.likesCount}}</span>
+          <span class="book-card_title-text">{{book.title}}</span>
         </div>
-        <div class="book-card_rating-block">
-          <button (click)="addRating(commentTypes.dislike)" class="book-card_icon-button book-card_rating-button">
-            <i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>
-          </button>
-          <span>{{book.dislikesCount}}</span>
+        <div class="book-card_rating" *ngIf="book.inLibrary">
+          <div class="book-card_rating-block">
+            <button (click)="addRating(commentTypes.like)" class="book-card_icon-button book-card_rating-button">
+              <i class="material-icons book-card_rating-like book-card_rating-icon">thumb_up</i>
+            </button>
+            <span class="book-card_rating-counts">{{book.likesCount}}</span>
+          </div>
+          <div class="book-card_rating-block">
+            <button (click)="addRating(commentTypes.dislike)" class="book-card_icon-button book-card_rating-button">
+              <i class="material-icons book-card_rating-dislike book-card_rating-icon">thumb_down</i>
+            </button>
+            <span>{{book.dislikesCount}}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="book-card_author mat-h5">
-      <span *ngFor="let author of book.author; last as isLast">{{author}}, </span>
-      <span>{{ book.publishedDate | date: 'yyyy' }}</span>
-    </div>
-    <div class="book-card_description">{{book.description}}</div>
-    <div class="book-card_description" *ngIf="book.pages">Страниц: {{book.pages}}</div>
-    <div class="book-card_description" *ngIf="book.isbn">ISBN: {{book.isbn}}</div>
-    <ng-container *ngIf="book.comments?.length">
-      <div *ngFor="let comment of book.comments; let i = index">
-        <app-comment [comment]="comment"></app-comment>
+      <div class="book-card_author mat-h5">
+        <span>{{book.author}}</span>
+        <span>{{ book.publishedDate }}</span>
       </div>
-    </ng-container>
-    <button
-      mat-button
-      *ngIf="isExpanded"
-      class="book-card_main-info_button"
-      color="accent"
-      (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
-    <div class="book-card_main-info-backdrop">
+      <div class="book-card_description">{{book.description}}</div>
+      <div class="book-card_description" *ngIf="book.pages">Страниц: {{book.pages}}</div>
+      <div class="book-card_description" *ngIf="book.isbn">ISBN: {{book.isbn}}</div>
+      <ng-container *ngIf="book.comments?.length">
+        <div *ngFor="let comment of book.comments; let i = index">
+          <app-comment [comment]="comment"></app-comment>
+        </div>
+      </ng-container>
       <button
-        mat-button
-        class="book-card_main-info_button book-card_main-info-backdrop-button"
+        mat-flat-button
+        *ngIf="isExpanded"
+        class="book-card_main-info_button"
         color="accent"
         (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
+      <div class="book-card_main-info-backdrop">
+        <button
+          mat-flat-button
+          class="book-card_main-info_button book-card_main-info-backdrop-button"
+          color="accent"
+          (click)="toggleCard()">{{ toggleCommentsButtonText }}</button>
+      </div>
+    </div>
+    <div class="book-card_details">
+      <app-voting-block
+        *ngIf="book.isUnderVoting"
+        [votes]="book.votes"
+        (onVote)="vote($event)"
+        [currentUser]="currentUser"></app-voting-block>
+      <div *ngIf="book.inLibrary">
+        <ng-container *ngIf="isAvailable">
+          <button [matMenuTriggerFor]="periodMenu" mat-flat-button color="accent" class="book-card_details-button">
+            Взять книгу<i class="material-icons"> arrow_drop_down </i>
+          </button>
+          <mat-menu #periodMenu="matMenu">
+            <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
+          </mat-menu>
+        </ng-container>
+        <app-users-queue-timeline
+          *ngIf="book.isTaken && !takenByMe"
+          (onGetInQueue)="getInQueue($event)"
+          (onGetOutOfQueue)="getOutOfQueue()"
+          [usersQueue]="book.usersQueue"
+          [currentUser]="currentUser"
+          [takenTill]="book.takenTo"
+          [takenBy]="book.takenBy"></app-users-queue-timeline>
+        <app-my-taken-status
+          *ngIf="takenByMe"
+          [usersQueue]="book.usersQueue"
+          [timeRange]="{from: book.takenFrom, to: book.takenTo}"></app-my-taken-status>
+      </div>
     </div>
   </div>
-  <div class="book-card_details">
-    <app-voting-block
-      *ngIf="book.isUnderVoting"
-      [votes]="book.votes"
-      (onVote)="vote($event)"
-      [currentUser]="currentUser"></app-voting-block>
-    <div *ngIf="book.inLibrary">
-      <ng-container *ngIf="isAvailable">
-        <button [matMenuTriggerFor]="menu" mat-button color="accent">
-          Взять книгу<i class="material-icons"> arrow_drop_down </i>
-        </button>
-        <mat-menu #menu="matMenu">
-          <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
-        </mat-menu>
-      </ng-container>
-      <app-users-queue-timeline
-        *ngIf="book.isTaken && !takenByMe"
-        (onGetInQueue)="getInQueue($event)"
-        (onGetOutOfQueue)="getOutOfQueue()"
-        [usersQueue]="book.usersQueue"
-        [currentUser]="currentUser"
-        [takenTill]="book.takenTo"
-        [takenBy]="book.takenBy"></app-users-queue-timeline>
-      <app-my-taken-status
-        *ngIf="takenByMe"
-        [usersQueue]="book.usersQueue"
-        [timeRange]="{from: book.takenFrom, to: book.takenTo}"></app-my-taken-status>
-    </div>
-  </div>
+  <button (click)="navigateToBook()" mat-icon-button color="primary" class="book-card_action-button">
+    <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+  </button>
 </div>

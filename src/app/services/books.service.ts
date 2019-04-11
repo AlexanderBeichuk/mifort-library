@@ -17,7 +17,7 @@ export interface BookDTO {
 export interface BookDetails {
   title: string;
   image: string;
-  author: string[];
+  author: string;
   description: string;
   labels?: ResponseItem[];
   publishedDate: string;
@@ -50,12 +50,9 @@ export class BooksService {
         details: {
           title: '1BLA',
           image: 'http://www.angelique-world.ru/cover13.gif',
-          author: [
-            'HENA',
-            'Author'
-          ],
+          author: 'HENA, Author',
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
-          publishedDate: '2019-03-20T08:43:41.043Z',
+          publishedDate: '2019',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -114,12 +111,9 @@ export class BooksService {
         details: {
           title: '1BLA',
           image: 'http://www.angelique-world.ru/cover13.gif',
-          author: [
-            'HENA',
-            'Author'
-          ],
+          author: 'HENA, Author',
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
-          publishedDate: '2019-03-20T08:43:41.043Z',
+          publishedDate: '2019',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -137,7 +131,7 @@ export class BooksService {
         }
       }
     ]).pipe(
-      map(list => this.bookDtoToModel(list))
+      map(list => this.bookListDtoToModel(list))
     );
   }
 
@@ -150,12 +144,9 @@ export class BooksService {
         details: {
           title: '1BLA',
           image: 'http://www.angelique-world.ru/cover13.gif',
-          author: [
-            'HENA',
-            'Author'
-          ],
+          author: 'HENA, Author',
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
-          publishedDate: '2019-03-20T08:43:41.043Z',
+          publishedDate: '2019',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -209,12 +200,9 @@ export class BooksService {
         details: {
           title: '1BLA',
           image: 'http://www.angelique-world.ru/cover13.gif',
-          author: [
-            'HENA',
-            'Author'
-          ],
+          author: 'HENA, Author',
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
-          publishedDate: '2019-03-20T08:43:41.043Z',
+          publishedDate: '2019',
           labels: [
             { id: '1', name: 'JS' },
             { id: '3', name: 'TS' },
@@ -239,12 +227,9 @@ export class BooksService {
         details: {
           title: '1BLA',
           image: 'http://www.angelique-world.ru/cover13.gif',
-          author: [
-            'HENA',
-            'Author'
-          ],
+          author: 'HENA, Author',
           description: 'Кни́га — один из видов печатной продукции: непериодическое издание, состоящее из сброшюрованных или отдельных',
-          publishedDate: '2019-03-20T08:43:41.043Z',
+          publishedDate: '2019',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -276,7 +261,7 @@ export class BooksService {
         }
       }
     ]).pipe(
-      map(list => this.bookDtoToModel(list))
+      map(list => this.bookListDtoToModel(list))
     );
   }
 
@@ -289,9 +274,7 @@ export class BooksService {
           title: 'Совершенный код. Мастер-класс',
           image: 'https://img.yakaboo.ua/media/catalog/product/cache/1/image/398x565/234c7c011ba026e66d29567e1be1d1f7' +
             '/3/2/324757_25692061.jpg',
-          author: [
-            'Стив МакКоннелл'
-          ],
+          author: 'Стив МакКоннелл',
           description: 'Более 10 лет первое издание этой книги считалось одним из лучших практических руководств по программированию. ' +
             'Сейчас эта книга полностью обновлена с учетом современных тенденций и технологий и дополнена сотнями новых примеров, ' +
             'иллюстрирующих искусство и науку программирования. Опираясь на академические исследования, с одной стороны, и практический ' +
@@ -300,7 +283,7 @@ export class BooksService {
             'работали, какова бы ни была сложность вашего проекта, в этой книге вы найдете нужную информацию, она заставит вас ' +
             'размышлять, поможет создать совершенный код.\n\n' +
             'Книга состоит из 35 глав, предметного указателя и библиографии.',
-          publishedDate: '2017-01-01T00:00:00.043Z',
+          publishedDate: '2017',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -370,13 +353,13 @@ export class BooksService {
         details: {
           title: 'Программист-прагматик. Путь от подмастерья к мастеру',
           image: 'https://ozon-st.cdn.ngenix.net/multimedia/1000543072.jpg',
-          author: ['Эндрю Хант', 'Дэвид Томас'],
+          author: 'Эндрю Хант, Дэвид Томас',
           description: 'Находясь на переднем крае программирования, книга "Программист-прагматик" абстрагируется от всевозрастающей ' +
             'специализации и технических тонкостей разработки программ на современном уровне, чтобы исследовать суть процесса - ' +
             'требования к работоспособной и поддерживаемой программе, приводящей пользователей в восторг. Книга охватывает различные ' +
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
-          publishedDate: '2009-01-01T00:00:00.043Z',
+          publishedDate: '2009',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -432,13 +415,13 @@ export class BooksService {
         details: {
           title: 'Программист-прагматик. Путь от подмастерья к мастеру',
           image: 'https://ozon-st.cdn.ngenix.net/multimedia/1000543072.jpg',
-          author: ['Эндрю Хант', 'Дэвид Томас'],
+          author: 'Эндрю Хант, Дэвид Томас',
           description: 'Находясь на переднем крае программирования, книга "Программист-прагматик" абстрагируется от всевозрастающей ' +
             'специализации и технических тонкостей разработки программ на современном уровне, чтобы исследовать суть процесса - ' +
             'требования к работоспособной и поддерживаемой программе, приводящей пользователей в восторг. Книга охватывает различные ' +
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
-          publishedDate: '2009-01-01T00:00:00.043Z',
+          publishedDate: '2009',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -493,7 +476,7 @@ export class BooksService {
         status: 'available'
       }
     ]).pipe(
-      map(list => this.bookDtoToModel(list))
+      map(list => this.bookListDtoToModel(list))
     );
   }
 
@@ -506,9 +489,7 @@ export class BooksService {
           title: 'Совершенный код. Мастер-класс',
           image: 'https://img.yakaboo.ua/media/catalog/product/cache/1/image/398x565/234c7c011ba026e66d29567e1be1d1f7' +
             '/3/2/324757_25692061.jpg',
-          author: [
-            'Стив МакКоннелл'
-          ],
+          author: 'Стив МакКоннелл',
           description: 'Более 10 лет первое издание этой книги считалось одним из лучших практических руководств по программированию. ' +
             'Сейчас эта книга полностью обновлена с учетом современных тенденций и технологий и дополнена сотнями новых примеров, ' +
             'иллюстрирующих искусство и науку программирования. Опираясь на академические исследования, с одной стороны, и практический ' +
@@ -517,7 +498,7 @@ export class BooksService {
             'работали, какова бы ни была сложность вашего проекта, в этой книге вы найдете нужную информацию, она заставит вас ' +
             'размышлять, поможет создать совершенный код.\n\n' +
             'Книга состоит из 35 глав, предметного указателя и библиографии.',
-          publishedDate: '2017-01-01T00:00:00.043Z',
+          publishedDate: '2017',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -587,13 +568,13 @@ export class BooksService {
         details: {
           title: 'Программист-прагматик. Путь от подмастерья к мастеру',
           image: 'https://ozon-st.cdn.ngenix.net/multimedia/1000543072.jpg',
-          author: ['Эндрю Хант', 'Дэвид Томас'],
+          author: 'Эндрю Хант, Дэвид Томас',
           description: 'Находясь на переднем крае программирования, книга "Программист-прагматик" абстрагируется от всевозрастающей ' +
             'специализации и технических тонкостей разработки программ на современном уровне, чтобы исследовать суть процесса - ' +
             'требования к работоспособной и поддерживаемой программе, приводящей пользователей в восторг. Книга охватывает различные ' +
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
-          publishedDate: '2009-01-01T00:00:00.043Z',
+          publishedDate: '2009',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -649,13 +630,13 @@ export class BooksService {
         details: {
           title: 'Программист-прагматик. Путь от подмастерья к мастеру',
           image: 'https://ozon-st.cdn.ngenix.net/multimedia/1000543072.jpg',
-          author: ['Эндрю Хант', 'Дэвид Томас'],
+          author: 'Эндрю Хант, Дэвид Томас',
           description: 'Находясь на переднем крае программирования, книга "Программист-прагматик" абстрагируется от всевозрастающей ' +
             'специализации и технических тонкостей разработки программ на современном уровне, чтобы исследовать суть процесса - ' +
             'требования к работоспособной и поддерживаемой программе, приводящей пользователей в восторг. Книга охватывает различные ' +
             'темы - от личной ответственности и карьерного роста до архитектурных методик, придающих программам гибкость и простоту ' +
             'в адаптации и повторном использовании.',
-          publishedDate: '2009-01-01T00:00:00.043Z',
+          publishedDate: '2009',
           pages: 896,
           isbn: '978-5-9909805-1-8',
           labels: [
@@ -710,7 +691,99 @@ export class BooksService {
         status: 'available'
       }
     ]).pipe(
-      map(list => this.bookDtoToModel(list))
+      map(list => this.bookListDtoToModel(list))
+    );
+  }
+
+  public getBook(id: string): Observable<Book> {
+    return of({
+      id: '1',
+      createdDate: '2019-03-20T08:43:41.043Z',
+      details: {
+        title: 'Совершенный код. Мастер-класс',
+        image: 'https://img.yakaboo.ua/media/catalog/product/cache/1/image/398x565/234c7c011ba026e66d29567e1be1d1f7' +
+          '/3/2/324757_25692061.jpg',
+        author: 'Стив МакКоннелл',
+        description: 'Более 10 лет первое издание этой книги считалось одним из лучших практических руководств по программированию. ' +
+          'Сейчас эта книга полностью обновлена с учетом современных тенденций и технологий и дополнена сотнями новых примеров, ' +
+          'иллюстрирующих искусство и науку программирования. Опираясь на академические исследования, с одной стороны, и практический ' +
+          'опыт коммерческих разработок ПО с другой, автор синтезировал из самых эффективных методик и наиболее эффективных принципов ' +
+          'ясное прагматичное руководство. Каков бы ни был ваш профессиональный уровень, с какими бы средствами разработками вы ни ' +
+          'работали, какова бы ни была сложность вашего проекта, в этой книге вы найдете нужную информацию, она заставит вас ' +
+          'размышлять, поможет создать совершенный код.\n\n' +
+          'Книга состоит из 35 глав, предметного указателя и библиографии.',
+        publishedDate: '2017',
+        pages: 896,
+        isbn: '978-5-9909805-1-8',
+        labels: [
+          { id: '1', name: 'JS' },
+          { id: '3', name: 'TS' },
+        ],
+      },
+      comments: [
+        {
+          id: '12',
+          user: {
+            id: '987654',
+            email: 'irina@mail.com',
+            nickName: 'Irina',
+            role: 'user'
+          },
+          text: 'Отличная книга. Со временем приходишь к тому же, но лучшебы в университете был такой курс лекций ещё на первом-втором ' +
+            'курсе. Чтобы действительно студенты учились програмировать, а не просто изучали языки.\n' +
+            '\n' +
+            'Довольно грамотное и подробное содержание, которое в других книгах проскальзывает в скользь. Просто совет всем изучить ' +
+            'данную книгу.',
+          type: 'like',
+          date: '2019-02-20T08:43:41.043Z'
+        },
+        {
+          id: '12',
+          user: {
+            id: '123',
+            email: 'irina@mail.com',
+            nickName: 'Ilya',
+            role: 'user'
+          },
+          text: 'Книга - так себе. Может быть это находка для начинающих, но все что в ней написано лично мне из опыта давно было ' +
+            'известно, как впрочем и любому программисту с опытом коммерческой разработки. Много философии. Приятной впрочем. Написана ' +
+            'книга в одном стиле, довольно качественно. Но имхо - лучше купить пару книжек по конкретным технологиям которые ' +
+            'интересуют Вас, как специалиста, и изучить их. Пользы будет больше',
+          type: 'dislike',
+          date: '2019-02-20T08:43:41.043Z'
+        }
+      ],
+      status: 'taken',
+      statusDetails: {
+        takenBy: {
+          id: '46456',
+          email: 'irina@mail.com',
+          nickName: 'Irina',
+          role: 'user'
+        },
+        takenFrom: '2019-03-20T08:43:41.043Z',
+        takenTo: '2019-04-24T08:43:41.043Z',
+        usersQueue: [
+          {
+            user: {
+              id: '123',
+              email: 'irina@mail.com',
+              nickName: 'Lena',
+              role: 'user'
+            },
+            forWeeks: 6
+          }
+        ]
+      }
+    }).pipe(
+      map(bookDto => new Book(
+        bookDto.id,
+        bookDto.details,
+        bookDto.status,
+        bookDto.createdDate,
+        this.commentsDtoToModel(bookDto.comments),
+        bookDto.statusDetails,
+      ))
     );
   }
 
@@ -730,15 +803,17 @@ export class BooksService {
     console.log(`Take book: ${bookId} till ${timeTo}`);
   }
 
-  private bookDtoToModel(booksDTOs: BookDTO[]): Book[] {
-    return booksDTOs.map(dto => new Book(
-      dto.id,
-      dto.details,
-      dto.status,
-      dto.createdDate,
-      this.commentsDtoToModel(dto.comments),
-      dto.statusDetails,
-    ));
+  private bookListDtoToModel(booksDTOs: BookDTO[]): Book[] {
+    return booksDTOs.map(bookDto => {
+      return new Book(
+        bookDto.id,
+        bookDto.details,
+        bookDto.status,
+        bookDto.createdDate,
+        this.commentsDtoToModel(bookDto.comments),
+        bookDto.statusDetails,
+      );
+    });
   }
 
   private commentsDtoToModel(commentsDTO: CommentDTO[]): Comment[] {

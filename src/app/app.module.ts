@@ -45,6 +45,9 @@ import { FeedbackDialogComponent } from './partials/feedback-dialog/feedback-dia
 import { MatStepperModule } from '@angular/material/stepper';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { AskForBookDialogComponent } from './partials/ask-for-book-dialog/ask-for-book-dialog.component';
+import { MatListModule } from '@angular/material/list';
+import { BookPageComponent } from './pages/book-page/book-page.component';
+import { ImageUploaderComponent } from './partials/image-uploader/image-uploader.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -70,7 +73,9 @@ registerLocaleData(localeRu, 'ru');
     MyTakenStatusComponent,
     FeedbackDialogComponent,
     SearchFilterPipe,
-    AskForBookDialogComponent
+    AskForBookDialogComponent,
+    BookPageComponent,
+    ImageUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -92,7 +97,8 @@ registerLocaleData(localeRu, 'ru');
     MatDialogModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },

@@ -1,0 +1,40 @@
+<div [formGroup]="bookForm" class="book-form">
+  <app-image-uploader
+    (updateAttachment)="handleUpdateAttachment($event)"
+    [maxSize]="2"
+    [isValid]="coverImage"
+    [attachment]="originalImage"
+    previewText="Перетащите файл или кликните для загрузки"
+  ></app-image-uploader>
+  <div class="book-form_input-group">
+    <mat-form-field class="book-form_input" appearance="fill">
+      <mat-label>Название</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="book-form_input" appearance="fill">
+      <mat-label>Автор</mat-label>
+      <input matInput formControlName="author">
+    </mat-form-field>
+    <mat-form-field class="book-form_input" appearance="fill" >
+      <mat-label>Год публикации</mat-label>
+      <input matInput formControlName="published">
+    </mat-form-field>
+    <mat-form-field class="book-form_input" appearance="fill">
+      <mat-label>Описание</mat-label>
+      <textarea matInput rows="10" formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="book-form_input" appearance="fill">
+      <mat-label>Количество страниц</mat-label>
+      <input matInput type="number" formControlName="pages">
+    </mat-form-field>
+    <mat-form-field class="book-form_input" appearance="fill">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="book-form_footer">
+  <button mat-flat-button (click)="cancel()">Отмена</button>
+  <button mat-flat-button color="accent" (click)="save()">Сохранить</button>
+</div>

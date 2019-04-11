@@ -1,0 +1,45 @@
+.book-cover-uploader {
+  &.avatar-case {
+    height: 113px;
+  }
+}
+
+.drop-image {
+  &-container {
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 200px;
+    background-color: #f3f9ff;
+    cursor: pointer;
+    overflow: hidden;
+
+    &--invalid {
+      background-color: #fed6d8;
+      color: #fb333e;
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-placeholder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 173px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.file-uploader {
+  display: none;
+}

@@ -1,0 +1,24 @@
+.book-form {
+  display: flex;
+  margin: 20px 0;
+
+  &_input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+
+  &_input {
+    width: 100%;
+  }
+
+  &_footer {
+    justify-content: flex-end;
+    display: flex;
+
+    button {
+      margin-left: 15px;
+    }
+  }
+}

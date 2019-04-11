@@ -1,0 +1,13 @@
+<div
+  #dropImageContainer
+  class="drop-image-container"
+  [class.drop-image-container--invalid]="!isValid && showInvalid"
+  (click)="fileRef.click()"
+>
+  <img [src]="attachment" *ngIf="attachment; else previewBlockRef" alt="" />
+</div>
+
+<ng-template #previewBlockRef>
+  <span class="drop-image-placeholder">{{ previewText }}</span>
+</ng-template>
+<input type="file" name="file-uploader" #fileRef class="file-uploader" [accept]="acceptTypes" />

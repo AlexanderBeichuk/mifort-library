@@ -5,6 +5,8 @@ import { User, UserDTO } from '../../models/User';
 import { AuthorizationService } from '../header/authorization/authorization.service';
 import { CommentTypes } from '../../models/Comment';
 import { Comment } from '../../models/Comment';
+import { Router } from '@angular/router';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-book-card',
@@ -14,7 +16,6 @@ import { Comment } from '../../models/Comment';
 export class BookCardComponent implements OnInit {
 
   public isExpanded = false;
-  public defaultCommentsToShow = 1;
   public isAvailable: boolean;
   public takenByMe: boolean;
   public currentUser: UserDTO;
@@ -24,7 +25,10 @@ export class BookCardComponent implements OnInit {
   @Input()
   public book: Book;
 
-  constructor(private booksService: BooksService, private authorisationService: AuthorizationService) {
+  constructor(
+    private booksService: BooksService,
+    private authorisationService: AuthorizationService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -38,14 +42,6 @@ export class BookCardComponent implements OnInit {
 
   public get toggleCommentsButtonText(): string {
     return this.isExpanded ? 'Скрыть' : 'Посмотреть все';
-  }
-
-  public hasMoreComments(): boolean {
-    return this.book.comments.length > this.defaultCommentsToShow;
-  }
-
-  public showComment(index: number): boolean {
-    return index < this.defaultCommentsToShow || this.isExpanded;
   }
 
   public toggleCard(): void {
@@ -64,10 +60,6 @@ export class BookCardComponent implements OnInit {
   public addToWishlist(): void {
     this.isMyFavorite = !this.isMyFavorite;
     this.booksService.addToWishlist(this.book.id);
-  }
-
-  public removeFromWishlist(): void {
-    this.booksService.removeFromWishlist(this.book.id);
   }
 
   public takeBook(takeTo: string): void {
@@ -107,5 +99,9 @@ export class BookCardComponent implements OnInit {
     ));
 
     this.book.setRatings();
+  }
+
+  public navigateToBook(): void {
+    this.router.navigate(['book', this.book.id]);
   }
 }

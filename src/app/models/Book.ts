@@ -8,7 +8,7 @@ import { Moment } from 'moment';
 const EMPTY_BOOK_DETAILS = {
   title: '',
   image: '',
-  author: [],
+  author: '',
   description: '',
   labels: [],
   publishedDate: '',
@@ -40,7 +40,7 @@ export class Book {
   public readonly id: string;
   public title: string;
   public image: string;
-  public author: string[];
+  public author: string;
   public description: string;
   public pages: number;
   public isbn: string;
@@ -58,7 +58,7 @@ export class Book {
   public isTaken: boolean;
   public takenFrom: Date;
   public takenTo: Date;
-  private _publishedDate: Date;
+  public publishedDate: string;
   private _createdDate: Date;
 
   private dateHelper: DateHelper = new DateHelper();
@@ -102,14 +102,6 @@ export class Book {
     if (this.isUnderVoting) {
       this.votes = statusDetails.votes;
     }
-  }
-
-  public get publishedDate(): Date | string {
-    return this._publishedDate;
-  }
-
-  public set publishedDate(date: Date | string) {
-    this._publishedDate = this.dateHelper.convertStringToDate(date);
   }
 
   public get createdDate(): Date | string {
