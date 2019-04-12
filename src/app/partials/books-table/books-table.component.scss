@@ -1,19 +1,26 @@
 .books-list {
+  &_search {
+    margin: 15px 25px 0;
+    text-align: right;
+    display: block;
+  }
+
   &_section-title {
     font-size: 20px;
     padding: 20px 10px 10px;
     margin: 0;
     overflow: hidden;
     width: 100%;
+
     &:after {
-      content:"";
+      content: "";
       display: inline-block;
       height: 0.6em;
       vertical-align: bottom;
       width: 100%;
       margin-right: -100%;
       margin-left: 15px;
-      border-top: 1px solid rgba(0,0,0,.38);
+      border-top: 1px solid rgba(0, 0, 0, .38);
     }
   }
 
@@ -22,12 +29,15 @@
     bottom: 20px;
     right: 20px;
   }
+
   .mat-expansion-panel-header {
     flex-direction: row-reverse;
+
     &.mat-expanded ::ng-deep .mat-expansion-indicator::after {
       margin-bottom: 15px;
     }
   }
+
   .mat-expansion-panel:not([class*=mat-elevation-z]) {
     box-shadow: none;
   }

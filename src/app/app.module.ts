@@ -48,6 +48,7 @@ import { AskForBookDialogComponent } from './partials/ask-for-book-dialog/ask-fo
 import { MatListModule } from '@angular/material/list';
 import { BookPageComponent } from './pages/book-page/book-page.component';
 import { ImageUploaderComponent } from './partials/image-uploader/image-uploader.component';
+import { BookSearchComponent } from './partials/book-search/book-search.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -75,7 +76,8 @@ registerLocaleData(localeRu, 'ru');
     SearchFilterPipe,
     AskForBookDialogComponent,
     BookPageComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    BookSearchComponent
   ],
   imports: [
     CommonModule,

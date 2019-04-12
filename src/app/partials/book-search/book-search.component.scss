@@ -1,0 +1,28 @@
+::ng-deep {
+  .mat-form-field-underline {
+    bottom: 0;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-form-field-flex {
+    align-items: flex-end;
+    padding-top: 0;
+  }
+
+  .mat-form-field-suffix {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mat-form-field-infix {
+    padding: 5px 0 10px 10px;
+    border: none;
+  }
+
+  .mat-form-field-flex {
+    background: #f2f2f2;
+  }
+}
