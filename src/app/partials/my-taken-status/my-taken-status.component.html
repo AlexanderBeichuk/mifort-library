@@ -1,16 +1,16 @@
 <div class="my-taken-status">
-  <div class="my-taken-status_return-label" *ngIf="!outOfDays">Осталось</div>
+  <div class="my-taken-status_return-label" *ngIf="!overdue">Осталось</div>
   <div class="my-taken-status_left-time" [ngClass]="{
       'warning': daysLeft === 1,
       'danger': daysLeft < 1
     }">
-    <ng-container *ngIf="!outOfDays; else: outOfDate">
+    <ng-container *ngIf="!overdue; else: overdueText">
       <div class="my-taken-status_days-count" >
         <span *ngIf="daysLeft > 1">{{daysLeft}} </span>
         <span>{daysLeft, plural, =0 {сегодня} =1 {завтра} one {день} few {дня} many {дней}}</span>
       </div>
     </ng-container>
-    <ng-template #outOfDate><div class="my-taken-status_days-count my-taken-status_days-count_small">Просрочено</div></ng-template>
+    <ng-template #overdueText><div class="my-taken-status_days-count my-taken-status_days-count_small">Просрочено</div></ng-template>
 
     <svg class="my-taken-status_svg" width="120" height="120" viewPort="0 0 100 100" version="1.1"
          xmlns="http://www.w3.org/2000/svg">

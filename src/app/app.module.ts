@@ -33,7 +33,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule, MatCheckboxModule
 } from '@angular/material';
 import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
 import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
@@ -43,7 +43,7 @@ import { MyTakenStatusComponent } from './partials/my-taken-status/my-taken-stat
 import localeRu from '@angular/common/locales/ru';
 import { FeedbackDialogComponent } from './partials/feedback-dialog/feedback-dialog.component';
 import { MatStepperModule } from '@angular/material/stepper';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { BooksFilterPipe } from './pipes/search-filter.pipe';
 import { AskForBookDialogComponent } from './partials/ask-for-book-dialog/ask-for-book-dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { BookPageComponent } from './pages/book-page/book-page.component';
@@ -73,7 +73,7 @@ registerLocaleData(localeRu, 'ru');
     VotingBlockComponent,
     MyTakenStatusComponent,
     FeedbackDialogComponent,
-    SearchFilterPipe,
+    BooksFilterPipe,
     AskForBookDialogComponent,
     BookPageComponent,
     ImageUploaderComponent,
@@ -100,7 +100,8 @@ registerLocaleData(localeRu, 'ru');
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },

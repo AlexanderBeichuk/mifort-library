@@ -13,20 +13,21 @@ export class MyTakenStatusComponent implements OnInit {
 
   public usersCount = 0;
   public usersList = '';
-  public daysLeft: number;
   public timeLeftOffset: number;
   public takenFrom: Date;
   public takenTo: Date;
-  public outOfDays: boolean;
   public circleRadius = 50;
   public circuit = Math.PI * (this.circleRadius * 2);
   private maxPercent = 100;
 
+  @Input()
+  public daysLeft: number;
+
+  @Input()
+  public overdue: boolean;
 
   @Input()
   public set timeRange({ from, to }: { from: Date, to: Date }) {
-    this.daysLeft = this.calculateLeftDays(to);
-    this.outOfDays = this.daysLeft < 0;
     this.timeLeftOffset = this.calculateTimeLeftOffset(this.timeLeftPercent(from, to));
     this.takenFrom = from;
     this.takenTo = to;
@@ -46,6 +47,7 @@ export class MyTakenStatusComponent implements OnInit {
   }
   public ngOnInit(): void {
 
+    console.log(this);
   }
 
   public returnBook(): void {
@@ -60,7 +62,7 @@ export class MyTakenStatusComponent implements OnInit {
   }
 
   private timeLeftPercent(from: Date, to: Date): number {
-    if (this.outOfDays) {
+    if (this.overdue) {
       return 0;
     }
     const startDate = moment(from).endOf('day');
@@ -73,10 +75,5 @@ export class MyTakenStatusComponent implements OnInit {
     return (leftPercent / this.maxPercent) * this.circuit;
   }
 
-  private calculateLeftDays(to: Date): number {
-    const now = moment().endOf('day');
-    const endDate = moment(to).endOf('day');
-    return endDate.diff(now, 'days');
-  }
 }
 

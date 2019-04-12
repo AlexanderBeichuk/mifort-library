@@ -89,6 +89,8 @@
         <app-my-taken-status
           *ngIf="takenByMe"
           [usersQueue]="book.usersQueue"
+          [daysLeft]="book.daysLeft"
+          [overdue]="book.isOverdue"
           [timeRange]="{from: book.takenFrom, to: book.takenTo}"></app-my-taken-status>
       </div>
     </div>

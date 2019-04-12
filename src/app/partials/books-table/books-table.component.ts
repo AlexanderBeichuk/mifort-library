@@ -5,24 +5,43 @@ import { SearchService } from '../../services/search.service';
 import { FeedbackDialogComponent } from '../feedback-dialog/feedback-dialog.component';
 import { AskForBookDialogComponent } from '../ask-for-book-dialog/ask-for-book-dialog.component';
 import { MatDialog } from '@angular/material';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+export interface BookFilter {
+  overdue: boolean;
+  ending: boolean;
+  popular: boolean;
+  searchText: string;
+}
 
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
   styleUrls: ['./books-table.component.scss']
 })
-
 export class BooksTableComponent implements OnInit {
-
-  constructor(private booksService: BooksService, private searchService: SearchService, public dialog: MatDialog) {
-  }
 
   public allBooks: Book[] = [];
   public updates: Book[] = [];
   public takenByMe: Book[] = [];
   public myWishlist: Book[] = [];
-  public searchText: string;
   public searchFields: string[] = ['title', 'description', 'author', 'publishedDate'];
+  public filterForm: FormGroup;
+  public isAdmin = true;
+  public filter: BookFilter = {
+    overdue: false,
+    ending: false,
+    popular: false,
+    searchText: '',
+  };
+
+  constructor(
+    private booksService: BooksService,
+    private searchService: SearchService,
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder
+  ) {
+  }
 
   ngOnInit() {
     this.booksService.getUpdatesList()
@@ -46,8 +65,12 @@ export class BooksTableComponent implements OnInit {
       });
 
     this.searchService.searchText.subscribe(searchText => {
-      this.searchText = searchText;
+      if (this.filterForm) {
+        this.filterForm.patchValue({ searchText });
+      }
     });
+
+    this.initFilterForm();
   }
 
   public askForBook(): void {
@@ -55,6 +78,19 @@ export class BooksTableComponent implements OnInit {
       width: '500px',
       height: '310px'
     });
+  }
 
+  private initFilterForm(): void {
+    this.filterForm = this.formBuilder.group({
+      overdue: this.formBuilder.control(false),
+      ending: this.formBuilder.control(false),
+      popular: this.formBuilder.control(false),
+      searchText: this.formBuilder.control('')
+    });
+
+    this.filterForm.valueChanges
+      .subscribe(value => {
+        this.filter = value;
+      });
   }
 }

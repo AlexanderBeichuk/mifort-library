@@ -4,6 +4,7 @@ import { CommentTypes, Comment } from './Comment';
 import { UserDTO, User } from './User';
 import { BookDetails, StatusDetailsDTO, Vote } from '../services/books.service';
 import { Moment } from 'moment';
+import * as moment from 'moment';
 
 const EMPTY_BOOK_DETAILS = {
   title: '',
@@ -59,6 +60,8 @@ export class Book {
   public takenFrom: Date;
   public takenTo: Date;
   public publishedDate: string;
+  public daysLeft: number;
+  public isOverdue: boolean;
   private _createdDate: Date;
 
   private dateHelper: DateHelper = new DateHelper();
@@ -97,6 +100,8 @@ export class Book {
       this.takenBy = new User(id, email, nickName, avatar, role);
       this.takenFrom = new Date(statusDetails.takenFrom);
       this.takenTo = new Date(statusDetails.takenTo);
+      this.daysLeft = this.calculateLeftDays();
+      this.isOverdue = this.daysLeft < 0;
     }
 
     if (this.isUnderVoting) {
@@ -125,5 +130,11 @@ export class Book {
     this.likesCount = this.commonRating.filter(comment => comment.type === CommentTypes.like).length;
     this.dislikesCount = this.commonRating.filter(comment => comment.type === CommentTypes.dislike).length;
     this.comments = this.commonRating.filter(({text}) => !!text);
+  }
+
+  private calculateLeftDays(): number {
+    const now = moment().endOf('day');
+    const endDate = moment(this.takenTo).endOf('day');
+    return endDate.diff(now, 'days');
   }
 }

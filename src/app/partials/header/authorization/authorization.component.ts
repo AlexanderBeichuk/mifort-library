@@ -22,7 +22,7 @@ export class AuthorizationComponent implements OnInit {
   public googleSignIn(): void {
     this.authorizationService.googleSignIn()
       .then((socialUser: SocialUser) => {
-        const user = new User(socialUser.id, socialUser.email, socialUser.name, socialUser.image, UserRole.admin);
+        const user = new User('currentUserId', socialUser.email, socialUser.name, socialUser.image, UserRole.admin);
         this.authorizationService.updateUser(user);
         console.log(user);
       })
