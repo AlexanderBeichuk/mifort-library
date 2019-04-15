@@ -2,12 +2,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { BookFilter } from '../partials/books-table/books-table.component';
 import { Book } from '../models/Book';
 import { BOOK_ENDING_PERIOD, POPULAR_QUEUE_LENGTH } from '../app.config';
+import uniqBy from 'lodash/uniqBy';
 
 @Pipe({
   name: 'booksFilter'
 })
 export class BooksFilterPipe implements PipeTransform {
-  private filteredItems: Book[];
+  private items: Book[];
   private filters: BookFilter;
   private fields: string[];
 
@@ -16,49 +17,61 @@ export class BooksFilterPipe implements PipeTransform {
       return [];
     }
 
-    this.filteredItems = items;
+    this.items = items;
     this.filters = filters;
     this.fields = fields;
+    const searchResult = this.searchByText();
 
-    this.filterByText();
-    this.filterEnding();
-    this.filterOverdue();
-    this.filterPopular();
+    if (!filters.overdue && !filters.ending && !filters.popular) {
+      return searchResult;
+    }
 
-    return this.filteredItems;
+    const filterResults = [
+      ...this.filterEnding(searchResult),
+      ...this.filterOverdue(searchResult),
+      ...this.filterPopular(searchResult),
+    ];
+
+    return uniqBy(filterResults, 'id');
   }
 
   private itemHasText(item: any, searchText: string, fields: string[]): boolean {
     return fields.some(fieldName => item[fieldName].toLowerCase().includes(searchText));
   }
 
-  private filterByText(): void {
+  private searchByText(): Book[] {
     if (!this.filters.searchText) {
-      return;
+      return this.items;
     }
 
     const text = this.filters.searchText.toLowerCase();
 
-    this.filteredItems = this.filteredItems.filter(item => {
+    return this.items.filter(item => {
       return this.itemHasText(item, text, this.fields);
     });
   }
 
-  private filterEnding(): void {
-    if (this.filters.ending) {
-      this.filteredItems =  this.filteredItems.filter(({daysLeft, isOverdue}) => !isOverdue && daysLeft <= BOOK_ENDING_PERIOD);
+  private filterEnding(items: Book[]): Book[] {
+    if (!this.filters.ending) {
+      return [];
     }
+
+    return items.filter(({ daysLeft, isOverdue }) => !isOverdue && daysLeft <= BOOK_ENDING_PERIOD);
   }
 
-  private filterOverdue(): void {
-    if (this.filters.overdue) {
-      this.filteredItems =  this.filteredItems.filter(({isOverdue}) => isOverdue);
+  private filterOverdue(items: Book[]): Book[] {
+    if (!this.filters.overdue) {
+      return [];
     }
+
+    return items.filter(({ isOverdue }) => isOverdue);
   }
 
-  private filterPopular(): void {
-    if (this.filters.popular) {
-      this.filteredItems =  this.filteredItems.filter(({usersQueue}) => usersQueue && usersQueue.length >= POPULAR_QUEUE_LENGTH);
+  private filterPopular(items: Book[]): Book[] {
+    if (!this.filters.popular) {
+      return [];
     }
+
+    return items.filter(({ usersQueue }) => usersQueue && usersQueue.length >= POPULAR_QUEUE_LENGTH);
   }
 }

@@ -203,6 +203,7 @@ export const USER_CURRENT = {
 
 export const BOOK_TAKEN_BY_ME = {
   ...BOOK_PROG_INFO,
+  id: '1',
   status: 'taken',
   statusDetails: {
     takenBy: USER_CURRENT,
@@ -223,6 +224,7 @@ export const BOOK_TAKEN_BY_ME = {
 
 export const BOOK_MY_ENDING = {
   ...BOOK_PROG_INFO,
+  id: '2',
   status: 'taken',
   statusDetails: {
     takenBy: USER_CURRENT,
@@ -243,6 +245,7 @@ export const BOOK_MY_ENDING = {
 
 export const BOOK_MY_OVERDUE = {
   ...BOOK_PROG_INFO,
+  id: '3',
   status: 'taken',
   statusDetails: {
     takenBy: USER_CURRENT,
@@ -263,6 +266,7 @@ export const BOOK_MY_OVERDUE = {
 
 export const BOOK_TAKEN = {
   ...BOOK_PROG_INFO,
+  id: '4',
   status: 'taken',
   statusDetails: {
     takenBy: USER_VITALY,
@@ -283,6 +287,7 @@ export const BOOK_TAKEN = {
 
 export const BOOK_ENDING = {
   ...BOOK_PROG_INFO,
+  id: '5',
   status: 'taken',
   statusDetails: {
     takenBy: USER_NIKITA,
@@ -303,6 +308,7 @@ export const BOOK_ENDING = {
 
 export const BOOK_OVERDUE = {
   ...BOOK_PROG_INFO,
+  id: '6',
   status: 'taken',
   statusDetails: {
     takenBy: USER_LERA,
@@ -323,6 +329,7 @@ export const BOOK_OVERDUE = {
 
 export const BOOK_ME_IN_QUEUE = {
   ...BOOK_PROG_INFO,
+  id: '7',
   status: 'taken',
   statusDetails: {
     takenBy: USER_LENA,
@@ -351,6 +358,7 @@ export const BOOK_ME_IN_QUEUE = {
 
 export const BOOK_POPULAR = {
   ...BOOK_SOV_INFO,
+  id: '8',
   status: 'taken',
   statusDetails: {
     takenBy: USER_LENA,

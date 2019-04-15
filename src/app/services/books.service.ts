@@ -139,10 +139,12 @@ export class BooksService {
       BOOK_OVERDUE,
       {
         ...BOOK_ANG_INFO,
+        id: '9',
         status: 'available'
       },
       {
         ...BOOK_PROG_INFO,
+        id: '10',
         status: 'available'
       },
       BOOK_POPULAR,
