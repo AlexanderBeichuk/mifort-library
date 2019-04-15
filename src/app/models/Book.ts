@@ -1,10 +1,11 @@
 import { DateHelper } from './DateHelper';
 import { ResponseItem } from './Item';
-import { CommentTypes, Comment } from './Comment';
-import { UserDTO, User } from './User';
+import { Comment, CommentTypes } from './Comment';
+import { User, UserDTO } from './User';
 import { BookDetails, StatusDetailsDTO, Vote } from '../services/books.service';
-import { Moment } from 'moment';
 import * as moment from 'moment';
+import { Moment } from 'moment';
+import { BOOK_ENDING_PERIOD } from '../app.config';
 
 const EMPTY_BOOK_DETAILS = {
   title: '',
@@ -62,6 +63,7 @@ export class Book {
   public publishedDate: string;
   public daysLeft: number;
   public isOverdue: boolean;
+  public isEnding: boolean;
   private _createdDate: Date;
 
   private dateHelper: DateHelper = new DateHelper();
@@ -102,6 +104,7 @@ export class Book {
       this.takenTo = new Date(statusDetails.takenTo);
       this.daysLeft = this.calculateLeftDays();
       this.isOverdue = this.daysLeft < 0;
+      this.isEnding = !this.isOverdue && this.daysLeft <= BOOK_ENDING_PERIOD;
     }
 
     if (this.isUnderVoting) {

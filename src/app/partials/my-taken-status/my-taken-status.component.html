@@ -1,8 +1,8 @@
 <div class="my-taken-status">
   <div class="my-taken-status_return-label" *ngIf="!overdue">Осталось</div>
   <div class="my-taken-status_left-time" [ngClass]="{
-      'warning': daysLeft === 1,
-      'danger': daysLeft < 1
+      'warning': isEnding,
+      'danger': overdue
     }">
     <ng-container *ngIf="!overdue; else: overdueText">
       <div class="my-taken-status_days-count" >

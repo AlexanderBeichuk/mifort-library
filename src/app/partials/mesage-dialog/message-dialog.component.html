@@ -1,0 +1,10 @@
+<h1 class="message_header" mat-dialog-title>Сообщение для пользователя {{user.nickName}}</h1>
+<div mat-dialog-content class="message_content">
+  <mat-form-field appearance="fill">
+    <textarea rows="6" matInput [formControl]="message" placeholder="Добавьте текст сообщения..."></textarea>
+  </mat-form-field>
+</div>
+<div class="message_footer">
+  <button mat-flat-button (click)="cancel()">Отмена</button>
+  <button mat-flat-button color="accent" (click)="onSaveClick()">Отправить</button>
+</div>

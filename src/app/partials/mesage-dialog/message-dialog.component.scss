@@ -1,0 +1,16 @@
+.message {
+  &_content {
+    ::ng-deep {
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+  &_header {
+    text-align: center;
+  }
+  &_footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

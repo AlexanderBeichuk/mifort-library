@@ -78,19 +78,27 @@
             <app-time-periods-menu (onChoosePeriod)="takeBook($event)"></app-time-periods-menu>
           </mat-menu>
         </ng-container>
+        <ng-container *ngIf="book.isTaken && !takenByMe">
         <app-users-queue-timeline
-          *ngIf="book.isTaken && !takenByMe"
           (onGetInQueue)="getInQueue($event)"
           (onGetOutOfQueue)="getOutOfQueue()"
           [usersQueue]="book.usersQueue"
           [currentUser]="currentUser"
           [takenTill]="book.takenTo"
           [takenBy]="book.takenBy"></app-users-queue-timeline>
+          <button
+            *ngIf="isAdmin && (book.isOverdue || book.isEnding)"
+            mat-flat-button
+            class="book-card_main-info_button"
+            color="accent"
+            (click)="openCommentDialog()">Написать</button>
+        </ng-container>
         <app-my-taken-status
           *ngIf="takenByMe"
           [usersQueue]="book.usersQueue"
           [daysLeft]="book.daysLeft"
           [overdue]="book.isOverdue"
+          [isEnding]="book.isEnding"
           [timeRange]="{from: book.takenFrom, to: book.takenTo}"></app-my-taken-status>
       </div>
     </div>

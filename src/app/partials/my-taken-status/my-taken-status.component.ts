@@ -27,6 +27,9 @@ export class MyTakenStatusComponent implements OnInit {
   public overdue: boolean;
 
   @Input()
+  public isEnding: boolean;
+
+  @Input()
   public set timeRange({ from, to }: { from: Date, to: Date }) {
     this.timeLeftOffset = this.calculateTimeLeftOffset(this.timeLeftPercent(from, to));
     this.takenFrom = from;
@@ -46,8 +49,6 @@ export class MyTakenStatusComponent implements OnInit {
 
   }
   public ngOnInit(): void {
-
-    console.log(this);
   }
 
   public returnBook(): void {

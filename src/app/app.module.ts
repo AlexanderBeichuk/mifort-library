@@ -26,14 +26,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatBottomSheetModule,
   MatButtonModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatExpansionModule,
+  MatFormFieldModule,
   MatIconModule,
+  MatInputModule,
   MatMenuModule,
   MatToolbarModule,
-  MatTooltipModule,
-  MatFormFieldModule,
-  MatInputModule, MatCheckboxModule
+  MatTooltipModule
 } from '@angular/material';
 import { PeriodSheetComponent } from './partials/book-card/components/period-sheet';
 import { UsersQueueTimelineComponent } from './partials/users-queue-timeline/users-queue-timeline.component';
@@ -49,6 +50,7 @@ import { MatListModule } from '@angular/material/list';
 import { BookPageComponent } from './pages/book-page/book-page.component';
 import { ImageUploaderComponent } from './partials/image-uploader/image-uploader.component';
 import { BookSearchComponent } from './partials/book-search/book-search.component';
+import { MessageDialogComponent } from './partials/mesage-dialog/message-dialog.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -77,7 +79,8 @@ registerLocaleData(localeRu, 'ru');
     AskForBookDialogComponent,
     BookPageComponent,
     ImageUploaderComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    MessageDialogComponent
   ],
   imports: [
     CommonModule,
@@ -112,6 +115,6 @@ registerLocaleData(localeRu, 'ru');
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent, AskForBookDialogComponent]
+  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent, AskForBookDialogComponent, MessageDialogComponent]
 })
 export class AppModule { }

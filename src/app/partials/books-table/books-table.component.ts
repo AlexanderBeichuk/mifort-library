@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
 import { SearchService } from '../../services/search.service';
-import { FeedbackDialogComponent } from '../feedback-dialog/feedback-dialog.component';
 import { AskForBookDialogComponent } from '../ask-for-book-dialog/ask-for-book-dialog.component';
 import { MatDialog } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthorizationService } from '../header/authorization/authorization.service';
 
 export interface BookFilter {
   overdue: boolean;
@@ -27,7 +27,7 @@ export class BooksTableComponent implements OnInit {
   public myWishlist: Book[] = [];
   public searchFields: string[] = ['title', 'description', 'author', 'publishedDate'];
   public filterForm: FormGroup;
-  public isAdmin = true;
+  public isAdmin: Boolean;
   public filter: BookFilter = {
     overdue: false,
     ending: false,
@@ -37,6 +37,7 @@ export class BooksTableComponent implements OnInit {
 
   constructor(
     private booksService: BooksService,
+    private authService: AuthorizationService,
     private searchService: SearchService,
     public dialog: MatDialog,
     private formBuilder: FormBuilder
@@ -68,6 +69,10 @@ export class BooksTableComponent implements OnInit {
       if (this.filterForm) {
         this.filterForm.patchValue({ searchText });
       }
+    });
+
+    this.authService.isAdmin.subscribe((isAdmin: boolean) => {
+      this.isAdmin = isAdmin;
     });
 
     this.initFilterForm();

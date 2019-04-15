@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book, BookStatus } from '../../models/Book';
 import { BooksService } from '../../services/books.service';
-import { User, UserDTO } from '../../models/User';
+import { User, UserDTO, UserRole } from '../../models/User';
 import { AuthorizationService } from '../header/authorization/authorization.service';
-import { CommentTypes } from '../../models/Comment';
-import { Comment } from '../../models/Comment';
+import { Comment, CommentTypes } from '../../models/Comment';
 import { Router } from '@angular/router';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { MessageDialogComponent } from '../mesage-dialog/message-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-book-card',
@@ -21,6 +21,7 @@ export class BookCardComponent implements OnInit {
   public currentUser: UserDTO;
   public isMyFavorite = false;
   public commentTypes = CommentTypes;
+  public isAdmin = true;
 
   @Input()
   public book: Book;
@@ -28,7 +29,9 @@ export class BookCardComponent implements OnInit {
   constructor(
     private booksService: BooksService,
     private authorisationService: AuthorizationService,
-    private router: Router) {
+    private router: Router,
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class BookCardComponent implements OnInit {
 
     this.authorisationService.currentUser.subscribe(user => {
       this.currentUser = user;
+      this.isAdmin = user.role === UserRole.admin;
       this.takenByMe = this.book.isTaken && this.book.takenBy.id === user.id;
     });
   }
@@ -103,5 +107,13 @@ export class BookCardComponent implements OnInit {
 
   public navigateToBook(): void {
     this.router.navigate(['book', this.book.id]);
+  }
+
+  public openCommentDialog() {
+    this.dialog.open(MessageDialogComponent, {
+      width: '500px',
+      height: '310px',
+      data: {user: this.book.takenBy}
+    });
   }
 }
