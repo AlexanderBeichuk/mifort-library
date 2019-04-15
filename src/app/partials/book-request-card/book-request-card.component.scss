@@ -1,0 +1,34 @@
+:host {
+  &.odd-item .book-card {
+    background: #f2f2f2;
+  }
+}
+
+.book-request {
+  display: flex;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  &_info {
+    flex-grow: 1;
+    &-meta {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &_description {
+    margin-top: 20px;
+  }
+
+  &_action {
+    padding: 10px 0 10px;
+    width: 220px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    &-button {
+      display: block;
+      margin: 10px auto;
+    }
+  }
+}

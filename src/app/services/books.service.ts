@@ -3,18 +3,22 @@ import { Book, UsersQueueItem } from '../models/Book';
 import { map } from 'rxjs/operators';
 import { ResponseItem } from '../models/Item';
 import { Comment, CommentDTO } from '../models/Comment';
-import { UserDTO, User } from '../models/User';
+import { User, UserDTO } from '../models/User';
 import {
   BOOK_ANG_INFO,
-  BOOK_ENDING, BOOK_ME_IN_QUEUE,
+  BOOK_ENDING,
+  BOOK_ME_IN_QUEUE,
   BOOK_MY_ENDING,
   BOOK_MY_OVERDUE,
-  BOOK_OVERDUE, BOOK_POPULAR,
+  BOOK_OVERDUE,
+  BOOK_POPULAR,
   BOOK_PROG_INFO,
   BOOK_SOV_INFO,
   BOOK_TAKEN,
-  BOOK_TAKEN_BY_ME
+  BOOK_TAKEN_BY_ME,
+  USER_VITALY
 } from './books.mock';
+import { BookRequest } from '../typing/book.request';
 
 export interface BookDTO {
   id: string;
@@ -250,6 +254,17 @@ export class BooksService {
         bookDto.statusDetails,
       ))
     );
+  }
+
+  public getBookRequests(): Observable<BookRequest[]> {
+    return of([
+      {
+        id: '1',
+        description: 'https://oz.by/books/more1015206.html',
+        creationDate: '2019-03-20T08:43:41.043Z',
+        user: USER_VITALY
+      }
+    ]);
   }
 
   public vote(bookId: string, position: boolean): void {

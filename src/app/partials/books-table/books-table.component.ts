@@ -6,6 +6,7 @@ import { AskForBookDialogComponent } from '../ask-for-book-dialog/ask-for-book-d
 import { MatDialog } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthorizationService } from '../header/authorization/authorization.service';
+import { BookRequest } from '../../typing/book.request';
 
 export interface BookFilter {
   overdue: boolean;
@@ -25,6 +26,7 @@ export class BooksTableComponent implements OnInit {
   public updates: Book[] = [];
   public takenByMe: Book[] = [];
   public myWishlist: Book[] = [];
+  public requests: BookRequest[] = [];
   public searchFields: string[] = ['title', 'description', 'author', 'publishedDate'];
   public filterForm: FormGroup;
   public isAdmin: Boolean;
@@ -63,6 +65,11 @@ export class BooksTableComponent implements OnInit {
     this.booksService.getMyWishlist()
       .subscribe(books => {
         this.myWishlist = books;
+      });
+
+    this.booksService.getBookRequests()
+      .subscribe(books => {
+        this.requests = books;
       });
 
     this.searchService.searchText.subscribe(searchText => {

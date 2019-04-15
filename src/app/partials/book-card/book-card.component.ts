@@ -7,6 +7,7 @@ import { Comment, CommentTypes } from '../../models/Comment';
 import { Router } from '@angular/router';
 import { MessageDialogComponent } from '../mesage-dialog/message-dialog.component';
 import { MatDialog } from '@angular/material';
+import { CreateBookDialogComponent } from '../create-book-dialog/create-book-dialog.component';
 
 @Component({
   selector: 'app-book-card',
@@ -105,8 +106,12 @@ export class BookCardComponent implements OnInit {
     this.book.setRatings();
   }
 
-  public navigateToBook(): void {
-    this.router.navigate(['book', this.book.id]);
+  public initEditBook(): void {
+    this.dialog.open(CreateBookDialogComponent, {
+      width: '900px',
+      height: '700px',
+      data: {book: this.book}
+    });
   }
 
   public openCommentDialog() {

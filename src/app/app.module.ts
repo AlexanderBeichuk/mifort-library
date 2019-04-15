@@ -47,10 +47,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { BooksFilterPipe } from './pipes/search-filter.pipe';
 import { AskForBookDialogComponent } from './partials/ask-for-book-dialog/ask-for-book-dialog.component';
 import { MatListModule } from '@angular/material/list';
-import { BookPageComponent } from './pages/book-page/book-page.component';
 import { ImageUploaderComponent } from './partials/image-uploader/image-uploader.component';
 import { BookSearchComponent } from './partials/book-search/book-search.component';
 import { MessageDialogComponent } from './partials/mesage-dialog/message-dialog.component';
+import { BookRequestCardComponent } from './partials/book-request-card/book-request-card.component';
+import { BookFormComponent } from './partials/book-form/book-form.component';
+import { CreateBookDialogComponent } from './partials/create-book-dialog/create-book-dialog.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -77,10 +79,12 @@ registerLocaleData(localeRu, 'ru');
     FeedbackDialogComponent,
     BooksFilterPipe,
     AskForBookDialogComponent,
-    BookPageComponent,
+    BookFormComponent,
     ImageUploaderComponent,
     BookSearchComponent,
-    MessageDialogComponent
+    MessageDialogComponent,
+    BookRequestCardComponent,
+    CreateBookDialogComponent
   ],
   imports: [
     CommonModule,
@@ -115,6 +119,12 @@ registerLocaleData(localeRu, 'ru');
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent],
-  entryComponents: [PeriodSheetComponent, FeedbackDialogComponent, AskForBookDialogComponent, MessageDialogComponent]
+  entryComponents: [
+    PeriodSheetComponent,
+    FeedbackDialogComponent,
+    AskForBookDialogComponent,
+    MessageDialogComponent,
+    CreateBookDialogComponent,
+  ]
 })
 export class AppModule { }
