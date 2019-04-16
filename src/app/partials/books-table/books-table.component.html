@@ -8,7 +8,7 @@
 </div>
 <div class="books-list">
   <mat-accordion displayMode="flat" multi="true">
-    <mat-expansion-panel expanded="true" *ngIf="(requests | booksFilter : filterForm.value : searchFields).length">
+    <mat-expansion-panel expanded="true" *ngIf="isAdmin && (requests | booksFilter : filterForm.value : searchFields).length">
       <mat-expansion-panel-header>
         <h3 class="books-list_section-title mat-h3">Заявки на книги</h3>
       </mat-expansion-panel-header>

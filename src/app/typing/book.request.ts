@@ -5,4 +5,5 @@ export interface BookRequest {
   creationDate: string;
   description: string;
   user: UserDTO;
+  url: string;
 }

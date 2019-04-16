@@ -24,7 +24,6 @@ import { BooksService } from './services/books.service';
 import { CommentComponent } from './partials/comment/comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatBottomSheetModule,
   MatButtonModule,
   MatCheckboxModule,
   MatDialogModule,
@@ -33,6 +32,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatMenuModule,
+  MatNativeDateModule,
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
@@ -52,7 +52,11 @@ import { BookSearchComponent } from './partials/book-search/book-search.componen
 import { MessageDialogComponent } from './partials/mesage-dialog/message-dialog.component';
 import { BookRequestCardComponent } from './partials/book-request-card/book-request-card.component';
 import { BookFormComponent } from './partials/book-form/book-form.component';
-import { CreateBookDialogComponent } from './partials/create-book-dialog/create-book-dialog.component';
+import { EditBookDialogComponent } from './partials/edit-book-dialog/edit-book-dialog.component';
+import { ProcessRequestDialogComponent } from './partials/process-request-dialog/process-request-dialog.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 registerLocaleData(localeRu, 'ru');
 
@@ -84,7 +88,8 @@ registerLocaleData(localeRu, 'ru');
     BookSearchComponent,
     MessageDialogComponent,
     BookRequestCardComponent,
-    CreateBookDialogComponent
+    EditBookDialogComponent,
+    ProcessRequestDialogComponent
   ],
   imports: [
     CommonModule,
@@ -99,7 +104,6 @@ registerLocaleData(localeRu, 'ru');
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatBottomSheetModule,
     MatMenuModule,
     MatTooltipModule,
     MatIconModule,
@@ -108,7 +112,10 @@ registerLocaleData(localeRu, 'ru');
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: AuthServiceConfig, useFactory: GET_AUTHORIZATION_SERVICE_CONFIG },
@@ -124,7 +131,9 @@ registerLocaleData(localeRu, 'ru');
     FeedbackDialogComponent,
     AskForBookDialogComponent,
     MessageDialogComponent,
-    CreateBookDialogComponent,
+    EditBookDialogComponent,
+    ProcessRequestDialogComponent,
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

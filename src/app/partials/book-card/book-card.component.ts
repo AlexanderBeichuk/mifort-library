@@ -7,7 +7,7 @@ import { Comment, CommentTypes } from '../../models/Comment';
 import { Router } from '@angular/router';
 import { MessageDialogComponent } from '../mesage-dialog/message-dialog.component';
 import { MatDialog } from '@angular/material';
-import { CreateBookDialogComponent } from '../create-book-dialog/create-book-dialog.component';
+import { EditBookDialogComponent } from '../edit-book-dialog/edit-book-dialog.component';
 
 @Component({
   selector: 'app-book-card',
@@ -107,9 +107,11 @@ export class BookCardComponent implements OnInit {
   }
 
   public initEditBook(): void {
-    this.dialog.open(CreateBookDialogComponent, {
-      width: '900px',
-      height: '700px',
+    this.dialog.open(EditBookDialogComponent, {
+      width: '700px',
+      position: {
+        top: '100px'
+      },
       data: {book: this.book}
     });
   }

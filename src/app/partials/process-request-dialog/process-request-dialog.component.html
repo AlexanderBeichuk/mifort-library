@@ -1,0 +1,72 @@
+<div mat-dialog-content class="process-request-dialog">
+  <mat-horizontal-stepper [linear]="false" #stepper>
+    <mat-step-header active="false"></mat-step-header>
+    <mat-step>
+      <ng-template matStepLabel>Заполните данные по книге</ng-template>
+      <app-book-form (onDataChange)="updateBook()"></app-book-form>
+      <div class="process-request-dialog_footer">
+        <button color="accent" mat-flat-button matStepperNext>Дальше</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Выберите статус</ng-template>
+      <div [formGroup]="statusForm" class="process-request-dialog_form">
+        <mat-radio-group formControlName="statusType" aria-label="Select an option">
+          <div class="process-request-dialog_input-group">
+            <mat-radio-button class="process-request-dialog_radio-button" checked="true"
+                              [value]="statusTypes.available">
+              Добавить в библиотеку
+            </mat-radio-button>
+          </div>
+          <div class="process-request-dialog_input-group">
+            <mat-radio-button class="process-request-dialog_radio-button" [value]="statusTypes.voting">Начать
+              голосование
+            </mat-radio-button>
+            <mat-form-field *ngIf="isCheckedType(statusTypes.voting)" appearance="fill" color="accent">
+              <input matInput
+                     [min]="minDate"
+                     [matDatepicker]="votingEndPicker"
+                     formControlName="votingEndDate"
+                     placeholder="Дата окончания"
+              >
+              <mat-datepicker-toggle matSuffix [for]="votingEndPicker"></mat-datepicker-toggle>
+              <mat-datepicker #votingEndPicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="process-request-dialog_input-group">
+            <mat-radio-button class="process-request-dialog_radio-button" [value]="statusTypes.shipping">Ожидается
+              доставка
+            </mat-radio-button>
+            <mat-form-field *ngIf="isCheckedType(statusTypes.shipping)" appearance="fill" color="accent">
+              <input matInput
+                     [matDatepicker]="shippingEndPicker"
+                     [min]="minDate"
+                     formControlName="shippingEndDate"
+                     placeholder="Дата доставки"
+              >
+              <mat-datepicker-toggle matSuffix [for]="shippingEndPicker"></mat-datepicker-toggle>
+              <mat-datepicker #shippingEndPicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </mat-radio-group>
+
+        <!--<mat-form-field *ngIf="isCheckedType(statusTypes.voting)">
+          <input matInput [matDatepicker]="votingEndPicker" formControlName="votingEndDate"
+                 placeholder="Дата окончания голосования">
+          <mat-datepicker-toggle matSuffix [for]="votingEndPicker"></mat-datepicker-toggle>
+          <mat-datepicker #votingEndPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf="isCheckedType(statusTypes.shipping)">
+          <input matInput [matDatepicker]="shippingEndPicker" formControlName="shippingEndDate"
+                 placeholder="Ожидаемая дата доставки">
+          <mat-datepicker-toggle matSuffix [for]="shippingEndPicker"></mat-datepicker-toggle>
+          <mat-datepicker #shippingEndPicker></mat-datepicker>
+        </mat-form-field>-->
+      </div>
+      <div class="process-request-dialog_footer">
+        <button mat-flat-button matStepperPrevious>Назад</button>
+        <button mat-flat-button color="accent" (click)="onSaveClick()">Сохранить</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

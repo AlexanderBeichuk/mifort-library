@@ -8,7 +8,8 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./ask-for-book-dialog.component.scss']
 })
 export class AskForBookDialogComponent implements OnInit {
-  public commentText = new FormControl('');
+  public description = new FormControl('');
+  public url = new FormControl('');
 
   constructor(public dialogRef: MatDialogRef<AskForBookDialogComponent>) {
   }
@@ -21,6 +22,6 @@ export class AskForBookDialogComponent implements OnInit {
   }
 
   public onSaveClick(): void {
-    this.dialogRef.close(this.commentText);
+    this.dialogRef.close({description: this.description, url: this.url});
   }
 }

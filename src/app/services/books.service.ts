@@ -260,9 +260,10 @@ export class BooksService {
     return of([
       {
         id: '1',
-        description: 'https://oz.by/books/more1015206.html',
+        description: 'Отличная книга',
         creationDate: '2019-03-20T08:43:41.043Z',
-        user: USER_VITALY
+        user: USER_VITALY,
+        url: 'https://oz.by/books/more1015206.html'
       }
     ]);
   }

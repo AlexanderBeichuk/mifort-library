@@ -6,9 +6,15 @@
       }
     }
   }
+
   &_header {
     text-align: center;
   }
+
+  &_input {
+    margin-bottom: 15px;
+  }
+
   &_footer {
     display: flex;
     justify-content: flex-end;

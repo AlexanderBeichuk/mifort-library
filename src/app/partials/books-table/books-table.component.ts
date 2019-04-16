@@ -88,7 +88,7 @@ export class BooksTableComponent implements OnInit {
   public askForBook(): void {
     const dialogRef = this.dialog.open(AskForBookDialogComponent, {
       width: '500px',
-      height: '310px'
+      height: '350px'
     });
   }
 

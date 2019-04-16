@@ -1,0 +1,35 @@
+@import "../../../assets/scss/colors";
+
+.process-request-dialog {
+  ::ng-deep {
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+  }
+
+  &-header {
+    text-align: center;
+  }
+
+  &_form {
+    margin-top: 30px;
+  }
+
+  &_radio-button {
+    margin-right: 20px;
+  }
+
+  &_input-group {
+    width: 80%;
+    margin: 5px auto;
+    line-height: 77px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+}

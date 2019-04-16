@@ -4,10 +4,14 @@
       <div class="book-request_info-author">{{bookRequest.user.nickName}}</div>
       <div class="book-request_info-date">{{bookRequest.creationDate | date: 'dd.MM.yyyy'}}</div>
     </div>
-    <div class="book-request_description">{{bookRequest.description}}</div>
+    <div class="book-request_description">
+      <a [href]="bookRequest.url" target="_blank">{{bookRequest.url}}</a>
+      <div>{{bookRequest.description}}</div>
+    </div>
   </div>
   <div class="book-request_action">
     <button mat-flat-button class="book-request_action-button" color="accent" (click)="initAddBook()">Одобрить</button>
-    <button mat-flat-button class="book-request_action-button" color="accent" (click)="rejectBookRequest()">Отклонить</button>
+    <button mat-flat-button class="book-request_action-button" color="accent" (click)="rejectBookRequest()">Отклонить
+    </button>
   </div>
 </div>

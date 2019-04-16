@@ -1,7 +1,10 @@
 <h1 class="ask-for-book_header" mat-dialog-title>Запрос на книгу</h1>
 <div mat-dialog-content class="ask-for-book_content">
-  <mat-form-field appearance="fill">
-    <textarea rows="6" matInput [formControl]="commentText" placeholder="Добавьте ссылку на книгу, которую хотели бы видеть в нашей библиотеке"></textarea>
+  <mat-form-field appearance="fill" class="ask-for-book_input">
+    <input matInput [formControl]="url" placeholder="Ссылка на книгу">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="ask-for-book_input">
+    <textarea rows="6" matInput [formControl]="description" placeholder="Комментарий"></textarea>
   </mat-form-field>
 </div>
 <div class="ask-for-book_footer">

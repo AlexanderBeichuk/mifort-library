@@ -3,15 +3,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Book } from '../../models/Book';
 
 @Component({
-  selector: 'app-create-book-dialog',
-  templateUrl: './create-book-dialog.component.html',
-  styleUrls: ['./create-book-dialog.component.scss']
+  selector: 'app-edit-book-dialog',
+  templateUrl: './edit-book-dialog.component.html',
+  styleUrls: ['./edit-book-dialog.component.scss']
 })
-export class CreateBookDialogComponent implements OnInit {
+export class EditBookDialogComponent implements OnInit {
 
   public book: Book;
 
-  constructor(public dialogRef: MatDialogRef<CreateBookDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<EditBookDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: {book: Book}) { }
 
   ngOnInit() {
